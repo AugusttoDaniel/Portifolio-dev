@@ -1,12 +1,15 @@
-import './App.css'
 
+import { GlobalStyle } from './styles/globalStyles';
+import Header from './components/header';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './styles/theme';
 function App() {
 
   return (
-    <>
-      <div>
-      </div>
-    </>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Header />
+    </ThemeProvider>
   )
 }
 
