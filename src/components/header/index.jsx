@@ -50,10 +50,10 @@ const MenuItem = styled.a`
   transition: opacity 0.3s ease, filter 0.3s ease;
   
   /* Desfocar outros itens quando este item estiver com hover */
-  ${({ isHovered, id }) => 
-    isHovered && id !== isHovered ? 
-    'filter: blur(1px); opacity: 0.4;' : 
-    'filter: blur(0);'
+  ${({ isHovered, id }) =>
+    isHovered && id !== isHovered ?
+      'filter: blur(1px); opacity: 0.5;' :
+      'filter: blur(0);'
   }
   
   &:hover {
@@ -61,29 +61,31 @@ const MenuItem = styled.a`
     filter: blur(0);
   }
   
-  /* Efeito de borda animada */
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: white;
-    transform: scaleX(0);
-    transform-origin: right;  /* Alterado para right */
-    transition: transform 2s ease;
-  }
-  
-  &:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;  
-  }
-  
-  &:not(:hover)::after {
-    transform-origin: right;  
-    transition: transform 2s ease;
-  }
+ @media (min-width: 769px) {
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 2s ease;
+    }
+    
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    
+    &:not(:hover)::after {
+      transform-origin: right;
+      transition: transform 2s ease;
+    }
+}
 }`;
 
 const DownloadButton = styled.button`
@@ -102,6 +104,7 @@ const DownloadButton = styled.button`
     transition: background-color 0.3s ease;
     scale: 1.05;
   }
+
 `;
 
 const HamburgerButton = styled.button`
@@ -163,16 +166,16 @@ const MobileMenuContainer = styled.div`
       opacity: 1;
     }
   }
+
 `;
 
 // Array de itens de menu
 const menuItems = [
   { id: 'home', label: 'Home' },
-  { id: 'sobre', label: 'Sobre' },
-  { id: 'stack', label: 'Stack' },
-  { id: 'projetos', label: 'Projetos' },
-  { id: 'contato', label: 'Contato' },
+  { id: 'abount', label: 'Sobre' },
+  { id: 'stack', label: 'Stack' }, 
   { id: 'certificados', label: 'Certificados' },
+  { id: 'projetos', label: 'Projetos' },
 ];
 
 function Header() {
@@ -180,7 +183,7 @@ function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Estado para controlar o menu mobile
   const [hoveredItem, setHoveredItem] = useState(null); // Estado para controlar o item com hover
 
-  // Atualiza o item ativo com base na rolagem da página
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = menuItems.map((item) => document.getElementById(item.id));
