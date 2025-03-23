@@ -1,0 +1,76 @@
+{
+    "academic": [
+        {
+            "date": "Jan. de 2017 - dez. de 2021",
+            "title": "Bacharelado em Sistemas de Informação",
+            "subtitle": "Instituto Federal de Minas Gerais Campus São João Evangelista",
+            "icon": "FaGraduationCap",
+            "description": "Formação em Sistemas de Informação, com foco em algoritmos, estruturas de dados, desenvolvimento de software, matemática.",
+            "tags": [
+                "Java",
+                "Python",
+                "Algoritmos",
+                "+3"
+            ],
+            "button": {
+                "text": "Ver Detalhes",
+                "showArrow": true,
+                "onClick": "console.log('Ver detalhes do Bacharelado')"
+            }
+        },
+        {
+            "date": "Jan. de 2017 - dez. de 2019",
+            "title": "Técnico em Informática em Manutenção e Suporte",
+            "subtitle": "Instituto Federal de Minas Gerais Campus São João Evangelista",
+            "icon": "FaGraduationCap",
+            "description": "Formação técnica em Informática, com foco em manutenção de computadores, redes e programação básica.",
+            "tags": [
+                "Hardware",
+                "Redes",
+                "Programação Básica"
+            ],
+            "button": {
+                "text": "Ver Detalhes",
+                "showArrow": true,
+                "onClick": "console.log('Ver detalhes do Técnico em Informática')"
+            }
+        }
+    ],
+    "courses": [
+        {
+            "date": "Mar. de 2022 - Jun. de 2022",
+            "title": "Desenvolvimento Web Fullstack",
+            "subtitle": "Plataforma de Cursos Online",
+            "icon": "FaCertificate",
+            "description": "Curso completo de desenvolvimento web com React, Node.js e MongoDB.",
+            "tags": [
+                "React",
+                "Node.js",
+                "MongoDB",
+                "Express"
+            ],
+            "button": {
+                "text": "Ver Certificado",
+                "showArrow": true,
+                "onClick": "console.log('Ver certificado do curso de Desenvolvimento Web')"
+            }
+        },
+        {
+            "date": "Jul. de 2022 - Set. de 2022",
+            "title": "Certificação em React",
+            "subtitle": "Plataforma de Cursos Online",
+            "icon": "FaCertificate",
+            "description": "Certificação avançada em React, abordando hooks, context API e roteamento.",
+            "tags": [
+                "React",
+                "JavaScript",
+                "Hooks"
+            ],
+            "button": {
+                "text": "Ver Certificado",
+                "showArrow": true,
+                "onClick": "console.log('Ver certificado da certificação em React')"
+            }
+        }
+    ]
+}
