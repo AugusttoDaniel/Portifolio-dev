@@ -3,14 +3,15 @@ import { createGlobalStyle } from 'styled-components';
 import { theme } from './theme';
 
 export const GlobalStyle = createGlobalStyle`
-  /* Reset básico */
+
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: ${theme.typography.fontFamily};
   }
 
-  /* Estilos globais de texto */
+
   body {
     font-family: ${theme.typography.fontFamily};
     font-size: ${theme.typography.fontSize.paragraph};
