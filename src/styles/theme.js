@@ -1,3 +1,4 @@
+
 export const theme = {
     colors: {
         bg1: '#292F36',
@@ -12,7 +13,7 @@ export const theme = {
         react: '#28A9E0',
     },
     typography: {
-        fontFamily: "'Ubuntu', sans-serif", // Fonte principal
+        fontFamily: "'Ubuntu', sans-serif", 
 
         fontSize: {
             'bg-text-u': '117px',
@@ -29,7 +30,7 @@ export const theme = {
             regular: '400',
             light: '300',
             medium: '500',
-        },
+        }, 
 
         lineHeight: {
             'bg-text-u': '134px',
