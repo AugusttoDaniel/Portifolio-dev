@@ -1,38 +1,11 @@
 [
     {
         "id": 1,
-        "title": "Sorteador De Amigo Secreto",
-        "description": "O Sorteador de Amigo Secreto foi criado com o objetivo de otimizar o tradicional sorteio de amigo secreto, oferecendo uma solução digital prática e divertida.",
+        "title": "Portifólio",
+        "description": "Portifólio desenvolvido com React e Typescript, utilizando Styled Components e React Icons. O deploy foi feito com Vercel.",
         "imagem": "../../assets/Macbook-Air-localhost.png",
-        "tech": ["Typescript", "React", "HTML", "CSS", "Jest", "GitHub", "Vercel"],
-        "demoLink": "https://example.com/sorteador",
-        "codeLink": "https://github.com/example/sorteador"
-    },
-    {
-        "id": 2,
-        "title": "Cardápio Aluratl",
-        "description": "O Cardápio Aluroni é uma aplicação desenvolvida utilizando a biblioteca React. O projeto foi criado com o objetivo de exercitar os conceitos do React, como componentes, propriedades, estado e ciclo de vida.",
-        "imagem": "../assets/Macbook-Air-localhost.png",
-        "tech": ["Typescript", "React", "HTML", "CSS", "Sass", "Jest", "GitHub", "Vercel"],
-        "demoLink": "https://example.com/cardapio",
-        "codeLink": "https://github.com/example/cardapio"
-    },
-    {
-        "id": 3,
-        "title": "Dogs",
-        "description": "Dogs é uma rede social para cachorros feita com React para o curso de React da Origamid. O projeto conta com: feed, comentários, registro e login de usuários, recuperação de senha e muito mais.",
-        "imagem": "../assets/Macbook-Air-localhost.png",
-        "tech": ["Javascript", "React", "HTML", "CSS", "GitHub", "Vercel"],
-        "demoLink": "https://example.com/dogs",
-        "codeLink": "https://github.com/example/dogs"
-    },
-     {
-        "id": 4,
-        "title": "AluraFlix",
-        "description": "O AluraFlix é uma aplicação desenvolvida com o objetivo de criar um catálogo de vídeos, permitindo que os usuários assistam a trailers e acessem informações detalhadas sobre cada filme.",
-        "imagem": "../assets/Macbook-Air-localhost.png",
-        "tech": ["Javascript", "React", "HTML", "CSS", "GitHub", "Vercel"],
-        "demoLink": "https://example.com/aluraflix",
-        "codeLink": ""
-     }
+        "tech": ["React", "Styled Components", "React Icons"],
+        "demoLink": "https://augusttodaniel.github.io/Portifolio-dev/",
+        "codeLink": "https://github.com/AugusttoDaniel/Portifolio-dev"
+    }
 ]

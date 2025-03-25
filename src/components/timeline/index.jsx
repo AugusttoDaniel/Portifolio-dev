@@ -30,9 +30,7 @@ const TimelineLine = styled.div`
   width: ${props => props.lineWidth || '2px'};
   background-color: ${props => props.lineColor || 'rgba(255, 255, 255, 0.3)'};
   transform: translateX(-50%);
-  @media (max-width: 760px) {
-    left: 80%;
-  }
+  transition: all 0.3s ease; 
 `;
 
 const TimelineDot = styled.div`
