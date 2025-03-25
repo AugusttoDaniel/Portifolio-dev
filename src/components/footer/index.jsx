@@ -30,9 +30,11 @@ const FooterContainer = styled.footer`
 
 const FooterSection = styled.div`
   text-align: center;
+ 
+
 
   @media (min-width: 768px) {
-    text-align: left; /* Alinhamento à esquerda em telas maiores */
+    text-align: left; 
   }
 `;
 
@@ -68,6 +70,7 @@ const FooterLink = styled.a`
 
 const SocialIcons = styled.div`
   display: flex;
+  justify-content: center;
   gap: 1rem;
 `;
 
@@ -95,11 +98,15 @@ const Footer = () => {
             <FooterLink href="#about">Sobre</FooterLink>
           </li>
           <li>
-            <FooterLink href="#skills">Habilidades</FooterLink>
+            <FooterLink href="#stack">Stack</FooterLink>
           </li>
           <li>
-            <FooterLink href="#contact">Contato</FooterLink>
+            <FooterLink href="#certificados">Certificados</FooterLink>
           </li>
+          <li>
+            <FooterLink href="#projetos">Projetos</FooterLink>
+          </li>
+           
         </FooterList>
       </FooterSection>
 
@@ -107,13 +114,13 @@ const Footer = () => {
       <FooterSection>
         <FooterTitle>Redes Sociais</FooterTitle>
         <SocialIcons>
-          <SocialIcon href="https://github.com/seu-usuario" target="_blank" rel="noopener noreferrer">
+          <SocialIcon href="https://github.com/AugusttoDaniel" target="_blank" rel="noopener noreferrer">
             <FaGithub size={20} />
           </SocialIcon>
-          <SocialIcon href="https://www.linkedin.com/in/seu-perfil" target="_blank" rel="noopener noreferrer">
+          <SocialIcon href="https://www.linkedin.com/in/danielaugustto/" target="_blank" rel="noopener noreferrer">
             <FaLinkedin size={20} />
           </SocialIcon>
-          <SocialIcon href="mailto:seu-email@example.com">
+          <SocialIcon href="mailto:danielsje7133@gmail.com" target="_blank" rel="noopener noreferrer">
             <FaEnvelope size={20} />
           </SocialIcon>
         </SocialIcons>
@@ -121,7 +128,7 @@ const Footer = () => {
 
       {/* Seção de Copyright */}
       <FooterSection>
-        <p>&copy; {new Date().getFullYear()} Seu Nome. Todos os direitos reservados.</p>
+        <p>&copy; {new Date().getFullYear()} Daniel Augusto Silva. Todos os direitos reservados.</p>
       </FooterSection>
     </FooterContainer>
   );

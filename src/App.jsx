@@ -33,23 +33,23 @@ function App() {
     const duration = 1000; // Duração total da animação em ms
     const start = window.pageYOffset || document.documentElement.scrollTop;
     const startTime = performance.now();
-  
+
     // Função de easing: começa lento e acelera (easeOutQuad)
     const easeOutQuad = (t) => 1 - Math.pow(1 - t, 4);
-    
+
     // Função de animação
     const animateScroll = (currentTime) => {
       const elapsedTime = currentTime - startTime;
       const progress = Math.min(elapsedTime / duration, 1);
       const eased = easeOutQuad(progress);
-      
+
       window.scrollTo(0, start * (1 - eased));
-      
+
       if (progress < 1) {
         requestAnimationFrame(animateScroll);
       }
     };
-    
+
     requestAnimationFrame(animateScroll);
   };
 
@@ -78,7 +78,6 @@ function App() {
       <Certification />
       <Projects />
       <Footer />
-
       <BackToTopContainer isVisible={isVisible}>
         <Button
           icon={FaArrowUp}

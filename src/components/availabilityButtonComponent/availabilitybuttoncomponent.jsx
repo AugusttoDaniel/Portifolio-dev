@@ -27,7 +27,9 @@ const AvailabilityButton = styled.button`
     font-size: 0.8rem; /* Tamanho do texto reduzido em telas menores */
     padding: 0.4rem 0.8rem; /* Espaçamento interno reduzido em telas menores */
     width: 100%; /* Largura total em telas menores */
+    max-width: 200px; /* Largura máxima */
     border-radius: 999px; /* Borda arredondada */
+    margin-top: 1rem; /* Espaçamento superior */
 }
 `;
 

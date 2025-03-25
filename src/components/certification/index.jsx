@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import Timeline from '../timeline';
 import { fetchEducationalData } from '../../mocks/apiMock';
-import { FaGraduationCap } from "react-icons/fa"; 
-import { GrCertificate } from "react-icons/gr"; 
+import { FaGraduationCap } from "react-icons/fa";
+import { GrCertificate } from "react-icons/gr";
+import { MdWork } from "react-icons/md";
+import LoadingSpinner from '../loadingspinner';
+
 
 // Styled Components
-const Container = styled.div`
+const Container = styled.section`
   background: linear-gradient(to right, #0a0a2a, #1a1a4a);
   min-height: 100vh;
   padding: 2rem;
@@ -57,26 +60,39 @@ const NavButton = styled.button`
 
 // Main Component
 const EducationalJourney = () => {
+    // ver se é telefone 
+    const isPhone = window.innerWidth < 760;
     const [active, setActive] = useState('academic');
     const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetchEducationalData().then((response) => {
-            setData(response);
-        });
+        setIsLoading(true);
+        fetchEducationalData()
+            .then((response) => {
+                setData(response);
+                setIsLoading(false);
+            })
+            .catch((error) => {
+                setError(error);
+                setIsLoading(false);
+            });
     }, []);
 
-    if (!data) {
-        return <div>Loading...</div>; 
-    }
+
 
     const handleNavClick = (type) => {
         setActive(type);
     };
 
-    const getActiveData = () => {
-        return data[active];
-    };
+    const getActiveData = useMemo(() => {
+        return data ? data[active] : [];
+    }, [data, active]);
+
+    if (isLoading) return <LoadingSpinner />;
+    if (error) return <ErrorDisplay message="Failed to load educational data" />;
+
 
     const timelineStyles = {
         container: {
@@ -94,7 +110,7 @@ const EducationalJourney = () => {
     };
 
     return (
-        <Container>
+        <Container id="certificados">
             <Header>
                 <Title>Jornada Educacional</Title>
                 <Subtitle>Explore minha trajetória de aprendizado e crescimento profissional</Subtitle>
@@ -105,20 +121,46 @@ const EducationalJourney = () => {
                     active={active === 'academic'}
                     onClick={() => handleNavClick('academic')}
                 >
-                    <FaGraduationCap style={{ fontSize: "1rem" }} />
-                    Formação Acadêmica
+                    {isPhone ? (
+                        <FaGraduationCap style={{ fontSize: "1rem" }} />
+                    ) : (
+                        <>
+                            <FaGraduationCap style={{ fontSize: "1rem", marginRight: "0.5rem" }} />
+                            Formação
+                        </>
+                    )}
                 </NavButton>
                 <NavButton
                     active={active === 'courses'}
                     onClick={() => handleNavClick('courses')}
                 >
-                    <GrCertificate style={{ fontSize: "1rem" }} />
-                    Cursos
+                    {isPhone ? (
+                        <GrCertificate style={{ fontSize: "1rem" }} />
+                    ) : (
+                        <>
+                            <GrCertificate style={{ fontSize: "1rem", marginRight: "0.5rem" }} />
+                            Formação
+                        </>
+                    )}
+
+                </NavButton>
+                <NavButton
+                    active={active === 'job'}
+                    onClick={() => handleNavClick('job')}
+                >
+                    {isPhone ? (
+                        <MdWork style={{ fontSize: "1rem" }} />
+                    ) : (
+                        <>
+                            <MdWork style={{ fontSize: "1rem", marginRight: "0.5rem" }} />
+                            Experiência
+                        </>
+                    )}
                 </NavButton>
             </NavContainer>
 
             <Timeline
-                items={getActiveData()}
+                items={getActiveData}
                 styleProps={timelineStyles}
             />
         </Container>

@@ -1,28 +1,33 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import { FaReact, FaNode, FaDatabase, FaGithub, FaAws, FaSearch, FaFilter, FaCheck, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { FaReact, FaSearch, FaArrowRight, FaFilter, FaCheck, FaArrowLeft, FaNode, FaGithub } from 'react-icons/fa';
 import {
-  SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript, SiPython, SiMysql,
-  SiPostgresql, SiFigma, SiPrisma, SiFastapi, SiVercel
+  SiTailwindcss,
+  SiTypescript,
+  SiJavascript,
+  SiMysql,
+  SiPostgresql,
+  SiHtml5,
+  SiCss3,
+  SiVercel,
+  SiFastapi,
+  SiExpress
 } from 'react-icons/si';
 import { fetchSkillsData } from '../../mocks/apiMock';
 const iconMapping = {
-  'FaReact': FaReact,
-  'FaNode': FaNode,
-  'FaDatabase': FaDatabase,
-  'FaGithub': FaGithub,
-  'FaAws': FaAws,
-  'SiNextdotjs': SiNextdotjs,
-  'SiTailwindcss': SiTailwindcss,
-  'SiTypescript': SiTypescript,
-  'SiJavascript': SiJavascript,
-  'SiPython': SiPython,
-  'SiMysql': SiMysql,
-  'SiPostgresql': SiPostgresql,
-  'SiFigma': SiFigma,
-  'SiPrisma': SiPrisma,
-  'SiFastapi': SiFastapi,
-  'SiVercel': SiVercel
+  FaReact: FaReact,
+  SiTailwindcss: SiTailwindcss,
+  SiTypescript: SiTypescript,
+  SiJavascript: SiJavascript,
+  SiMysql: SiMysql,
+  SiPostgresql: SiPostgresql,
+  FaGithub: FaGithub,
+  SiHtml5: SiHtml5,
+  SiCss3: SiCss3,
+  SiVercel: SiVercel,
+  SiFastapi: SiFastapi,
+  FaNode: FaNode,
+  SiExpress: SiExpress
 };
 // Mantendo os componentes estilizados existentes...
 const SkillsSection = styled.section`
@@ -349,7 +354,7 @@ const SkillsAndExperience = () => {
   useEffect(() => {
     const fetchData = async () => {
       const reponse = await fetchSkillsData();
-      
+
 
       setSkills(reponse.data);
     };
@@ -376,8 +381,7 @@ const SkillsAndExperience = () => {
     'tools': ['Git', 'GitHub', 'Figma'],
     'language': ['JavaScript', 'TypeScript', 'Python'],
     'framework': ['React', 'Next.js', 'Tailwind', 'FastAPI', 'Node.js', 'Prisma'],
-    'library': ['React'],
-    'devops': ['GitHub', 'AWS'],
+    'devops': ['GitHub'],
     'design': ['Figma'],
     'cloud': ['AWS', 'Vercel'],
     'versionamento': ['Git', 'GitHub']
@@ -463,7 +467,7 @@ const SkillsAndExperience = () => {
   }, [searchTerm]);
 
   return (
-    <SkillsSection>
+    <SkillsSection id='stack'>
       <Container>
         <Header>
           <Title>Habilidades & Experiência</Title>
@@ -484,7 +488,7 @@ const SkillsAndExperience = () => {
             <FilterButton onClick={() => setShowFilterDropdown(!showFilterDropdown)}>
               <FaFilter />
               {isPhone ? "" : "Filtrar"}
-              
+
             </FilterButton>
             {showFilterDropdown && (
               <FilterDropdown>
@@ -532,7 +536,7 @@ const SkillsAndExperience = () => {
                       {React.createElement(iconMapping[skill.icon], {
                         size: 24,
                       })}
-             
+
                     </IconWrapper>
                     <SkillName>
                       <h3>{skill.name}</h3>

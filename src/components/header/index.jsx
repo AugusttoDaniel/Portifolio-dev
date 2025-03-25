@@ -8,7 +8,12 @@ const HeaderContainer = styled.header`
   align-items: center;
   padding: 1rem 2rem;
   background-color: ${(props) => props.theme.colors.bg1};
-  position: relative; /* Para posicionar o menu mobile */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 `;
 
 const Logo = styled.div`
@@ -62,7 +67,6 @@ const MenuItem = styled.a`
   }
   
  @media (min-width: 769px) {
-
     &::after {
       content: '';
       position: absolute;
@@ -71,8 +75,8 @@ const MenuItem = styled.a`
       width: 100%;
       height: 2px;
       background-color: white;
-      transform: scaleX(0);
-      transform-origin: right;
+      transform: scaleX(${props => props.isActive ? '1' : '0'});
+      transform-origin: ${props => props.isActive ? 'left' : 'right'};
       transition: transform 2s ease;
     }
     
@@ -82,11 +86,11 @@ const MenuItem = styled.a`
     }
     
     &:not(:hover)::after {
-      transform-origin: right;
+      transform-origin: ${props => props.isActive ? 'left' : 'right'};
       transition: transform 2s ease;
     }
-}
-}`;
+  }
+`;
 
 const DownloadButton = styled.button`
   background-color: ${(props) => props.theme.colors.css};
@@ -104,7 +108,6 @@ const DownloadButton = styled.button`
     transition: background-color 0.3s ease;
     scale: 1.05;
   }
-
 `;
 
 const HamburgerButton = styled.button`
@@ -147,12 +150,12 @@ const MobileMenuContainer = styled.div`
   flex-direction: column;
   position: absolute;
   top: 100%;
+  left: 0;
   right: 0;
   background-color: ${(props) => props.theme.colors.bg1};
   padding: 1rem;
   gap: 1rem;
   z-index: 999;
-  width: 100%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   animation: slideIn 0.3s ease;
 
@@ -166,58 +169,101 @@ const MobileMenuContainer = styled.div`
       opacity: 1;
     }
   }
-
 `;
 
 // Array de itens de menu
 const menuItems = [
   { id: 'home', label: 'Home' },
-  { id: 'abount', label: 'Sobre' },
-  { id: 'stack', label: 'Stack' }, 
+  { id: 'about', label: 'Sobre' },
+  { id: 'stack', label: 'Stack' },
   { id: 'certificados', label: 'Certificados' },
   { id: 'projetos', label: 'Projetos' },
 ];
 
 function Header() {
-  const [activeItem, setActiveItem] = useState(null); // Estado para controlar o item ativo
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Estado para controlar o menu mobile
-  const [hoveredItem, setHoveredItem] = useState(null); // Estado para controlar o item com hover
+  const [activeItem, setActiveItem] = useState('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState(null);
 
+  // Função para navegar suavemente até o elemento
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      // Obtém a altura do header para compensar no scroll
+      const headerHeight = document.querySelector('header').offsetHeight;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      setActiveItem(id);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = menuItems.map((item) => document.getElementById(item.id));
-      const currentSection = sections.find((section) => {
-        if (!section) return false;
-        const rect = section.getBoundingClientRect();
-        return rect.top >= 0 && rect.top < window.innerHeight * 0.5;
-      });
-      if (currentSection) {
-        setActiveItem(currentSection.id);
+      // Obtém a altura do header para compensar no cálculo
+      const headerHeight = document.querySelector('header').offsetHeight;
+
+      // Define um buffer para melhorar a detecção
+      const buffer = 5;
+
+      // Verifica cada seção
+      let found = false;
+
+      // Itera do último para o primeiro para priorizar seções mais abaixo no caso de sobreposição
+      for (let i = menuItems.length - 1; i >= 0; i--) {
+        const section = document.getElementById(menuItems[i].id);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          // Considera uma seção ativa quando seu topo está próximo ao topo da viewport + altura do header
+          if (rect.top <= headerHeight + buffer && rect.bottom > headerHeight) {
+            setActiveItem(menuItems[i].id);
+            found = true;
+            break;
+          }
+        }
+      }
+
+      // Se nenhuma seção for encontrada e estivermos no topo da página, ativamos o Home
+      if (!found && window.scrollY < 100) {
+        setActiveItem('home');
       }
     };
 
     window.addEventListener('scroll', handleScroll);
+    // Executa uma vez ao montar para configurar o item ativo inicial
+    handleScroll();
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleDownload = () => {
+    window.open("https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w", "_blank");
+  };
+
+
   return (
     <HeaderContainer>
-      {/* Logo */}
       <Logo>
         <LogoText>Daniel A.S.</LogoText>
       </Logo>
 
-      {/* Menu Desktop */}
       <MenuContainer as="nav">
         {menuItems.map((item) => (
           <MenuItem
             key={item.id}
             href={`#${item.id}`}
-            onClick={() => setActiveItem(item.id)}
+            onClick={(e) => {
+              e.preventDefault(); // Previne o comportamento padrão do link
+              scrollToSection(item.id);
+              setIsMobileMenuOpen(false);
+            }}
             isActive={activeItem === item.id}
             aria-current={activeItem === item.id ? 'page' : undefined}
-            id={item.id}
+            id={`nav-${item.id}`}
             isHovered={hoveredItem}
             onMouseEnter={() => setHoveredItem(item.id)}
             onMouseLeave={() => setHoveredItem(null)}
@@ -225,10 +271,9 @@ function Header() {
             {item.label}
           </MenuItem>
         ))}
-        <DownloadButton>Baixar CV</DownloadButton>
+        <DownloadButton onClick={handleDownload}>Baixar CV</DownloadButton>
       </MenuContainer>
 
-      {/* Botão Hambúrguer */}
       <HamburgerButton
         isOpen={isMobileMenuOpen}
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -238,19 +283,19 @@ function Header() {
         <div />
       </HamburgerButton>
 
-      {/* Menu Mobile */}
       <MobileMenuContainer isOpen={isMobileMenuOpen}>
         {menuItems.map((item) => (
           <MenuItem
-            key={item.id}
+            key={`mobile-${item.id}`}
             href={`#${item.id}`}
-            onClick={() => {
-              setActiveItem(item.id);
-              setIsMobileMenuOpen(false); // Fecha o menu após clicar em um item
+            onClick={(e) => {
+              e.preventDefault(); // Previne o comportamento padrão do link
+              scrollToSection(item.id);
+              setIsMobileMenuOpen(false);
             }}
             isActive={activeItem === item.id}
             aria-current={activeItem === item.id ? 'page' : undefined}
-            id={item.id}
+            id={`mobile-nav-${item.id}`}
             isHovered={hoveredItem}
             onMouseEnter={() => setHoveredItem(item.id)}
             onMouseLeave={() => setHoveredItem(null)}
@@ -258,7 +303,7 @@ function Header() {
             {item.label}
           </MenuItem>
         ))}
-        <DownloadButton>Baixar CV</DownloadButton>
+        <DownloadButton onClick={handleDownload}>Baixar CV</DownloadButton>
       </MobileMenuContainer>
     </HeaderContainer>
   );

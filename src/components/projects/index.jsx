@@ -4,7 +4,7 @@ import { fetchProjectsData } from '../../mocks/apiMock';
 import imagem from '../../assets/Macbook-Air-localhost.png';
 
 // Componentes estilizados
-const ProjectsSection = styled.section`
+const ProjectsSection = styled.div`
   background-color: #0a192f;
   color: #fff;
   padding: 60px 20px 80px;
@@ -210,7 +210,7 @@ const Projects = () => {
   }
 
   return (
-    <ProjectsSection>
+    <ProjectsSection id="projetos">
       <Container>
         <Header>
           <Title>Projetos</Title>

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaLinkedin, FaInstagram, FaGithub, FaDownload } from 'react-icons/fa';
-import foto from '../../assets/WhatsApp Image 2024-01-23 at 20.25.57 (1).jpeg';
+import foto from '../../assets/Foto.jpeg';
 
-const PageContainer = styled.section`
+const PageContainer = styled.div`
   display: flex;
   align-items: center;
   margin: auto;
@@ -177,6 +177,14 @@ const Divider = styled.hr`
 `;
 
 const AboutMe = () => {
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = "https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w";
+    link.download = "Currículo-Daniel.pdf"; // Define o nome do arquivo
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <PageContainer id='about'>
       <ContentContainer>
@@ -232,7 +240,9 @@ const AboutMe = () => {
             </StatsSection>
 
             <ButtonContainer>
-              <Button href="/cv.pdf" download>
+              <Button
+                onClick={handleDownload}
+              >
                 <FaDownload /> Baixar CV
               </Button>
             </ButtonContainer>

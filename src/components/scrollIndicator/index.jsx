@@ -10,7 +10,7 @@ const Container = styled.div`
   bottom: 10px; // Distância do fundo da tela
   left: 50%; // Centraliza horizontalmente
   transform: translateX(-50%); // Ajusta a posição para o centro
-  z-index: 1000; // Garante que fique acima de outros elementos
+  z-index: 100; // Garante que fique acima de outros elementos
   cursor: pointer; // Muda o cursor para indicar que é clicável
   display: flex;
   justify-content: center;

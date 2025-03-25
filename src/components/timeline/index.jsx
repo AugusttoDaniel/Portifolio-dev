@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { } from 'react';
 import styled from 'styled-components';
 import TimelineItem from '../timelineitem';
 
@@ -30,6 +30,9 @@ const TimelineLine = styled.div`
   width: ${props => props.lineWidth || '2px'};
   background-color: ${props => props.lineColor || 'rgba(255, 255, 255, 0.3)'};
   transform: translateX(-50%);
+  @media (max-width: 760px) {
+    left: 80%;
+  }
 `;
 
 const TimelineDot = styled.div`
@@ -43,6 +46,9 @@ const TimelineDot = styled.div`
   border: ${props => props.borderWidth || '3px'} solid ${props => props.borderColor || '#1e2952'};
   top: ${props => props.top || '0'};
   z-index: 2;
+  @media (max-width: 760px) {
+    left: 80%;
+  }
 `;
 
 // Componente Timeline principal
@@ -52,6 +58,7 @@ const Timeline = ({
   styleProps = {},
 }) => {
   const totalItems = items.length;
+  const isPhone = window.innerWidth < 768;
 
   return (
     <TimelineContainer {...styleProps.container}>
@@ -74,7 +81,7 @@ const Timeline = ({
       {items.map((item, index) => (
         <TimelineItem
           key={index}
-          position={index % 2 === 0 ? 'right' : 'left'}
+          position={isPhone ? 'left' : index % 2 === 0 ? 'right' : 'left'}
           {...item}
         />
       ))}

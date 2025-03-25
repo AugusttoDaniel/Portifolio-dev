@@ -1,7 +1,7 @@
 {
     "academic": [
         {
-            "date": "Jan. de 2017 - dez. de 2021",
+            "date": "Jan. de 2020 - abr. de 2025",
             "title": "Bacharelado em Sistemas de Informação",
             "subtitle": "Instituto Federal de Minas Gerais Campus São João Evangelista",
             "icon": "FaGraduationCap",
@@ -17,6 +17,24 @@
                 "showArrow": true,
                 "onClick": "console.log('Ver detalhes do Bacharelado')"
             }
+        },
+        {
+            "date": "Out de 2020",
+            "title": "Medalha de Prata na Intercampi do IFMG 1 Superior Nível 1 ",
+            "subtitle": "II Maratona de Programação Intercampi do IFMG",
+            "icon": "FaTrophy",
+            "description": "Medalha de prata na II Maratona de Programação Intercampi do IFMG, realizada em 2020, com foco em resolução de problemas e algoritmos.",
+            "tags": [
+                "Maratona de Programação",
+                "Algoritmos",
+                "Resolução de Problemas"
+            ],
+            "button": {
+                "text": "Ver Detalhes",
+                "showArrow": true,
+                "onClick": "console.log('Ver detalhes do Medalha')"
+            }
+
         },
         {
             "date": "Jan. de 2017 - dez. de 2019",
@@ -70,6 +88,42 @@
                 "text": "Ver Certificado",
                 "showArrow": true,
                 "onClick": "console.log('Ver certificado da certificação em React')"
+            }
+        }
+    ],
+    "job": [
+        {
+            "date": "Jan. de 2023 - Atual",
+            "title": "Desenvolvedor Frontend",
+            "subtitle": "Empresa XYZ",
+            "icon": "MdWork",
+            "description": "Desenvolvimento de aplicações web com React e TypeScript, integração com APIs RESTful.",
+            "tags": [
+                "React",
+                "TypeScript",
+                "APIs"
+            ],
+            "button": {
+                "text": "Ver Detalhes",
+                "showArrow": true,
+                "onClick": "console.log('Ver detalhes do trabalho')"
+            }
+        },
+        {
+            "date": "Jan. de 2022 - Dez. de 2022",
+            "title": "Estagiário em Desenvolvimento Web",
+            "subtitle": "Empresa ABC",
+            "icon": "MdWork",
+            "description": "Auxílio no desenvolvimento de aplicações web com HTML, CSS e JavaScript.",
+            "tags": [
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ],
+            "button": {
+                "text": "Ver Detalhes",
+                "showArrow": true,
+                "onClick": "console.log('Ver detalhes do estágio')"
             }
         }
     ]

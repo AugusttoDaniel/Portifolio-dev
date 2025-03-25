@@ -98,8 +98,8 @@ const IconContainer = styled.div`
   margin-top: 2rem;
 
   svg {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     color: ${(props) => props.theme.colors.white};
     transition: transform 0.3s ease;
 
@@ -145,13 +145,13 @@ const DeveloperProfile = () => {
         </Bio>
         <CodeTag>&lt;/p&gt;</CodeTag>
         <IconContainer>
-          <a href="https://github.com/seu-usuario" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/AugusttoDaniel" target="_blank" rel="noopener noreferrer">
             <FaGithub />
           </a>
-          <a href="https://wa.me/seu-numero" target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/5533988595641" target="_blank" rel="noopener noreferrer">
             <FaWhatsapp />
           </a>
-          <a href="https://www.linkedin.com/in/seu-perfil" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/danielaugustto/" target="_blank" rel="noopener noreferrer">
             <FaLinkedin />
           </a>
         </IconContainer>

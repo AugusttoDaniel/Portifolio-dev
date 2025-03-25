@@ -10,15 +10,7 @@
             "icon": "FaReact",
             "bgColor": "#61DAFB30",
             "description": "Desenvolvimento de interfaces modernas e responsivas com React, hooks, context e componentes reutilizáveis",
-            "experience": "1y 5m"
-        },
-        {
-            "name": "Next.js",
-            "category": "Framework",
-            "icon": "SiNextdotjs",
-            "bgColor": "#00000030",
-            "description": "Criação de aplicações web com SSR, SSG e API routes usando Next.js",
-            "experience": "8m"
+            "experience": "1y"
         },
         {
             "name": "Tailwind",
@@ -26,15 +18,7 @@
             "icon": "SiTailwindcss",
             "bgColor": "#38B2AC30",
             "description": "Estilização moderna e responsiva com Tailwind CSS",
-            "experience": "1y 5m"
-        },
-        {
-            "name": "Python",
-            "category": "Linguagem",
-            "icon": "SiPython",
-            "bgColor": "#3776AB30",
-            "description": "Desenvolvimento backend, scripts de automação e análise de dados",
-            "experience": "1y 8m"
+            "experience": "1m"
         },
         {
             "name": "TypeScript",
@@ -42,7 +26,7 @@
             "icon": "SiTypescript",
             "bgColor": "#3178C630",
             "description": "Desenvolvimento com TypeScript",
-            "experience": "1y 9m"
+            "experience": "3m"
         },
         {
             "name": "JavaScript",
@@ -50,7 +34,7 @@
             "icon": "SiJavascript",
             "bgColor": "#F7DF1E30",
             "description": "Desenvolvimento web frontend (ES6+)",
-            "experience": "2y 2m"
+            "experience": "1y 2m"
         },
         {
             "name": "MySQL",
@@ -66,7 +50,7 @@
             "icon": "SiPostgresql",
             "bgColor": "#33648430",
             "description": "Gerenciamento de bancos de dados relacionais com PostgreSQL",
-            "experience": "1y 11m"
+            "experience": "11m"
         },
         {
             "name": "Git",
@@ -74,7 +58,7 @@
             "icon": "FaGithub",
             "bgColor": "#F0500030",
             "description": "Controle de versão e colaboração usando Git",
-            "experience": "1y 7m"
+            "experience": "1y 3m"
         },
         {
             "name": "GitHub",
@@ -82,31 +66,23 @@
             "icon": "FaGithub",
             "bgColor": "#18191930",
             "description": "Gerenciamento de repositórios, CI/CD e colaboração usando GitHub",
+            "experience": "1y 3m"
+        },
+        {
+            "name": "HTML",
+            "category": "Markup",
+            "icon": "SiHtml5",
+            "bgColor": "#E34F2620",
+            "description": "Estruturação de páginas web com HTML5",
             "experience": "1y 2m"
         },
         {
-            "name": "Figma",
-            "category": "Design",
-            "icon": "SiFigma",
-            "bgColor": "#F24E1E30",
-            "description": "Design de interfaces e prototipagem com Figma",
-            "experience": "1y 5m"
-        },
-        {
-            "name": "Prisma",
-            "category": "Framework",
-            "icon": "SiPrisma",
-            "bgColor": "#5A67D830",
-            "description": "ORM moderno para TypeScript com foco em type safety",
-            "experience": "8m"
-        },
-        {
-            "name": "AWS",
-            "category": "Cloud",
-            "icon": "FaAws",
-            "bgColor": "#FF990030",
-            "description": "Implantação e gerenciamento de aplicações na nuvem",
-            "experience": "5m"
+            "name": "CSS",
+            "category": "Markup",
+            "icon": "SiCss3",
+            "bgColor": "#1572B630",
+            "description": "Estilização de páginas web com CSS3 e preprocessadores como SASS/SCSS",
+            "experience": "1y 2m"
         },
         {
             "name": "Vercel",
@@ -130,6 +106,14 @@
             "icon": "FaNode",
             "bgColor": "#33993330",
             "description": "Desenvolvimento backend com Node.js",
+            "experience": "8m"
+        },
+        {
+            "name": "Express",
+            "category": "Framework",
+            "icon": "SiExpress",
+            "bgColor": "#00000030",
+            "description": "Desenvolvimento de APIs com Express.js",
             "experience": "8m"
         }
     ]

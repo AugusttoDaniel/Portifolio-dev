@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { } from 'react';
 import styled from 'styled-components';
 import { FaGraduationCap } from "react-icons/fa"; // Importe os ícones necessários
 import { GrCertificate } from "react-icons/gr";
-
+import { FaTrophy } from "react-icons/fa";
+import { MdWork } from "react-icons/md";
 // Styled Components específicos do Item
 const TimelineItemContainer = styled.div`
   display: flex;
@@ -10,6 +11,10 @@ const TimelineItemContainer = styled.div`
   margin-bottom: ${props => props.marginBottom || '2rem'};
   padding-left: ${props => props.position === 'right' ? 'calc(50% + 15px)' : '0'};
   padding-right: ${props => props.position === 'left' ? 'calc(50% + 15px)' : '0'};
+  @media (max-width: 760px) {
+    padding-left: ${props => props.position === 'right' ? 'calc(50% + 15px)' : '0'};
+  padding-right: ${props => props.position === 'left' ? 'calc(25% + 15px)' : '0'};
+  }
 `;
 
 const TimelineCard = styled.div`
@@ -26,7 +31,7 @@ const TimelineCard = styled.div`
     transform: ${props => props.hoverEffect ? 'translateY(-5px)' : 'none'};
     box-shadow: ${props => props.hoverEffect ? '0 10px 15px rgba(0, 0, 0, 0.15)' : props.boxShadow || '0 4px 6px rgba(0, 0, 0, 0.1)'};
   }
-  @media (max-width: 768px) {
+  @media (max-width: 760px) {
     padding: ${props => props.mobilePadding || '1rem'};
     max-width: ${props => props.mobileMaxWidth || '100%'};
   }
@@ -119,6 +124,8 @@ const Button = styled.button`
 const iconMap = {
   FaGraduationCap: FaGraduationCap,
   FaCertificate: GrCertificate,
+  FaTrophy: FaTrophy,
+  MdWork: MdWork,
 };
 
 // Componente TimelineItem
@@ -130,11 +137,9 @@ const TimelineItem = ({
   icon,
   description,
   tags = [],
-  button,
   cardStyles = {},
   onCardClick,
 }) => {
-  // verifica se é telefone 
   const isPhone = window.innerWidth <= 768;
 
 
@@ -174,7 +179,7 @@ const TimelineItem = ({
           </TagsContainer>
         )}
 
-        {button && (
+        {/* {button && (
           <Button
             onClick={(e) => {
               e.stopPropagation();
@@ -184,7 +189,7 @@ const TimelineItem = ({
           >
             {button.text || "Ver Mais"} {button.showArrow && "→"}
           </Button>
-        )}
+        )} */}
       </TimelineCard>
     </TimelineItemContainer>
   );
