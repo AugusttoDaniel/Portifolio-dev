@@ -1026,7 +1026,7 @@ Error generating stack: `+i.message+`
   width: ${n=>n.lineWidth||"2px"};
   background-color: ${n=>n.lineColor||"rgba(255, 255, 255, 0.3)"};
   transform: translateX(-50%);
-  transition: all 0.3s ease; /* Smooth transition for responsive changes */
+  transition: all 0.3s ease; 
 `,_x=_.div`
   position: absolute;
   left: 50%;
