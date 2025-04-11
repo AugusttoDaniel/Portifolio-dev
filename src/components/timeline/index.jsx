@@ -10,6 +10,7 @@ const TimelineContainer = styled.div`
   margin: 0 auto;
   padding: 2rem 0;
   font-family: ${props => props.fontFamily || 'Inter, sans-serif'};
+  
 `;
 
 const TimelineTitle = styled.h2`
@@ -31,6 +32,9 @@ const TimelineLine = styled.div`
   background-color: ${props => props.lineColor || 'rgba(255, 255, 255, 0.3)'};
   transform: translateX(-50%);
   transition: all 0.3s ease; 
+    @media (max-width: 760px) {
+    left: 80%;
+  }
 `;
 
 const TimelineDot = styled.div`
