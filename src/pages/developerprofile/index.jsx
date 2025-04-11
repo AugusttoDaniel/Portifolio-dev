@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme'; // Importando o tema
 import { FaGithub, FaWhatsapp, FaLinkedin } from 'react-icons/fa';
-import ScrollIndicator from '../scrollIndicator';
-import AvailabilityButtonComponent from '../availabilityButtonComponent/availabilitybuttoncomponent';
+import ScrollIndicator from '../../components/scrollIndicator';
+import AvailabilityButtonComponent from '../../components/availabilityButtonComponent';
 import { FaBriefcase } from 'react-icons/fa';
-
+import StarConstellation from '../../components/backgroundStar'; 
 // Componentes estilizados
 
 const Container = styled.section`
-  background-color: ${(props) => props.theme.colors.bg2};
+  background-color: ${(props) => props.theme.colors.bgdev};
   color: ${(props) => props.theme.colors.white};
   padding: 2rem;
   min-height: 100vh;
@@ -119,6 +119,7 @@ const IconContainer = styled.div`
 const DeveloperProfile = () => {
   return (
     <Container id="home">
+      <StarConstellation />
       <AvailabilityButtonComponent
         icon={FaBriefcase}
         message="Disponível para vaga de dev!"

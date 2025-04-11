@@ -5,15 +5,16 @@ import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'; // Importaç�
 // Cores do tema
 // eslint-disable-next-line no-unused-vars
 const theme = {
-  background: '#1a1a1a', // Fundo escuro
+  background: '#020617', // Fundo escuro
   text: '#ffffff', // Texto branco
   primary: '#7de2d1', // Cor primária (verde)
 };
 
 // Componentes estilizados
 const FooterContainer = styled.footer`
-  background-color: ${(props) => props.theme.background};
-  color: ${(props) => props.theme.text};
+  position: relative; /* Necessário pro ::before funcionar */
+  background-color: #020617;
+  color: #ffffff;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -21,8 +22,20 @@ const FooterContainer = styled.footer`
   justify-content: center;
   gap: 2rem;
 
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(to right, transparent, #22d3ee, transparent); /* brilho no centro */
+    opacity: 0.5;
+    z-index: 0; 
+  }
+
   @media (min-width: 768px) {
-    flex-direction: row; /* Layout horizontal em telas maiores */
+    flex-direction: row; 
     justify-content: space-between;
     padding: 3rem;
   }
@@ -41,7 +54,7 @@ const FooterSection = styled.div`
 const FooterTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: ${(props) => props.theme.primary}; /* Título na cor primária */
+  color: #7de2d1; 
 `;
 
 const FooterList = styled.ul`
@@ -53,18 +66,18 @@ const FooterList = styled.ul`
   gap: 0.5rem;
 
   @media (min-width: 768px) {
-    flex-direction: row; /* Links horizontais em telas maiores */
-    gap: 1rem; /* Espaçamento maior entre os links */
+    flex-direction: row; 
+    gap: 1rem; 
   }
 `;
 
 const FooterLink = styled.a`
-  color: ${(props) => props.theme.text};
+  color: white;
   text-decoration: none;
   transition: color 0.3s ease;
 
   &:hover {
-    color: ${(props) => props.theme.primary}; /* Altera a cor ao passar o mouse */
+    color: #7de2d1; 
   }
 `;
 
@@ -79,7 +92,7 @@ const SocialIcon = styled.a`
   transition: color 0.3s ease;
 
   &:hover {
-    color: ${(props) => props.theme.primary}; /* Altera a cor ao passar o mouse */
+    color: ${(props) => props.theme.primary};
   }
 `;
 
@@ -110,23 +123,21 @@ const Footer = () => {
         </FooterList>
       </FooterSection>
 
-      {/* Seção de Redes Sociais */}
       <FooterSection>
         <FooterTitle>Redes Sociais</FooterTitle>
         <SocialIcons>
           <SocialIcon href="https://github.com/AugusttoDaniel" target="_blank" rel="noopener noreferrer">
-            <FaGithub size={20} />
+            <FaGithub size={20} color='white' />
           </SocialIcon>
           <SocialIcon href="https://www.linkedin.com/in/danielaugustto/" target="_blank" rel="noopener noreferrer">
-            <FaLinkedin size={20} />
+            <FaLinkedin size={20} color='white' />
           </SocialIcon>
           <SocialIcon href="mailto:danielsje7133@gmail.com" target="_blank" rel="noopener noreferrer">
-            <FaEnvelope size={20} />
+            <FaEnvelope size={20} color='white' />
           </SocialIcon>
         </SocialIcons>
       </FooterSection>
 
-      {/* Seção de Copyright */}
       <FooterSection>
         <p>&copy; {new Date().getFullYear()} Daniel Augusto Silva. Todos os direitos reservados.</p>
       </FooterSection>

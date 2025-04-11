@@ -1,21 +1,33 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components';
-import Timeline from '../timeline';
+import Timeline from '../../components/timeline';
 import { fetchEducationalData } from '../../mocks/apiMock';
 import { FaGraduationCap } from "react-icons/fa";
 import { GrCertificate } from "react-icons/gr";
 import { MdWork } from "react-icons/md";
-import LoadingSpinner from '../loadingspinner';
+import LoadingSpinner from '../../components/loadingspinner';
 
 
-// Styled Components
 const Container = styled.section`
-  background: linear-gradient(to right, #0a0a2a, #1a1a4a);
+  background: #0F172A;
   min-height: 100vh;
   padding: 2rem;
   font-family: 'Inter', sans-serif;
   color: white;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(to right, transparent, #22d3ee, transparent);
+    opacity: 0.5;
+    z-index: 0;
+  }
 `;
+
 
 const Header = styled.header`
   text-align: center;

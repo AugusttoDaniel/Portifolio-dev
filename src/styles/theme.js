@@ -1,7 +1,10 @@
 
 export const theme = {
     colors: {
+        line: '#10B07D',
         bg1: '#292F36',
+        bgheader: '#020617',
+        bgdev: '#020617',
         bg2: '#1A1E23',
         brand1: '#12F7D6',
         brand2: '#98FAEC',

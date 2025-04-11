@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { GlobalStyle } from './styles/globalStyles';
-import Header from './components/header';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './styles/theme';
-import DeveloperProfile from './components/developerprofile';
+import Header from './components/header';
 import Button from './components/button';
-import { FaArrowUp } from 'react-icons/fa';
 import Footer from './components/footer';
-import AboutMe from './components/abountme';
-import Stack from './components/mystacks';
-import Certification from './components/certification';
-import Projects from './components/projects';
+import AboutMe from './pages/abountme';
+import Stack from './pages/mystacks';
+import Certification from './pages/certification';
+import Projects from './pages/projects';
+import DeveloperProfile from './pages/developerprofile';
+import { FaArrowUp } from 'react-icons/fa';
 
-// Styled Component para o botão "Voltar ao Topo" corrigido
+
+
 const BackToTopContainer = styled.div`
   position: fixed;
   bottom: 20px;

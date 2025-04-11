@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
 // Styled Components
 const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: ${(props) => props.theme.colors.bg1};
+  background-color: ${(props) => props.theme.colors.bgheader};
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  //sombra apenas parte debaixo do header e cinza
+
+  box-shadow: 0 2px 4px rgba(255,255,255, 0.1);
 `;
 
 const Logo = styled.div`

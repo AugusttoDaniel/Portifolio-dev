@@ -5,9 +5,22 @@ import imagem from '../../assets/Macbook-Air-localhost.png';
 
 // Componentes estilizados
 const ProjectsSection = styled.div`
-  background-color: #0a192f;
+  background-color: #020617;
   color: #fff;
   padding: 60px 20px 80px;
+      position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(to right, transparent, #22d3ee, transparent);
+    opacity: 0.5;
+    z-index: 0;
+  }
 `;
 
 const Container = styled.div`
@@ -169,7 +182,7 @@ const Projects = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [visibleProjects, setVisibleProjects] = useState(3);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -188,7 +201,7 @@ const Projects = () => {
   const loadMoreProjects = () => {
     setVisibleProjects(prevVisible => prevVisible + 3);
   };
-  
+
   if (loading) {
     return (
       <ProjectsSection>
@@ -250,7 +263,7 @@ const Projects = () => {
           </ViewMoreButton>
         ) : (
           <ViewMoreButton disabled>
-            
+
           </ViewMoreButton>
         )}
       </Container>

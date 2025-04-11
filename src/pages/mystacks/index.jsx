@@ -29,11 +29,24 @@ const iconMapping = {
   FaNode: FaNode,
   SiExpress: SiExpress
 };
-// Mantendo os componentes estilizados existentes...
+
 const SkillsSection = styled.section`
-  background-color: #0a192f;
+  background-color: #020617;
   color: #fff;
   padding: 60px 20px;
+    position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(to right, transparent, #22d3ee, transparent);
+    opacity: 0.5;
+    z-index: 0;
+  }
 `;
 
 const Container = styled.div`
@@ -188,7 +201,7 @@ const SkillsGrid = styled.div`
 `;
 
 const SkillCard = styled.div`
-  background-color: #172a45;
+  background-color: #0F172A;
   border-radius: 8px;
   padding: 24px;
   height: 100%;
@@ -212,7 +225,7 @@ const IconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.bgColor || '#1E3A5F'};
+  background-color: ${props => props.bgColor || '#0F172A'};
   margin-right: 16px;
   
   svg {
