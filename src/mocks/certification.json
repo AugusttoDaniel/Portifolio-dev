@@ -34,7 +34,6 @@
                 "showArrow": true,
                 "onClick": "console.log('Ver detalhes do Medalha')"
             }
-
         },
         {
             "date": "Jan. de 2017 - dez. de 2019",
@@ -93,14 +92,15 @@
     ],
     "job": [
         {
-            "date": "Jan. de 2023 - Atual",
-            "title": "Desenvolvedor Frontend",
-            "subtitle": "Empresa XYZ",
+            "date": "Out. de 2024 - Mar. de 2025",
+            "title": " Estágio de Desenvolvedor Back-end",
+            "subtitle": "Empresa MT EMPRENDIMENTOS",
             "icon": "MdWork",
-            "description": "Desenvolvimento de aplicações web com React e TypeScript, integração com APIs RESTful.",
+            "description": "Desenvolvimento de aplicações API com Node e JavaScript, integração com APIs RESTful e front-end em React com Styled Components.",
             "tags": [
                 "React",
-                "TypeScript",
+                "Node.js",
+                "JavaScript",
                 "APIs"
             ],
             "button": {
@@ -111,14 +111,14 @@
         },
         {
             "date": "Jan. de 2022 - Dez. de 2022",
-            "title": "Estagiário em Desenvolvimento Web",
-            "subtitle": "Empresa ABC",
+            "title": "Estágio de Técnico em Manutenção e Suporte",
+            "subtitle": "Empresa Alfa Informática",
             "icon": "MdWork",
-            "description": "Auxílio no desenvolvimento de aplicações web com HTML, CSS e JavaScript.",
+            "description": "Formação técnica em Informática, com foco em manutenção de computadores, impressoras e redes.",
             "tags": [
-                "HTML",
-                "CSS",
-                "JavaScript"
+              "Manutenção de Computadores",
+              "Redes",
+              "Suporte Técnico"
             ],
             "button": {
                 "text": "Ver Detalhes",

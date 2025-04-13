@@ -160,7 +160,7 @@ const EducationalJourney = () => {
                     ) : (
                         <>
                             <GrCertificate style={{ fontSize: "1rem", marginRight: "0.5rem" }} />
-                            Formação
+                            Certificados e Cursos
                         </>
                     )}
 

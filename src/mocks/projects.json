@@ -7,5 +7,14 @@
         "tech": ["React", "Styled Components", "React Icons"],
         "demoLink": "https://augusttodaniel.github.io/Portifolio-dev/",
         "codeLink": "https://github.com/AugusttoDaniel/Portifolio-dev"
+    },
+    {
+        "id": 2,
+        "title": "CRM Escoteiros",
+        "description": "Projeto do TCC de Sistema de Gestão para criação de Novas Unidades Escoteiras.",
+        "imagem": "../../assets/Macbook-Air-localhost.png",
+        "tech": ["React", "Styled Components", "React Icons", "Node", "Express", "MYSQL"],
+        "demoLink": "https://augusttodaniel.github.io/Portifolio-dev/",
+        "codeLink": "https://github.com/AugusttoDaniel/Portifolio-dev"
     }
 ]
