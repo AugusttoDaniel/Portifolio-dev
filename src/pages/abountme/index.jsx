@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FaDownload } from 'react-icons/fa';
-import foto from '../../assets/Foto.jpeg';
-import AnimatedPhoto from '../../components/animatedPhoto';
+import foto from '../../assets/Foto.webp';
 import { motion } from "framer-motion";
 
 const PageContainer = styled(motion.div)`
@@ -216,14 +215,6 @@ const AnimatedNumber = ({ targetValue, duration = 2 }) => {
 
 const AboutMe = () => {
 
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = "https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w";
-    link.download = "Currículo-Daniel.pdf"; // Define o nome do arquivo
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   return (
     <PageContainer id='about'>
@@ -238,22 +229,21 @@ const AboutMe = () => {
           </Subtitle>
         </Header>
 
-        <MainSection initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ staggerChildren: 0.2 }}>
+        <MainSection initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ staggerChildren: 0.6 }}>
           <ProfileImageContainer initial={{ opacity: 0, x: -80 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }}>
             <ProfileImage src={foto} alt="Kauã Ortolani Lusvarghi" />
-            {/* <AnimatedPhoto src={foto} alt='Daniel Augusto Silva' width={400} height={400} /> */}
           </ProfileImageContainer>
 
-          <InfoSection initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-            <Greeting initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          <InfoSection initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5  }}>
+            <Greeting initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.5  }}>
               Saudações, um pouco sobre mim!
             </Greeting>
 
-            <Bio initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <Bio initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.5  }}>
               Me chamo Daniel Augustto, sou um desenvolvedor em formação, com foco em <Emphasis>Front-end</Emphasis> e <Emphasis>Back-end</Emphasis>, buscando oportunidades para aplicar e expandir meus conhecimentos em projetos desafiadores. Atualmente, tenho experiência com tecnologias como <Emphasis>JavaScript</Emphasis>, <Emphasis>Node.js</Emphasis>, <Emphasis>TypeScript</Emphasis>, <Emphasis>React</Emphasis> e <Emphasis>MySQL</Emphasis>, e estou sempre em busca de aprimoramento profissional para me manter atualizado com as melhores práticas do mercado.
             </Bio>
 
-            <Bio initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <Bio initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.5  }}>
               Estou em busca de uma vaga como <Emphasis>trainee</Emphasis> ou <Emphasis>júnior</Emphasis>, onde possa contribuir com minha dedicação, aprendizado contínuo e habilidades técnicas. Tenho experiência em <Emphasis>desenvolvimento back-end</Emphasis>, onde atuei na manutenção e implementação de funcionalidades para otimizar sistemas, além de habilidades em manutenção de hardware e suporte técnico, que me deram uma base sólida para entender o funcionamento de sistemas como um todo.
             </Bio>
 
@@ -282,20 +272,15 @@ const AboutMe = () => {
                 </StatLabel>
               </StatBox>
             </StatsSection>
-
-            <ButtonContainer initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <ButtonContainer initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.5 }}>
               <Button
-                onClick={handleDownload}
+                href="https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w"
+                download
+                aria-label="Baixar CV"
               >
                 <FaDownload /> Baixar CV
               </Button>
             </ButtonContainer>
-
-            {/* <SocialLinks>
-              <TechLink href="https://linkedin.com/" target="_blank">LinkedIn</TechLink>
-              <TechLink href="https://instagram.com/" target="_blank">Instagram</TechLink>
-              <TechLink href="https://github.com/" target="_blank">GitHub</TechLink>
-            </SocialLinks> */}
           </InfoSection>
         </MainSection>
       </ContentContainer>

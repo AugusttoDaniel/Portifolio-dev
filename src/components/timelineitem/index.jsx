@@ -7,13 +7,13 @@ import { MdWork } from "react-icons/md";
 // Styled Components específicos do Item
 const TimelineItemContainer = styled.div`
   display: flex;
-  justify-content: ${props => props.position === 'left' ? 'flex-end' : 'flex-start'};
+  justify-content: ${props => props.$position === 'left' ? 'flex-end' : 'flex-start'};
   margin-bottom: ${props => props.marginBottom || '2rem'};
-  padding-left: ${props => props.position === 'right' ? 'calc(50% + 15px)' : '0'};
-  padding-right: ${props => props.position === 'left' ? 'calc(50% + 15px)' : '0'};
+  padding-left: ${props => props.$position === 'right' ? 'calc(50% + 15px)' : '0'};
+  padding-right: ${props => props.$position === 'left' ? 'calc(50% + 15px)' : '0'};
   @media (max-width: 760px) {
-    padding-left: ${props => props.position === 'right' ? 'calc(50% + 15px)' : '0'};
-  padding-right: ${props => props.position === 'left' ? 'calc(25% + 15px)' : '0'};
+    padding-left: ${props => props.$position === 'right' ? 'calc(50% + 15px)' : '0'};
+    padding-right: ${props => props.$position === 'left' ? 'calc(25% + 15px)' : '0'};
   }
 `;
 
@@ -130,7 +130,7 @@ const iconMap = {
 
 // Componente TimelineItem
 const TimelineItem = ({
-  position = 'right',
+  $position = 'right',
   date,
   title,
   subtitle,
@@ -146,7 +146,7 @@ const TimelineItem = ({
   const IconComponent = typeof icon === 'string' ? iconMap[icon] : icon;
   return (
 
-    <TimelineItemContainer position={position}>
+    <TimelineItemContainer $position={$position}>
       <TimelineCard
         onClick={onCardClick}
         style={{ cursor: onCardClick ? 'pointer' : 'default' }}

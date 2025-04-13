@@ -14,6 +14,7 @@ import {
   SiExpress
 } from 'react-icons/si';
 import { fetchSkillsData } from '../../mocks/apiMock';
+import { motion } from "framer-motion";
 const iconMapping = {
   FaReact: FaReact,
   SiTailwindcss: SiTailwindcss,
@@ -54,7 +55,7 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
-const Header = styled.div`
+const Header = styled(motion.div)`
   text-align: center;
   margin-bottom: 40px;
 `;
@@ -70,7 +71,7 @@ const Subtitle = styled.p`
   color: #8892b0;
 `;
 
-const SearchBar = styled.div`
+const SearchBar = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -194,7 +195,7 @@ const FilterOption = styled.div`
   }
 `;
 
-const SkillsGrid = styled.div`
+const SkillsGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
@@ -225,7 +226,7 @@ const IconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.bgColor || '#0F172A'};
+  background-color: ${props => props.$bgColor || '#0F172A'};
   margin-right: 16px;
   
   svg {
@@ -482,12 +483,20 @@ const SkillsAndExperience = () => {
   return (
     <SkillsSection id='stack'>
       <Container>
-        <Header>
+        <Header
+          initial={{ opacity: 0, y: -80 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5 }}
+        >
           <Title>Habilidades & Experiência</Title>
           <Subtitle>Meus conhecimentos que adquiri ao longo da minha jornada</Subtitle>
         </Header>
 
-        <SearchBar>
+        <SearchBar
+          initial={{ opacity: 0, x: -180 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.5 }}
+        >
           <SearchInput>
             <FaSearch />
             <input
@@ -498,8 +507,8 @@ const SkillsAndExperience = () => {
             />
           </SearchInput>
           <FilterContainer ref={filterRef}>
-            <FilterButton onClick={() => setShowFilterDropdown(!showFilterDropdown)}>
-              <FaFilter />
+          <FilterButton onClick={() => setShowFilterDropdown(!showFilterDropdown)} aria-label="Abrir menu de filtro">
+          <FaFilter />
               {isPhone ? "" : "Filtrar"}
 
             </FilterButton>
@@ -541,16 +550,20 @@ const SkillsAndExperience = () => {
 
         {filteredSkills.length > 0 ? (
           <>
-            <SkillsGrid>
+            <SkillsGrid
+              initial={{ opacity: 0, y: +120 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5 }}
+            >
               {currentItems.map((skill, index) => (
                 <SkillCard key={index}>
                   <CardHeader>
-                    <IconWrapper bgColor={skill.bgColor}>
+                    <IconWrapper $bgColor={skill.bgColor}>
                       {React.createElement(iconMapping[skill.icon], {
                         size: 24,
                       })}
-
                     </IconWrapper>
+
                     <SkillName>
                       <h3>{skill.name}</h3>
                       <span>{skill.category}</span>
@@ -570,6 +583,7 @@ const SkillsAndExperience = () => {
                 <PageButton
                   onClick={handlePrevPage}
                   disabled={currentPage === 1}
+                  aria-label="Ir para página anterior" 
                 >
                   <FaArrowLeft />
                 </PageButton>
@@ -582,6 +596,7 @@ const SkillsAndExperience = () => {
                 <PageButton
                   onClick={handleNextPage}
                   disabled={currentPage === totalPages}
+                  aria-label="Ir para próxima página"
                 >
                   <FaArrowRight />
                 </PageButton>

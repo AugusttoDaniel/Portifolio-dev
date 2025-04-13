@@ -6,6 +6,7 @@ import { FaGraduationCap } from "react-icons/fa";
 import { GrCertificate } from "react-icons/gr";
 import { MdWork } from "react-icons/md";
 import LoadingSpinner from '../../components/loadingspinner';
+import { motion } from "framer-motion";
 
 
 const Container = styled.section`
@@ -29,7 +30,7 @@ const Container = styled.section`
 `;
 
 
-const Header = styled.header`
+const Header = styled(motion.header)`
   text-align: center;
   margin-bottom: 2rem;
 `;
@@ -45,7 +46,7 @@ const Subtitle = styled.p`
   opacity: 0.8;
 `;
 
-const NavContainer = styled.div`
+const NavContainer = styled(motion.div)`
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -56,7 +57,7 @@ const NavButton = styled.button`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: ${props => props.active ? 'rgba(78, 115, 223, 0.9)' : 'rgba(30, 41, 82, 0.7)'};
+  background-color: ${props => props.$active ? 'rgba(78, 115, 223, 0.9)' : 'rgba(30, 41, 82, 0.7)'};
   color: white;
   border: none;
   border-radius: 2rem;
@@ -123,14 +124,22 @@ const EducationalJourney = () => {
 
     return (
         <Container id="certificados">
-            <Header>
+            <Header
+              initial={{ opacity: 0, y: -80 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5 }} 
+            >
                 <Title>Jornada Educacional</Title>
                 <Subtitle>Explore minha trajetória de aprendizado e crescimento profissional</Subtitle>
             </Header>
 
-            <NavContainer>
+            <NavContainer
+            initial={{ opacity: 0, y: -80 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5 }} 
+            >
                 <NavButton
-                    active={active === 'academic'}
+                    $active={active === 'academic'}
                     onClick={() => handleNavClick('academic')}
                 >
                     {isPhone ? (
@@ -143,7 +152,7 @@ const EducationalJourney = () => {
                     )}
                 </NavButton>
                 <NavButton
-                    active={active === 'courses'}
+                    $active={active === 'courses'}
                     onClick={() => handleNavClick('courses')}
                 >
                     {isPhone ? (
@@ -157,7 +166,7 @@ const EducationalJourney = () => {
 
                 </NavButton>
                 <NavButton
-                    active={active === 'job'}
+                    $active={active === 'job'}
                     onClick={() => handleNavClick('job')}
                 >
                     {isPhone ? (
@@ -171,9 +180,9 @@ const EducationalJourney = () => {
                 </NavButton>
             </NavContainer>
 
-            <Timeline
-                items={getActiveData}
-                styleProps={timelineStyles}
+            <Timeline 
+                $items={getActiveData}
+                $styleProps={timelineStyles}
             />
         </Container>
     );

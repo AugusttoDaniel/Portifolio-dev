@@ -17,10 +17,10 @@ export const GlobalStyle = createGlobalStyle`
     font-size: ${theme.typography.fontSize.paragraph};
     line-height: ${theme.typography.lineHeight.paragraph};
     color: #333; /* Cor do texto padrão */
-    background-color: #f9f9f9; /* Fundo claro */
+    background-color: #f9f9f9; 
   }
 
-  /* Títulos */
+
   h1 {
     font-size: ${theme.typography.fontSize.h1};
     font-weight: ${theme.typography.fontWeight.regular};
@@ -40,7 +40,6 @@ export const GlobalStyle = createGlobalStyle`
     line-height: ${theme.typography.lineHeight.button};
   }
 
-  /* Artigos */
   .article {
     font-size: ${theme.typography.fontSize.article};
     font-weight: ${theme.typography.fontWeight.light};

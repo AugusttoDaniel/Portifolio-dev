@@ -5,8 +5,9 @@ import { FaGithub, FaWhatsapp, FaLinkedin } from 'react-icons/fa';
 import ScrollIndicator from '../../components/scrollIndicator';
 import AvailabilityButtonComponent from '../../components/availabilityButtonComponent';
 import { FaBriefcase } from 'react-icons/fa';
-import StarConstellation from '../../components/backgroundStar'; 
-// Componentes estilizados
+import StarConstellation from '../../components/backgroundStar';
+import { motion } from "framer-motion";
+import TypingText from "../../components/typingText";
 
 const Container = styled.section`
   background-color: ${(props) => props.theme.colors.bgdev};
@@ -23,7 +24,7 @@ const Container = styled.section`
   }
 `;
 
-const Title = styled.h1`
+const Title = styled(motion.h1)`
   color: ${(props) => props.theme.colors.brand1};
   font-family: ${(props) => props.theme.typography.fontFamily};
   font-size: ${(props) => props.theme.typography.fontSize["bg-text-u"]};
@@ -38,7 +39,7 @@ const Title = styled.h1`
   }
 `;
 
-const RightSection = styled.div`
+const RightSection = styled(motion.div)`
   padding: 2rem;
 
   @media (max-width: 768px) {
@@ -61,7 +62,7 @@ const CodeTag = styled.span`
   margin-bottom: 0.5rem;
 `;
 
-const Greeting = styled.h2`
+const Greeting = styled(motion.h2)`
   font-size: 2.5rem;
   margin: 0;
 
@@ -86,14 +87,13 @@ const Bio = styled.p`
   @media (max-width: 768px) {
     font-size: 1rem;
     line-height: 1.4; 
-
   }
 `;
 
 const IconContainer = styled.div`
   display: flex;
   align-items: center;
-    justify-content: center;
+  justify-content: center;
   gap: 1.5rem;
   margin-top: 2rem;
 
@@ -114,8 +114,6 @@ const IconContainer = styled.div`
   }
 `;
 
-
-// Componente Principal
 const DeveloperProfile = () => {
   return (
     <Container id="home">
@@ -128,8 +126,15 @@ const DeveloperProfile = () => {
         hoverColor="#0056b3"
         hoverTextColor="#ffffff"
       />
-      <RightSection>
-        <Title>Developer</Title>
+      <RightSection initial={{ opacity: 0, y: +180 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5 }} >
+        <Title>
+          <TypingText
+            speed={50}
+            content={`Developer`}
+          />
+        </Title>
         <CodeTag>&lt;h1&gt;</CodeTag>
         <Greeting>
           E ai<br />
@@ -146,13 +151,13 @@ const DeveloperProfile = () => {
         </Bio>
         <CodeTag>&lt;/p&gt;</CodeTag>
         <IconContainer>
-          <a href="https://github.com/AugusttoDaniel" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/AugusttoDaniel" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <FaGithub />
           </a>
-          <a href="https://wa.me/5533988595641" target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/5533988595641" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
             <FaWhatsapp />
           </a>
-          <a href="https://www.linkedin.com/in/danielaugustto/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/danielaugustto/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <FaLinkedin />
           </a>
         </IconContainer>

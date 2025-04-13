@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { fetchProjectsData } from '../../mocks/apiMock';
-import imagem from '../../assets/Macbook-Air-localhost.png';
+import imagem from '../../assets/Macbook-Air-localhost.webp';
+import LoadingSpinner from '../../components/loadingspinner';
+import { motion } from "framer-motion";
 
-// Componentes estilizados
 const ProjectsSection = styled.div`
   background-color: #020617;
   color: #fff;
@@ -28,7 +29,7 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
-const Header = styled.div`
+const Header = styled(motion.div)`
   text-align: center;
   margin-bottom: 60px;
 `;
@@ -44,7 +45,7 @@ const Subtitle = styled.p`
   color: #8892b0;
 `;
 
-const ProjectsList = styled.div`
+const ProjectsList = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 80px;
@@ -202,15 +203,7 @@ const Projects = () => {
     setVisibleProjects(prevVisible => prevVisible + 3);
   };
 
-  if (loading) {
-    return (
-      <ProjectsSection>
-        <Container>
-          <LoadingMessage>Carregando projetos...</LoadingMessage>
-        </Container>
-      </ProjectsSection>
-    );
-  }
+  if (loading) return <LoadingSpinner />;
 
   if (error) {
     return (
@@ -225,12 +218,20 @@ const Projects = () => {
   return (
     <ProjectsSection id="projetos">
       <Container>
-        <Header>
+        <Header
+          initial={{ opacity: 0, y: -80 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5 }}
+        >
           <Title>Projetos</Title>
           <Subtitle>Aqui você encontrará alguns dos meus projetos pessoais mais recentes</Subtitle>
         </Header>
 
-        <ProjectsList>
+        <ProjectsList
+          initial={{ opacity: 0, y: +180 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5 }}
+        >
           {projects.slice(0, visibleProjects).map((project) => (
             <ProjectCard key={project.id}>
               <ProjectImage>
@@ -258,11 +259,11 @@ const Projects = () => {
         </ProjectsList>
 
         {projects.length > visibleProjects ? (
-          <ViewMoreButton onClick={loadMoreProjects}>
+          <ViewMoreButton onClick={loadMoreProjects} aria-label="Carregar mais projetos">
             Ver mais projetos →
           </ViewMoreButton>
         ) : (
-          <ViewMoreButton disabled>
+          <ViewMoreButton disabled aria-label="Não há mais projetos para carregar">
 
           </ViewMoreButton>
         )}
