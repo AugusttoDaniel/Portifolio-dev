@@ -20,7 +20,7 @@ const Container = styled.section`
   justify-content: center;
 
   @media (max-width: 768px) {
-    padding: 1rem; /* Reduz o padding em telas menores */
+    padding: 1rem; 
   }
 `;
 
@@ -96,25 +96,40 @@ const IconContainer = styled.div`
   justify-content: center;
   gap: 1.5rem;
   margin-top: 2rem;
+`;
 
+const SocialButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  padding: 8px;
+  
+  &:hover {
+    transform: scale(1.2);
+  }
+  
   svg {
     width: 40px;
     height: 40px;
     color: ${(props) => props.theme.colors.white};
-    transition: transform 0.3s ease;
-
-    &:hover {
-      transform: scale(1.2); 
-    }
 
     @media (max-width: 768px) {
-      width: 20px; 
+      width: 20px;
       height: 20px;
     }
   }
 `;
 
 const DeveloperProfile = () => {
+
+  const openSocialLink = (url) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <Container id="home">
       <StarConstellation />
@@ -151,20 +166,29 @@ const DeveloperProfile = () => {
         </Bio>
         <CodeTag>&lt;/p&gt;</CodeTag>
         <IconContainer>
-          <a href="https://github.com/AugusttoDaniel" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <SocialButton
+            onClick={() => openSocialLink('https://github.com/AugusttoDaniel')}
+            aria-label="GitHub"
+          >
             <FaGithub />
-          </a>
-          <a href="https://wa.me/5533988595641" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          </SocialButton>
+          <SocialButton
+            onClick={() => openSocialLink('https://wa.me/5533988595641')}
+            aria-label="WhatsApp"
+          >
             <FaWhatsapp />
-          </a>
-          <a href="https://www.linkedin.com/in/danielaugustto/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          </SocialButton>
+          <SocialButton
+            onClick={() => openSocialLink('https://www.linkedin.com/in/danielaugustto/')}
+            aria-label="LinkedIn"
+          >
             <FaLinkedin />
-          </a>
+          </SocialButton>
         </IconContainer>
       </RightSection>
       <ScrollIndicator />
     </Container>
   );
-};
+}
 
 export default DeveloperProfile;

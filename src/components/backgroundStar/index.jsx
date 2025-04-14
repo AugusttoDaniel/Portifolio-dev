@@ -10,7 +10,8 @@ const StyledCanvas = styled.canvas`
   left: 0;
   width: 100%;
   height: 100%;
-  cursor: pointer;
+  cursor: auto;    
+  pointer-events: none
 `;
 
 function StarField() {
@@ -79,7 +80,7 @@ function StarField() {
       starsRef.current.forEach((star) => {
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-        ctx.fillStyle ="#ffffff";
+        ctx.fillStyle = "#ffffff";
         ctx.fill();
       });
 
