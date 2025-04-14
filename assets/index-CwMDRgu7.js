@@ -1192,7 +1192,8 @@ Error generating stack: `+i.message+`
   left: 0;
   width: 100%;
   height: 100%;
-  cursor: pointer;
+  cursor: auto;    
+  pointer-events: none
 `;function lS(){const n=k.useRef(null),[a,s]=k.useState([]),r=k.useRef(0),c=k.useRef([]);return k.useEffect(()=>{const d=Math.floor(window.innerWidth*window.innerHeight/1e4)+30,f=[];for(let h=0;h<d;h++)f.push({id:h,x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,size:Math.random()*2+1,speed:Math.random()*.2+.1,connections:[]});s(f),c.current=f;const g=()=>{const h=c.current.map(p=>({...p,x:p.x%window.innerWidth,y:p.y%window.innerHeight}));c.current=h,s(h)};return window.addEventListener("resize",g),()=>window.removeEventListener("resize",g)},[]),k.useEffect(()=>{if(!n.current||a.length===0)return;const d=n.current,f=d.getContext("2d");if(!f)return;d.width=window.innerWidth,d.height=window.innerHeight;const g=()=>{f.clearRect(0,0,d.width,d.height),c.current=c.current.map(h=>({...h,y:(h.y+h.speed)%d.height})),c.current.forEach(h=>{f.beginPath(),f.arc(h.x,h.y,h.size,0,Math.PI*2),f.fillStyle="#ffffff",f.fill()}),f.strokeStyle="rgba(255, 255, 255, 0.3)",f.lineWidth=.5,c.current.forEach(h=>{h.connections.forEach(p=>{const v=c.current.find(b=>b.id===p);v&&(f.beginPath(),f.moveTo(h.x,h.y),f.lineTo(v.x,v.y),f.stroke())})}),r.current=requestAnimationFrame(g)};return g(),()=>cancelAnimationFrame(r.current)},[a]),S.jsx(aS,{ref:n})}function sS(){return S.jsx(iS,{children:S.jsx(lS,{})})}const rS=({content:n,speed:a=50})=>{const[s,r]=k.useState(0),[c,d]=k.useState("");return k.useEffect(()=>{if(s<n.length){const f=setTimeout(()=>{d(g=>g+n[s]),r(g=>g+1)},a);return()=>clearTimeout(f)}},[s,n,a]),S.jsx("span",{dangerouslySetInnerHTML:{__html:c},style:{whiteSpace:"pre-wrap"}})},oS=V.section`
   background-color: ${n=>n.theme.colors.bgdev};
   color: ${n=>n.theme.colors.white};
@@ -1204,7 +1205,7 @@ Error generating stack: `+i.message+`
   justify-content: center;
 
   @media (max-width: 768px) {
-    padding: 1rem; /* Reduz o padding em telas menores */
+    padding: 1rem; 
   }
 `,uS=V(Dt.h1)`
   color: ${n=>n.theme.colors.brand1};
@@ -1264,11 +1265,15 @@ Error generating stack: `+i.message+`
   justify-content: center;
   gap: 1.5rem;
   margin-top: 2rem;
-`,Yc=V.a`
+`,Yc=V.button`
+  background: none;
+  border: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
+  padding: 8px;
   
   &:hover {
     transform: scale(1.2);
@@ -1284,7 +1289,7 @@ Error generating stack: `+i.message+`
       height: 20px;
     }
   }
-`,pS=()=>{const n=(a,s)=>{s.preventDefault(),s.stopPropagation(),window.open(a,"_blank","noopener,noreferrer")};return S.jsxs(oS,{id:"home",children:[S.jsx(sS,{}),S.jsx(nS,{icon:iv,message:"Disponível para vaga de dev!",backgroundColor:"#007bff",textColor:"#ffffff",hoverColor:"#0056b3",hoverTextColor:"#ffffff"}),S.jsxs(cS,{initial:{opacity:0,y:180},animate:{opacity:1,y:0},transition:{duration:1.5},children:[S.jsx(uS,{children:S.jsx(rS,{speed:50,content:"Developer"})}),S.jsx(wr,{children:"<h1>"}),S.jsxs(dS,{children:["E ai",S.jsx("br",{}),"meu nome é ",S.jsx(Qp,{children:"Daniel"}),",",S.jsx("br",{}),"sou ",S.jsx(Qp,{children:"Desenvolvedor full stack"})]}),S.jsxs(wr,{children:["</h1>",S.jsx("br",{})]}),S.jsx(fS,{}),S.jsx(wr,{children:"<p>"}),S.jsxs(hS,{children:["Sou um desenvolvedor júnior apaixonado por tecnologia. Tenho ",S.jsx("br",{}),"experiência com React, Node.js e estou sempre em busca de ",S.jsx("br",{}),"aprender mais e aprimorar minhas habilidades."]}),S.jsx(wr,{children:"</p>"}),S.jsxs(mS,{children:[S.jsx(Yc,{href:"#",onClick:a=>n("https://github.com/AugusttoDaniel",a),"aria-label":"GitHub",children:S.jsx(wf,{})}),S.jsx(Yc,{href:"#",onClick:a=>n("https://wa.me/5533988595641",a),"aria-label":"WhatsApp",children:S.jsx(I5,{})}),S.jsx(Yc,{href:"#",onClick:a=>n("https://www.linkedin.com/in/danielaugustto/",a),"aria-label":"LinkedIn",children:S.jsx(x2,{})})]})]}),S.jsx(Wx,{})]})},gS=V.div`
+`,pS=()=>{const n=a=>{window.open(a,"_blank","noopener,noreferrer")};return S.jsxs(oS,{id:"home",children:[S.jsx(sS,{}),S.jsx(nS,{icon:iv,message:"Disponível para vaga de dev!",backgroundColor:"#007bff",textColor:"#ffffff",hoverColor:"#0056b3",hoverTextColor:"#ffffff"}),S.jsxs(cS,{initial:{opacity:0,y:180},animate:{opacity:1,y:0},transition:{duration:1.5},children:[S.jsx(uS,{children:S.jsx(rS,{speed:50,content:"Developer"})}),S.jsx(wr,{children:"<h1>"}),S.jsxs(dS,{children:["E ai",S.jsx("br",{}),"meu nome é ",S.jsx(Qp,{children:"Daniel"}),",",S.jsx("br",{}),"sou ",S.jsx(Qp,{children:"Desenvolvedor full stack"})]}),S.jsxs(wr,{children:["</h1>",S.jsx("br",{})]}),S.jsx(fS,{}),S.jsx(wr,{children:"<p>"}),S.jsxs(hS,{children:["Sou um desenvolvedor júnior apaixonado por tecnologia. Tenho ",S.jsx("br",{}),"experiência com React, Node.js e estou sempre em busca de ",S.jsx("br",{}),"aprender mais e aprimorar minhas habilidades."]}),S.jsx(wr,{children:"</p>"}),S.jsxs(mS,{children:[S.jsx(Yc,{onClick:()=>n("https://github.com/AugusttoDaniel"),"aria-label":"GitHub",children:S.jsx(wf,{})}),S.jsx(Yc,{onClick:()=>n("https://wa.me/5533988595641"),"aria-label":"WhatsApp",children:S.jsx(I5,{})}),S.jsx(Yc,{onClick:()=>n("https://www.linkedin.com/in/danielaugustto/"),"aria-label":"LinkedIn",children:S.jsx(x2,{})})]})]}),S.jsx(Wx,{})]})},gS=V.div`
   position: fixed;
   bottom: 20px;
   right: 20px;
