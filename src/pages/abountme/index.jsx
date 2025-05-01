@@ -214,43 +214,109 @@ const AnimatedNumber = ({ targetValue, duration = 2 }) => {
 };
 
 const AboutMe = () => {
+  // Configurações de animação
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
 
+  const fadeInLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const fadeInRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
 
   return (
     <PageContainer id='about'>
       <ContentContainer>
-        <Header initial={{ opacity: 0, y: -150 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.5 }}>
-          <Title >
+        <Header 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
+        >
+          <Title>
             Sobre mim
           </Title>
           <Divider />
-          <Subtitle >
+          <Subtitle>
             Aqui você encontrará mais informações sobre mim
           </Subtitle>
         </Header>
 
-        <MainSection initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ staggerChildren: 0.6 }}>
-          <ProfileImageContainer initial={{ opacity: 0, x: -80 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5 }}>
+        <MainSection>
+          <ProfileImageContainer 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInLeft}
+          >
             <ProfileImage src={foto} alt="Kauã Ortolani Lusvarghi" />
           </ProfileImageContainer>
 
-          <InfoSection initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.5  }}>
-            <Greeting initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.5  }}>
+          <InfoSection 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInRight}
+          >
+            <Greeting 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeInUp}
+            >
               Saudações, um pouco sobre mim!
             </Greeting>
 
-            <Bio initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.5  }}>
+            <Bio 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeInUp}
+            >
               Me chamo Daniel Augustto, sou um desenvolvedor em formação, com foco em <Emphasis>Front-end</Emphasis> e <Emphasis>Back-end</Emphasis>, buscando oportunidades para aplicar e expandir meus conhecimentos em projetos desafiadores. Atualmente, tenho experiência com tecnologias como <Emphasis>JavaScript</Emphasis>, <Emphasis>Node.js</Emphasis>, <Emphasis>TypeScript</Emphasis>, <Emphasis>React</Emphasis> e <Emphasis>MySQL</Emphasis>, e estou sempre em busca de aprimoramento profissional para me manter atualizado com as melhores práticas do mercado.
             </Bio>
 
-            <Bio initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.5  }}>
+            <Bio 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeInUp}
+            >
               Estou em busca de uma vaga como <Emphasis>trainee</Emphasis> ou <Emphasis>júnior</Emphasis>, onde possa contribuir com minha dedicação, aprendizado contínuo e habilidades técnicas. Tenho experiência em <Emphasis>desenvolvimento back-end</Emphasis>, onde atuei na manutenção e implementação de funcionalidades para otimizar sistemas, além de habilidades em manutenção de hardware e suporte técnico, que me deram uma base sólida para entender o funcionamento de sistemas como um todo.
             </Bio>
 
             <StatsSection
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ staggerChildren: 0.2 }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeInUp}
             >
               <StatBox>
                 <StatNumber>
@@ -272,7 +338,12 @@ const AboutMe = () => {
                 </StatLabel>
               </StatBox>
             </StatsSection>
-            <ButtonContainer initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.5 }}>
+            <ButtonContainer 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeInUp}
+            >
               <Button
                 href="https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w"
                 download

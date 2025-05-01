@@ -223,6 +223,19 @@ const Projects = () => {
     setVisibleProjects(prevVisible => prevVisible + 3);
   };
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.3,
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    })
+  };
+
   if (loading) return <LoadingSpinner />;
 
   if (error) {
@@ -239,56 +252,68 @@ const Projects = () => {
     <ProjectsSection id="projetos">
       <Container>
         <Header
-          initial={{ opacity: 0, y: -80 }}
+          initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5 }}
+          transition={{ duration: 0.8 }}
         >
           <Title>Projetos</Title>
           <Subtitle>Aqui você encontrará alguns dos meus projetos pessoais mais recentes</Subtitle>
         </Header>
 
-        <ProjectsList
-          initial={{ opacity: 0, y: +180 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5 }}
-        >
-          {projects.slice(0, visibleProjects).map((project) => (
-            <ProjectCard key={project.id}>
-              <ProjectImage>
-                <img 
-                  src={getImagePath(project.imagem)} 
-                  alt={project.title}
-
-                />
-              </ProjectImage>
-              <ProjectContent>
-                <ProjectTitle>{project.title}</ProjectTitle>
-                <ProjectDescription>{project.description}</ProjectDescription>
-                <TechStack>
-                  {project.tech.map((tech, index) => (
-                    <TechItem key={index}>{tech}</TechItem>
-                  ))}
-                </TechStack>
-                <ButtonsContainer>
-                  <Button href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                    Ver Demo
-                  </Button>
-                  <Button href={project.codeLink} target="_blank" rel="noopener noreferrer">
-                    Ver Código
-                  </Button>
-                </ButtonsContainer>
-              </ProjectContent>
-            </ProjectCard>
+        <ProjectsList>
+          {projects.slice(0, visibleProjects).map((project, index) => (
+            <motion.div
+              key={project.id}
+              custom={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={cardVariants}
+            >
+              <ProjectCard>
+                <ProjectImage>
+                  <img
+                    src={getImagePath(project.imagem)}
+                    alt={project.title}
+                  />
+                </ProjectImage>
+                <ProjectContent>
+                  <ProjectTitle>{project.title}</ProjectTitle>
+                  <ProjectDescription>{project.description}</ProjectDescription>
+                  <TechStack>
+                    {project.tech.map((tech, index) => (
+                      <TechItem key={index}>{tech}</TechItem>
+                    ))}
+                  </TechStack>
+                  <ButtonsContainer>
+                    <Button href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                      Ver Demo
+                    </Button>
+                    {project.codeLink && (
+                      <Button href={project.codeLink} target="_blank" rel="noopener noreferrer">
+                        Ver Código
+                      </Button>
+                    )}
+                  </ButtonsContainer>
+                </ProjectContent>
+              </ProjectCard>
+            </motion.div>
           ))}
         </ProjectsList>
 
         {projects.length > visibleProjects ? (
-          <ViewMoreButton onClick={loadMoreProjects} aria-label="Carregar mais projetos">
-            Ver mais projetos →
-          </ViewMoreButton>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <ViewMoreButton onClick={loadMoreProjects} aria-label="Carregar mais projetos">
+              Ver mais projetos →
+            </ViewMoreButton>
+          </motion.div>
         ) : (
           <ViewMoreButton disabled aria-label="Não há mais projetos para carregar">
-
           </ViewMoreButton>
         )}
       </Container>

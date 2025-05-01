@@ -125,68 +125,153 @@ const SocialButton = styled.button`
 `;
 
 const DeveloperProfile = () => {
-
   const openSocialLink = (url) => {
     window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  // Configurações de animação
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
   };
 
   return (
     <Container id="home">
       <StarConstellation />
-      <AvailabilityButtonComponent
-        icon={FaBriefcase}
-        message="Disponível para vaga de dev!"
-        backgroundColor="#007bff"
-        textColor="#ffffff"
-        hoverColor="#0056b3"
-        hoverTextColor="#ffffff"
-      />
-      <RightSection initial={{ opacity: 0, y: +180 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.5 }} >
-        <Title>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeIn}
+      >
+        <AvailabilityButtonComponent
+          icon={FaBriefcase}
+          message="Disponível para vaga de dev!"
+          backgroundColor="#007bff"
+          textColor="#ffffff"
+          hoverColor="#0056b3"
+          hoverTextColor="#ffffff"
+        />
+      </motion.div>
+      
+      <RightSection 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeInUp}
+      >
+        <Title
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
+        >
           <TypingText
             speed={50}
             content={`Developer`}
           />
         </Title>
-        <CodeTag>&lt;h1&gt;</CodeTag>
-        <Greeting>
-          E ai<br />
-          meu nome é <Name>Daniel</Name>,<br />
-          sou <Name>Desenvolvedor full stack</Name>
-        </Greeting>
-        <CodeTag>&lt;/h1&gt;<br /></CodeTag>
-        <Codespace></Codespace>
-        <CodeTag>&lt;p&gt;</CodeTag>
-        <Bio>
-          Sou um desenvolvedor júnior apaixonado por tecnologia. Tenho <br />
-          experiência com React, Node.js e estou sempre em busca de <br />
-          aprender mais e aprimorar minhas habilidades.
-        </Bio>
-        <CodeTag>&lt;/p&gt;</CodeTag>
-        <IconContainer>
-          <SocialButton
-            onClick={() => openSocialLink('https://github.com/AugusttoDaniel')}
-            aria-label="GitHub"
+        
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+        >
+          <motion.div variants={fadeInUp}>
+            <CodeTag>&lt;h1&gt;</CodeTag>
+            <Greeting>
+              E ai<br />
+              meu nome é <Name>Daniel</Name>,<br />
+              sou <Name>Desenvolvedor full stack</Name>
+            </Greeting>
+            <CodeTag>&lt;/h1&gt;<br /></CodeTag>
+          </motion.div>
+          
+          <Codespace></Codespace>
+          
+          <motion.div variants={fadeInUp}>
+            <CodeTag>&lt;p&gt;</CodeTag>
+            <Bio>
+              Sou um desenvolvedor júnior apaixonado por tecnologia. Tenho <br />
+              experiência com React, Node.js e estou sempre em busca de <br />
+              aprender mais e aprimorar minhas habilidades.
+            </Bio>
+            <CodeTag>&lt;/p&gt;</CodeTag>
+          </motion.div>
+          
+          <IconContainer
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={staggerContainer}
           >
-            <FaGithub />
-          </SocialButton>
-          <SocialButton
-            onClick={() => openSocialLink('https://wa.me/5533988595641')}
-            aria-label="WhatsApp"
-          >
-            <FaWhatsapp />
-          </SocialButton>
-          <SocialButton
-            onClick={() => openSocialLink('https://www.linkedin.com/in/danielaugustto/')}
-            aria-label="LinkedIn"
-          >
-            <FaLinkedin />
-          </SocialButton>
-        </IconContainer>
+            <motion.div variants={fadeInUp}>
+              <SocialButton
+                onClick={() => openSocialLink('https://github.com/AugusttoDaniel')}
+                aria-label="GitHub"
+              >
+                <FaGithub />
+              </SocialButton>
+            </motion.div>
+            
+            <motion.div variants={fadeInUp}>
+              <SocialButton
+                onClick={() => openSocialLink('https://wa.me/5533988595641')}
+                aria-label="WhatsApp"
+              >
+                <FaWhatsapp />
+              </SocialButton>
+            </motion.div>
+            
+            <motion.div variants={fadeInUp}>
+              <SocialButton
+                onClick={() => openSocialLink('https://www.linkedin.com/in/danielaugustto/')}
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin />
+              </SocialButton>
+            </motion.div>
+          </IconContainer>
+        </motion.div>
       </RightSection>
-      <ScrollIndicator />
+      
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeIn}
+      >
+        <ScrollIndicator />
+      </motion.div>
     </Container>
   );
 }

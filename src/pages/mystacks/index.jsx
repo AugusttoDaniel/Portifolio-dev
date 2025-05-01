@@ -365,11 +365,44 @@ const SkillsAndExperience = () => {
   const isPhone = window.innerWidth <= 768;
   const [skills, setSkills] = useState([]);
 
+  // Configurações de animação
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       const reponse = await fetchSkillsData();
-
-
       setSkills(reponse.data);
     };
 
@@ -484,18 +517,20 @@ const SkillsAndExperience = () => {
     <SkillsSection id='stack'>
       <Container>
         <Header
-          initial={{ opacity: 0, y: -80 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
         >
           <Title>Habilidades & Experiência</Title>
           <Subtitle>Meus conhecimentos que adquiri ao longo da minha jornada</Subtitle>
         </Header>
 
         <SearchBar
-          initial={{ opacity: 0, x: -180 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.5 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
         >
           <SearchInput>
             <FaSearch />
@@ -507,10 +542,9 @@ const SkillsAndExperience = () => {
             />
           </SearchInput>
           <FilterContainer ref={filterRef}>
-          <FilterButton onClick={() => setShowFilterDropdown(!showFilterDropdown)} aria-label="Abrir menu de filtro">
-          <FaFilter />
+            <FilterButton onClick={() => setShowFilterDropdown(!showFilterDropdown)} aria-label="Abrir menu de filtro">
+              <FaFilter />
               {isPhone ? "" : "Filtrar"}
-
             </FilterButton>
             {showFilterDropdown && (
               <FilterDropdown>
@@ -535,79 +569,103 @@ const SkillsAndExperience = () => {
         </SearchBar>
 
         {selectedCategories.length > 0 && (
-          <ActiveFilters>
-            {selectedCategories.map(categoryId => {
-              const category = categories.find(c => c.id === categoryId);
-              return (
-                <FilterTag key={categoryId}>
-                  {category.name}
-                  <button onClick={() => removeFilter(categoryId)}>×</button>
-                </FilterTag>
-              );
-            })}
-          </ActiveFilters>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInUp}
+          >
+            <ActiveFilters>
+              {selectedCategories.map(categoryId => {
+                const category = categories.find(c => c.id === categoryId);
+                return (
+                  <FilterTag key={categoryId}>
+                    {category.name}
+                    <button onClick={() => removeFilter(categoryId)}>×</button>
+                  </FilterTag>
+                );
+              })}
+            </ActiveFilters>
+          </motion.div>
         )}
 
         {filteredSkills.length > 0 ? (
           <>
             <SkillsGrid
-              initial={{ opacity: 0, y: +120 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.5 }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              variants={staggerContainer}
             >
               {currentItems.map((skill, index) => (
-                <SkillCard key={index}>
-                  <CardHeader>
-                    <IconWrapper $bgColor={skill.bgColor}>
-                      {React.createElement(iconMapping[skill.icon], {
-                        size: 24,
-                      })}
-                    </IconWrapper>
+                <motion.div key={index} variants={cardVariants}>
+                  <SkillCard>
+                    <CardHeader>
+                      <IconWrapper $bgColor={skill.bgColor}>
+                        {React.createElement(iconMapping[skill.icon], {
+                          size: 24,
+                        })}
+                      </IconWrapper>
 
-                    <SkillName>
-                      <h3>{skill.name}</h3>
-                      <span>{skill.category}</span>
-                    </SkillName>
-                  </CardHeader>
-                  <Description>{skill.description}</Description>
-                  <Experience>
-                    Experiência: <span>{skill.experience}</span>
-                  </Experience>
-                </SkillCard>
+                      <SkillName>
+                        <h3>{skill.name}</h3>
+                        <span>{skill.category}</span>
+                      </SkillName>
+                    </CardHeader>
+                    <Description>{skill.description}</Description>
+                    <Experience>
+                      Experiência: <span>{skill.experience}</span>
+                    </Experience>
+                  </SkillCard>
+                </motion.div>
               ))}
             </SkillsGrid>
 
             {/* Componente de paginação */}
             {totalPages > 1 && (
-              <PaginationContainer>
-                <PageButton
-                  onClick={handlePrevPage}
-                  disabled={currentPage === 1}
-                  aria-label="Ir para página anterior" 
-                >
-                  <FaArrowLeft />
-                </PageButton>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.1 }}
+                variants={fadeInUp}
+              >
+                <PaginationContainer>
+                  <PageButton
+                    onClick={handlePrevPage}
+                    disabled={currentPage === 1}
+                    aria-label="Ir para página anterior" 
+                  >
+                    <FaArrowLeft />
+                  </PageButton>
 
-                <PageInfo>
-                  Página {currentPage} de {totalPages}
-                  {filteredSkills.length > 0 && ` (${filteredSkills.length} habilidades)`}
-                </PageInfo>
+                  <PageInfo>
+                    Página {currentPage} de {totalPages}
+                    {filteredSkills.length > 0 && ` (${filteredSkills.length} habilidades)`}
+                  </PageInfo>
 
-                <PageButton
-                  onClick={handleNextPage}
-                  disabled={currentPage === totalPages}
-                  aria-label="Ir para próxima página"
-                >
-                  <FaArrowRight />
-                </PageButton>
-              </PaginationContainer>
+                  <PageButton
+                    onClick={handleNextPage}
+                    disabled={currentPage === totalPages}
+                    aria-label="Ir para próxima página"
+                  >
+                    <FaArrowRight />
+                  </PageButton>
+                </PaginationContainer>
+              </motion.div>
             )}
           </>
         ) : (
-          <EmptyState>
-            <h3>Nenhuma habilidade encontrada</h3>
-            <p>Tente ajustar seus filtros ou termos de busca</p>
-          </EmptyState>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInUp}
+          >
+            <EmptyState>
+              <h3>Nenhuma habilidade encontrada</h3>
+              <p>Tente ajustar seus filtros ou termos de busca</p>
+            </EmptyState>
+          </motion.div>
         )}
       </Container>
     </SkillsSection>

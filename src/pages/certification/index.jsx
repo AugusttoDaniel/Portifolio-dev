@@ -71,6 +71,10 @@ const NavButton = styled.button`
   }
 `;
 
+const TimelineContainer = styled(motion.div)`
+  width: 100%;
+`;
+
 // Main Component
 const EducationalJourney = () => {
     // ver se é telefone 
@@ -93,8 +97,6 @@ const EducationalJourney = () => {
             });
     }, []);
 
-
-
     const handleNavClick = (type) => {
         setActive(type);
     };
@@ -103,9 +105,21 @@ const EducationalJourney = () => {
         return data ? data[active] : [];
     }, [data, active]);
 
+    // Configurações de animação
+    const fadeInUp = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: {
+                duration: 0.8,
+                ease: "easeOut"
+            }
+        }
+    };
+
     if (isLoading) return <LoadingSpinner />;
     if (error) return <ErrorDisplay message="Failed to load educational data" />;
-
 
     const timelineStyles = {
         container: {
@@ -125,18 +139,20 @@ const EducationalJourney = () => {
     return (
         <Container id="certificados">
             <Header
-              initial={{ opacity: 0, y: -80 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.5 }} 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeInUp}
             >
                 <Title>Jornada Educacional</Title>
                 <Subtitle>Explore minha trajetória de aprendizado e crescimento profissional</Subtitle>
             </Header>
 
             <NavContainer
-            initial={{ opacity: 0, y: -80 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5 }} 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeInUp}
             >
                 <NavButton
                     $active={active === 'academic'}
@@ -180,10 +196,17 @@ const EducationalJourney = () => {
                 </NavButton>
             </NavContainer>
 
-            <Timeline 
-                $items={getActiveData}
-                $styleProps={timelineStyles}
-            />
+            <TimelineContainer
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.8}}
+              variants={fadeInUp}
+            >
+              <Timeline 
+                  $items={getActiveData}
+                  $styleProps={timelineStyles}
+              />
+            </TimelineContainer>
         </Container>
     );
 };
