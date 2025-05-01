@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { fetchProjectsData } from '../../mocks/apiMock';
-import imagem from '../../assets/Macbook-Air-localhost.webp';
 import LoadingSpinner from '../../components/loadingspinner';
 import { motion } from "framer-motion";
+// Importar imagens
+import portfolioImage from '../../assets/portifolio.webp';
+import assistecImage from '../../assets/assistec.webp';
+import roadmapImage from '../../assets/roadmap.webp';
 
 const ProjectsSection = styled.div`
   background-color: #020617;
@@ -189,6 +192,7 @@ const Projects = () => {
       try {
         const data = await fetchProjectsData();
         setProjects(data);
+        console.log(data)
         setLoading(false);
       } catch (err) {
         setError("Erro ao carregar os projetos. Por favor, tente novamente mais tarde." + err.message);
@@ -198,6 +202,22 @@ const Projects = () => {
 
     fetchData();
   }, []);
+
+  // Mapeamento de imagens
+  const imageMap = {
+    'portifolio': portfolioImage,
+    'roadmap': roadmapImage,
+    'assistec': assistecImage,
+  };
+
+  const getImagePath = (imagePath) => {
+    // Se for um caminho completo que inclui assets
+    if (imagePath.includes('assets/')) {
+      return assistecImage;
+    }
+    // Se for apenas o nome da imagem
+    return imageMap[imagePath] || '';
+  };
 
   const loadMoreProjects = () => {
     setVisibleProjects(prevVisible => prevVisible + 3);
@@ -235,7 +255,11 @@ const Projects = () => {
           {projects.slice(0, visibleProjects).map((project) => (
             <ProjectCard key={project.id}>
               <ProjectImage>
-                <img src={imagem} alt={project.title} />
+                <img 
+                  src={getImagePath(project.imagem)} 
+                  alt={project.title}
+
+                />
               </ProjectImage>
               <ProjectContent>
                 <ProjectTitle>{project.title}</ProjectTitle>

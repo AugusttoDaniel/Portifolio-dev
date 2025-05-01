@@ -3,34 +3,25 @@
         "id": 1,
         "title": "Portifólio",
         "description": "Portifólio desenvolvido com React e Typescript, utilizando Styled Components e React Icons. O deploy foi feito com Vercel.",
-        "imagem": "../../assets/Portifolio.webp",
+        "imagem": "portifolio",
         "tech": ["React", "Styled Components", "React Icons"],
         "demoLink": "https://augusttodaniel.github.io/Portifolio-dev/",
         "codeLink": "https://github.com/AugusttoDaniel/Portifolio-dev"
     },
     {
         "id": 2,
-        "title": "CRM Escoteiros",
-        "description": "Projeto do TCC de Sistema de Gestão para criação de Novas Unidades Escoteiras.",
-        "imagem": "../../assets/Macbook-Air-localhost.png",
-        "tech": ["React", "Styled Components", "React Icons", "Node", "Express", "MYSQL"],
-        "demoLink": "https://augusttodaniel.github.io/Portifolio-dev/",
-        "codeLink": "https://github.com/AugusttoDaniel/Portifolio-dev"
-    },
-    {
-        "id": 3,
         "title": "Landing Page feita para a Assistec Informática",
         "description": "Site Institucional feito para a Assistec Informática, utilizando Html, CSS e JavaScript. O deploy foi feito com GitLab.",
-        "imagem": "../../assets/Assistec.webp",
+        "imagem": "assistec",
         "tech": ["Html", "Css", "JavaScript"],
         "demoLink": "https://augusttodaniel.github.io/Portifolio-dev/",
         "codeLink": ""
     },
     {
-        "id": 4,
+        "id": 3,
         "title": "DevRoadmap",
         "description": "Aplicação web moderna e interativa projetada para guiar e acompanhar o aprendizado de estudantes e profissionais na área de tecnologia. Oferece roadmaps de estudo detalhados e permite gerenciar o progresso de cursos pessoais.",
-        "imagem": "../../assets/Roadmap.webp",
+        "imagem": "roadmap",
         "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Shadcn/ui", "Supabase", "React Hook Form", "Zod"],
         "demoLink": "https://teste-road-map.vercel.app/",
         "codeLink": ""
