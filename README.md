@@ -1,10 +1,5 @@
+# Portfólio de Dev
 
-
-
-          
-# Portfólio de Desenvolvimento - Daniel A.S.
-
-![GitHub](https://img.shields.io/github/license/AugusttoDaniel/Portifolio-dev)
 ![React](https://img.shields.io/badge/React-18.2.0-blue)
 ![Styled Components](https://img.shields.io/badge/Styled_Components-6.1.1-purple)
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-10.16.5-orange)
@@ -22,6 +17,11 @@ Este é um portfólio profissional desenvolvido com React e Styled Components, a
 - **Tema Escuro**: Interface com tema escuro para melhor experiência visual
 - **Filtros de Habilidades**: Sistema de busca e filtros para visualizar habilidades por categoria
 - **Timeline Interativa**: Visualização cronológica de formação, certificados e experiência profissional
+
+## Visualização das Seções
+
+### Página Inicial
+![Página Inicial](./src/assets/Captura%20de%20tela%202025-05-01%20004223.png)
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -97,20 +97,3 @@ Portifolio-dev/
 - **Contador Animado**: Estatísticas com contagem animada na seção Sobre Mim
 - **Efeito de Digitação**: Texto que simula digitação em tempo real
 - **Cards Interativos**: Projetos e habilidades com efeitos hover
-
-## 📱 Contato
-
-- **GitHub**: [AugusttoDaniel](https://github.com/AugusttoDaniel)
-- **LinkedIn**: [danielaugustto](https://www.linkedin.com/in/danielaugustto/)
-- **WhatsApp**: [(33) 98859-5641](https://wa.me/5533988595641)
-- **Email**: danielsje7133@gmail.com
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
-
----
-
-Desenvolvido com ❤️ por Daniel Augusto Silva
-
-        Too many current requests. Your queue position is 1. Please wait for a while or switch to other models for a smoother experience.
