@@ -276,7 +276,7 @@ const AboutMe = () => {
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeInLeft}
           >
-            <ProfileImage src={foto} alt="Kauã Ortolani Lusvarghi" />
+            <ProfileImage src={foto} alt="Uma foto minha Daniel Augusto" />
           </ProfileImageContainer>
 
           <InfoSection 
