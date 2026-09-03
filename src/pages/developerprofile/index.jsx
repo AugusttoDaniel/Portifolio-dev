@@ -90,7 +90,7 @@ const Bio = styled.p`
   }
 `;
 
-const IconContainer = styled.div`
+const IconContainer = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: center;
