@@ -16,7 +16,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: ${theme.typography.fontFamily};
     font-size: ${theme.typography.fontSize.paragraph};
     line-height: ${theme.typography.lineHeight.paragraph};
-    color: ${theme.colors.white};
+    color: ${theme.colors.text};
     background-color: ${theme.colors.bgheader};
   }
 

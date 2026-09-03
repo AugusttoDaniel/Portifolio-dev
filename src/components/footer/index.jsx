@@ -4,13 +4,14 @@ import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 const FooterContainer = styled.footer`
   position: relative;
-  background-color: #020617;
-  color: #ffffff;
+  background-color: ${(props) => props.theme.colors.navy};
+  color: ${(props) => props.theme.colors.white};
   padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  overflow: hidden;
 
   &::before {
     content: "";
@@ -19,7 +20,7 @@ const FooterContainer = styled.footer`
     left: 0;
     height: 1px;
     width: 100%;
-    background: linear-gradient(to right, transparent, #12F7D6, transparent);
+    background: linear-gradient(to right, transparent, ${(props) => props.theme.colors.brand1}, transparent);
     opacity: 0.5;
     z-index: 0;
   }
@@ -32,7 +33,23 @@ const FooterContainer = styled.footer`
   }
 `;
 
+const Blob = styled.div`
+  position: absolute;
+  bottom: -160px;
+  left: -120px;
+  width: 480px;
+  height: 480px;
+  border-radius: 42% 58% 65% 35% / 41% 44% 56% 59%;
+  background: radial-gradient(circle at 40% 40%, #1BA3E8 0%, transparent 70%);
+  filter: blur(110px);
+  opacity: 0.18;
+  z-index: 0;
+  pointer-events: none;
+`;
+
 const FooterSection = styled.div`
+  position: relative;
+  z-index: 2;
   text-align: center;
 
   @media (min-width: 768px) {
@@ -43,7 +60,7 @@ const FooterSection = styled.div`
 const FooterTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #12F7D6;
+  color: ${(props) => props.theme.colors.brand2};
 `;
 
 const FooterList = styled.ul`
@@ -61,12 +78,12 @@ const FooterList = styled.ul`
 `;
 
 const FooterLink = styled.a`
-  color: #ffffff;
+  color: ${(props) => props.theme.colors.white};
   text-decoration: none;
   transition: color 0.3s ease;
 
   &:hover {
-    color: #12F7D6;
+    color: ${(props) => props.theme.colors.brand2};
   }
 `;
 
@@ -77,16 +94,17 @@ const SocialIcons = styled.div`
 `;
 
 const SocialIcon = styled.a`
-  color: white;
+  color: ${(props) => props.theme.colors.white};
   transition: color 0.3s ease;
 
   &:hover {
-    color: #12F7D6;
+    color: ${(props) => props.theme.colors.brand2};
   }
 `;
 
 const Footer = () => (
   <FooterContainer>
+    <Blob />
     <FooterSection>
       <FooterTitle>Navegação</FooterTitle>
       <FooterList>

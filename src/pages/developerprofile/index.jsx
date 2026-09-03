@@ -1,278 +1,377 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaGithub, FaWhatsapp, FaLinkedin } from 'react-icons/fa';
-import ScrollIndicator from '../../components/scrollIndicator';
-import AvailabilityButtonComponent from '../../components/availabilityButtonComponent';
-import { FaBriefcase } from 'react-icons/fa';
-import StarConstellation from '../../components/backgroundStar';
+import { FaArrowRight, FaDownload } from 'react-icons/fa';
 import { m } from "framer-motion";
-import TypingText from "../../components/typingText";
 
 const Container = styled.section`
+  position: relative;
+  overflow: hidden;
   background-color: ${(props) => props.theme.colors.bgdev};
-  color: ${(props) => props.theme.colors.white};
-  padding: 2rem;
+  color: ${(props) => props.theme.colors.text};
   min-height: 100vh;
+  padding: 7rem 4rem 3rem;
+  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
 
-  @media (max-width: 768px) {
-    padding: 1rem; 
+  @media (max-width: 900px) {
+    padding: 6rem 1.5rem 3rem;
   }
 `;
 
-const Title = styled(m.h1)`
-  color: ${(props) => props.theme.colors.brand1};
+const Blob = styled.div`
+  position: absolute;
+  filter: blur(${(props) => props.$blur || '110px'});
+  opacity: ${(props) => props.$opacity || 0.2};
+  z-index: 0;
+  pointer-events: none;
+`;
+
+const Watermark = styled.div`
+  position: absolute;
+  top: 50px;
+  right: -40px;
   font-family: ${(props) => props.theme.typography.fontFamily};
-  font-size: ${(props) => props.theme.typography.fontSize["bg-text-u"]};
-  font-weight: ${(props) => props.theme.typography.fontWeight.regular};
-  line-height: ${(props) => props.theme.typography.lineHeight["bg-text-u"]};
-  margin-bottom: 4rem;
+  font-weight: 800;
+  font-size: 230px;
+  line-height: 0.9;
+  letter-spacing: -6px;
+  color: rgba(15, 23, 42, 0.045);
+  z-index: 0;
+  user-select: none;
+  text-align: right;
+  white-space: nowrap;
 
-  @media (max-width: 768px) {
-    font-size: 2.5rem; 
-    line-height: 3rem;
-    margin-bottom: 2rem; 
+  @media (max-width: 900px) {
+    display: none;
   }
 `;
 
-const RightSection = styled(m.div)`
-  padding: 2rem;
+const ContentRow = styled.div`
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1312px;
+  margin: 0 auto;
 
-  @media (max-width: 768px) {
-    text-align: center;
-    padding: 1rem; 
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 2.5rem;
   }
 `;
 
-const Codespace = styled.div`
-  margin-bottom: 3rem;
+const LeftColumn = styled.div`
+  flex: 1;
+  min-width: 0;
+`;
 
-  @media (max-width: 768px) {
-    margin-bottom: 2rem; 
+const Eyebrow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+`;
+
+const EyebrowDot = styled.span`
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: ${(props) => props.theme.colors.brand1};
+  box-shadow: 0 0 12px ${(props) => props.theme.colors.brand1};
+`;
+
+const EyebrowLabel = styled.span`
+  font-family: ${(props) => props.theme.typography.fontFamilyMono};
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: ${(props) => props.theme.colors.accentHover};
+  text-transform: uppercase;
+`;
+
+const Headline = styled.h1`
+  font-family: ${(props) => props.theme.typography.fontFamily};
+  font-weight: 800;
+  font-size: 58px;
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  margin: 0 0 26px;
+
+  @media (max-width: 900px) {
+    font-size: 38px;
   }
 `;
 
-const CodeTag = styled.span`
-  color: ${(props) => props.theme.colors.brand1};
-  font-family: monospace;
-  margin-bottom: 0.5rem;
+const HeadlineGradient = styled.div`
+  background: linear-gradient(90deg, ${(props) => props.theme.colors.accentHover}, ${(props) => props.theme.colors.brand1} 60%, ${(props) => props.theme.colors.brand2});
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 `;
 
-const Greeting = styled(m.h2)`
-  font-size: 2.5rem;
-  margin: 0;
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem; 
-  }
-`;
-
-const Name = styled.span`
-  color: ${(props) => props.theme.colors.brand1};
-  font-size: 2.5rem;
-
-  @media (max-width: 768px) {
-    font-size: 1.6rem; 
-  }
-`;
-
-const Bio = styled.p`
+const Paragraph = styled.p`
+  font-size: 17px;
   line-height: 1.6;
-  opacity: 0.9;
+  color: ${(props) => props.theme.colors.textMuted};
+  max-width: 460px;
+  margin: 0 0 20px;
 
-  @media (max-width: 768px) {
-    font-size: 1rem;
-    line-height: 1.4; 
+  strong {
+    color: ${(props) => props.theme.colors.text};
+    font-weight: 500;
   }
 `;
 
-const IconContainer = styled(m.div)`
+const TechPills = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  gap: 8px;
+  margin-bottom: 32px;
 `;
 
-const SocialButton = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
+const TechPill = styled.span`
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: ${(props) => props.theme.radius.pill};
+  background: ${(props) => props.theme.colors.surfaceTint};
+  color: ${(props) => props.theme.colors.accentHover};
+`;
+
+const ButtonsRow = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-  padding: 8px;
-  
+  gap: 14px;
+  flex-wrap: wrap;
+`;
+
+const PrimaryButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: ${(props) => props.theme.colors.brand1};
+  color: ${(props) => props.theme.colors.white};
+  font-weight: 600;
+  font-size: 15px;
+  padding: 15px 30px;
+  border-radius: ${(props) => props.theme.radius.md};
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(27, 163, 232, 0.28);
+  transition: transform 0.2s ease;
+
   &:hover {
-    transform: scale(1.2);
-  }
-  
-  svg {
-    width: 40px;
-    height: 40px;
-    color: ${(props) => props.theme.colors.white};
-
-    @media (max-width: 768px) {
-      width: 20px;
-      height: 20px;
-    }
+    transform: translateY(-2px);
   }
 `;
+
+const SecondaryButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid ${(props) => props.theme.colors.border};
+  color: ${(props) => props.theme.colors.text};
+  font-weight: 600;
+  font-size: 15px;
+  padding: 15px 30px;
+  border-radius: ${(props) => props.theme.radius.md};
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: ${(props) => props.theme.colors.brand1};
+  }
+`;
+
+const RightColumn = styled.div`
+  flex: 0 0 460px;
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+
+  @media (max-width: 900px) {
+    flex: 1;
+  }
+`;
+
+const CodeGlow = styled.div`
+  position: absolute;
+  inset: -30px;
+  background: radial-gradient(ellipse at 50% 40%, ${(props) => props.theme.colors.brand1} 0%, transparent 68%);
+  filter: blur(50px);
+  opacity: 0.3;
+  z-index: 0;
+`;
+
+const CodeCard = styled.div`
+  position: relative;
+  z-index: 1;
+  border-radius: ${(props) => props.theme.radius.md};
+  background: ${(props) => props.theme.colors.navy};
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.06), 0 30px 60px rgba(15, 23, 42, 0.22);
+`;
+
+const CodeCardHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 16px;
+  background: ${(props) => props.theme.colors.navySoft};
+`;
+
+const TrafficDot = styled.span`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: ${(props) => props.$color};
+`;
+
+const FileName = styled.span`
+  margin-left: 8px;
+  font-family: ${(props) => props.theme.typography.fontFamilyMono};
+  font-size: 12px;
+  color: #5b6b84;
+`;
+
+const CodeCardBody = styled.div`
+  padding: 28px 26px;
+  font-family: ${(props) => props.theme.typography.fontFamilyMono};
+  font-size: 15px;
+  line-height: 2;
+  color: #94a3b8;
+
+  @media (max-width: 480px) {
+    font-size: 12.5px;
+    padding: 20px 18px;
+  }
+`;
+
+const AvailabilityBadge = styled.div`
+  position: absolute;
+  z-index: 2;
+  bottom: -18px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: ${(props) => props.theme.colors.white};
+  border: 1px solid ${(props) => props.theme.colors.border};
+  border-radius: ${(props) => props.theme.radius.pill};
+  padding: 10px 18px 10px 14px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.16);
+
+  @media (max-width: 900px) {
+    position: static;
+    margin-top: 16px;
+    width: fit-content;
+  }
+`;
+
+const PulseDot = styled.span`
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 10px #22c55e;
+`;
+
+const AvailabilityText = styled.span`
+  font-size: 13px;
+  font-weight: 500;
+  color: ${(props) => props.theme.colors.text};
+  white-space: nowrap;
+`;
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
 
 const DeveloperProfile = () => {
-  const openSocialLink = (url) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
-
-  // Configurações de animação
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const fadeIn = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
   return (
     <Container id="home">
-      <StarConstellation />
-      <m.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeIn}
-      >
-        <AvailabilityButtonComponent
-          icon={FaBriefcase}
-          message="Disponível para vaga de dev!"
-          backgroundColor="#12F7D6"
-          textColor="#020617"
-          hoverColor="#0DBFA6"
-          hoverTextColor="#020617"
-        />
-      </m.div>
-      
-      <RightSection 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeInUp}
-      >
-        <Title
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={fadeInUp}
-        >
-          <TypingText
-            speed={50}
-            content={`Developer`}
-          />
-        </Title>
-        
-        <m.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={staggerContainer}
-        >
-          <m.div variants={fadeInUp}>
-            <CodeTag>&lt;h1&gt;</CodeTag>
-            <Greeting>
-              E ai<br />
-              meu nome é <Name>Daniel</Name>,<br />
-              sou <Name>Desenvolvedor full stack</Name>
-            </Greeting>
-            <CodeTag>&lt;/h1&gt;<br /></CodeTag>
+      <Blob style={{ top: '-220px', right: '-200px', width: 600, height: 600, borderRadius: '44% 56% 62% 38% / 41% 44% 56% 59%', background: 'radial-gradient(circle at 35% 30%, #1BA3E8 0%, transparent 70%)' }} $opacity={0.24} />
+      <Blob style={{ bottom: '-260px', left: '-180px', width: 520, height: 520, borderRadius: '58% 42% 39% 61% / 55% 48% 52% 45%', background: 'radial-gradient(circle at 60% 60%, #5CCBF5 0%, transparent 70%)' }} $opacity={0.18} $blur="120px" />
+      <Blob style={{ top: '220px', right: '120px', width: 420, height: 420, borderRadius: '50%', background: 'radial-gradient(circle, #1BA3E8 0%, transparent 72%)' }} $opacity={0.16} $blur="90px" />
+
+      <Watermark>DEV JR<br />FULL STACK</Watermark>
+
+      <ContentRow>
+        <LeftColumn>
+          <Eyebrow>
+            <EyebrowDot />
+            <EyebrowLabel>Desenvolvedor Full Stack</EyebrowLabel>
+          </Eyebrow>
+
+          <m.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}>
+            <Headline>
+              <div>Eu construo</div>
+              <div>produtos full stack</div>
+              <HeadlineGradient>que funcionam.</HeadlineGradient>
+            </Headline>
           </m.div>
-          
-          <Codespace></Codespace>
-          
-          <m.div variants={fadeInUp}>
-            <CodeTag>&lt;p&gt;</CodeTag>
-            <Bio>
-              Sou um desenvolvedor júnior apaixonado por tecnologia. Tenho <br />
-              experiência com React, Node.js e estou sempre em busca de <br />
-              aprender mais e aprimorar minhas habilidades.
-            </Bio>
-            <CodeTag>&lt;/p&gt;</CodeTag>
+
+          <m.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}>
+            <Paragraph>
+              Júnior com foco em <strong>React</strong>, <strong>Node.js</strong> e <strong>Nest.js</strong>. Já levei projetos do zero à produção.
+            </Paragraph>
+
+            <TechPills>
+              <TechPill>React</TechPill>
+              <TechPill>Node.js</TechPill>
+              <TechPill>Nest.js</TechPill>
+              <TechPill>TypeScript</TechPill>
+            </TechPills>
+
+            <ButtonsRow>
+              <PrimaryButton href="#projetos">
+                Ver Projetos
+                <FaArrowRight size={14} />
+              </PrimaryButton>
+              <SecondaryButton
+                href="https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaDownload size={14} />
+                Baixar CV
+              </SecondaryButton>
+            </ButtonsRow>
           </m.div>
-          
-          <IconContainer
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={staggerContainer}
-          >
-            <m.div variants={fadeInUp}>
-              <SocialButton
-                onClick={() => openSocialLink('https://github.com/AugusttoDaniel')}
-                aria-label="GitHub"
-              >
-                <FaGithub />
-              </SocialButton>
-            </m.div>
-            
-            <m.div variants={fadeInUp}>
-              <SocialButton
-                onClick={() => openSocialLink('https://wa.me/5533988595641')}
-                aria-label="WhatsApp"
-              >
-                <FaWhatsapp />
-              </SocialButton>
-            </m.div>
-            
-            <m.div variants={fadeInUp}>
-              <SocialButton
-                onClick={() => openSocialLink('https://www.linkedin.com/in/danielaugustto/')}
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin />
-              </SocialButton>
-            </m.div>
-          </IconContainer>
+        </LeftColumn>
+
+        <m.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp} style={{ width: '100%', maxWidth: 460 }}>
+          <RightColumn>
+            <CodeGlow />
+            <CodeCard>
+              <CodeCardHeader>
+                <TrafficDot $color="#FF5F57" />
+                <TrafficDot $color="#FEBC2E" />
+                <TrafficDot $color="#28C840" />
+                <FileName>daniel.dev.js</FileName>
+              </CodeCardHeader>
+              <CodeCardBody>
+                <div><span style={{ color: '#5CCBF5' }}>const</span> <span style={{ color: '#F1F5F9' }}>dev</span> = {'{'}</div>
+                <div>&nbsp;&nbsp;nome: <span style={{ color: '#A5E8C4' }}>'Daniel'</span>,</div>
+                <div>&nbsp;&nbsp;cargo: <span style={{ color: '#A5E8C4' }}>'Full Stack Júnior'</span>,</div>
+                <div>&nbsp;&nbsp;stack: [<span style={{ color: '#A5E8C4' }}>'React'</span>, <span style={{ color: '#A5E8C4' }}>'Node'</span>, <span style={{ color: '#A5E8C4' }}>'Nest'</span>],</div>
+                <div>&nbsp;&nbsp;experiencia: <span style={{ color: '#FBBF6B' }}>2</span>, <span style={{ color: '#5B6B84' }}>// anos</span></div>
+                <div>&nbsp;&nbsp;disponivel: <span style={{ color: '#5CCBF5' }}>true</span></div>
+                <div>{'};'}</div>
+              </CodeCardBody>
+            </CodeCard>
+            <AvailabilityBadge>
+              <PulseDot />
+              <AvailabilityText>Disponível para vaga de dev!</AvailabilityText>
+            </AvailabilityBadge>
+          </RightColumn>
         </m.div>
-      </RightSection>
-      
-      <m.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeIn}
-      >
-        <ScrollIndicator />
-      </m.div>
+      </ContentRow>
     </Container>
   );
-}
+};
 
 export default DeveloperProfile;

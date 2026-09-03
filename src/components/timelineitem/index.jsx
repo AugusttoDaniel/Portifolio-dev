@@ -19,17 +19,18 @@ const TimelineItemContainer = styled.div`
 
 const TimelineCard = styled.div`
   width: 100%;
-  background-color: ${props => props.backgroundColor || '#172A45'};
+  background-color: ${props => props.backgroundColor || props.theme.colors.surface};
+  border: 1px solid ${props => props.theme.colors.border};
   border-radius: ${props => props.borderRadius || props.theme.radius.md};
   padding: ${props => props.padding || '1.5rem'};
-  box-shadow: ${props => props.boxShadow || '0 4px 6px rgba(0, 0, 0, 0.1)'};
-  color: ${props => props.textColor || 'white'};
+  box-shadow: ${props => props.boxShadow || '0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 24px rgba(15, 23, 42, 0.06)'};
+  color: ${props => props.textColor || props.theme.colors.text};
   max-width: ${props => props.maxWidth || '100%'};
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
+
   &:hover {
     transform: ${props => props.hoverEffect ? 'translateY(-5px)' : 'none'};
-    box-shadow: ${props => props.hoverEffect ? '0 10px 15px rgba(0, 0, 0, 0.15)' : props.boxShadow || '0 4px 6px rgba(0, 0, 0, 0.1)'};
+    box-shadow: ${props => props.hoverEffect ? '0 16px 32px rgba(15, 23, 42, 0.12)' : props.boxShadow || '0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 24px rgba(15, 23, 42, 0.06)'};
   }
   @media (max-width: 760px) {
     padding: ${props => props.mobilePadding || '1rem'};
@@ -54,13 +55,13 @@ const TimelineHeader = styled.div`
 const TimelineIcon = styled.div`
   width: ${props => props.size || '40px'};
   height: ${props => props.size || '40px'};
-  background-color: ${props => props.backgroundColor || '#0F172A'};
+  background-color: ${props => props.backgroundColor || props.theme.colors.surfaceTint};
   border-radius: ${props => props.borderRadius || props.theme.radius.md};
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: ${props => props.marginRight || '1rem'};
-  color: ${props => props.iconColor || '#12F7D6'};
+  color: ${props => props.iconColor || props.theme.colors.accentHover};
   font-size: ${props => props.iconSize || '1.2rem'};
 `;
 
@@ -95,15 +96,15 @@ const TagsContainer = styled.div`
 const Tag = styled.span`
   font-size: ${props => props.fontSize || '0.75rem'};
   padding: ${props => props.padding || '0.25rem 0.5rem'};
-  background-color: ${props => props.backgroundColor || 'rgba(255, 255, 255, 0.1)'};
+  background-color: ${props => props.backgroundColor || props.theme.colors.surfaceTint};
   border-radius: ${props => props.borderRadius || props.theme.radius.sm};
-  color: ${props => props.color || 'inherit'};
+  color: ${props => props.color || props.theme.colors.accentHover};
 `;
 
 const Button = styled.button`
   width: ${props => props.width || '100%'};
-  background-color: ${props => props.backgroundColor || 'rgba(78, 115, 223, 0.9)'};
-  color: ${props => props.color || 'white'};
+  background-color: ${props => props.backgroundColor || props.theme.colors.brand1};
+  color: ${props => props.color || props.theme.colors.white};
   border: none;
   border-radius: ${props => props.borderRadius || props.theme.radius.sm};
   padding: ${props => props.padding || '0.5rem'};
@@ -115,9 +116,9 @@ const Button = styled.button`
   justify-content: center;
   font-size: ${props => props.fontSize || '0.9rem'};
   margin-top: ${props => props.marginTop || '1rem'};
-  
+
   &:hover {
-    background-color: ${props => props.hoverBackgroundColor || 'rgba(98, 135, 243, 0.9)'};
+    background-color: ${props => props.hoverBackgroundColor || props.theme.colors.accentHover};
   }
 `;
 

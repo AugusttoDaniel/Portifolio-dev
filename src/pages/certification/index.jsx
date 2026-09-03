@@ -10,12 +10,13 @@ import { m } from "framer-motion";
 
 
 const Container = styled.section`
-  background: #0F172A;
+  background: ${(props) => props.theme.colors.bgAlt};
   min-height: 100vh;
   padding: 2rem;
-  font-family: 'Inter', sans-serif;
-  color: white;
+  font-family: ${(props) => props.theme.typography.fontFamily};
+  color: ${(props) => props.theme.colors.text};
   position: relative;
+  overflow: hidden;
   &::before {
     content: "";
     position: absolute;
@@ -23,14 +24,49 @@ const Container = styled.section`
     left: 0;
     height: 1px;
     width: 100%;
-    background: linear-gradient(to right, transparent, #12F7D6, transparent);
+    background: linear-gradient(to right, transparent, ${(props) => props.theme.colors.brand1}, transparent);
     opacity: 0.5;
     z-index: 0;
   }
 `;
 
+const Blob = styled.div`
+  position: absolute;
+  filter: blur(110px);
+  opacity: 0.26;
+  z-index: 0;
+  pointer-events: none;
+  top: -180px;
+  right: -140px;
+  width: 560px;
+  height: 560px;
+  border-radius: 42% 58% 65% 35% / 41% 44% 56% 59%;
+  background: radial-gradient(circle at 40% 40%, #085C87 0%, transparent 72%);
+`;
+
+const Watermark = styled.div`
+  position: absolute;
+  top: 56px;
+  left: -20px;
+  font-family: ${(props) => props.theme.typography.fontFamily};
+  font-weight: 700;
+  font-size: 240px;
+  line-height: 1;
+  letter-spacing: -6px;
+  color: rgba(15, 23, 42, 0.035);
+  z-index: 0;
+  user-select: none;
+  white-space: nowrap;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;
+
 
 const Header = styled(m.header)`
+  position: relative;
+  z-index: 2;
   text-align: center;
   margin-bottom: 2rem;
 `;
@@ -47,6 +83,8 @@ const Subtitle = styled.p`
 `;
 
 const NavContainer = styled(m.div)`
+  position: relative;
+  z-index: 2;
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -57,9 +95,9 @@ const NavButton = styled.button`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: ${props => props.$active ? '#12F7D6' : '#172A45'};
-  color: ${props => props.$active ? '#020617' : 'white'};
-  border: none;
+  background-color: ${props => props.$active ? props.theme.colors.brand1 : props.theme.colors.surface};
+  color: ${props => props.$active ? props.theme.colors.white : props.theme.colors.text};
+  border: 1px solid ${props => props.$active ? 'transparent' : props.theme.colors.border};
   border-radius: ${(props) => props.theme.radius.pill};
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
@@ -67,11 +105,13 @@ const NavButton = styled.button`
   transition: all 0.2s ease;
 
   &:hover {
-    background-color: ${props => props.$active ? '#0DBFA6' : '#1E3A5F'};
+    background-color: ${props => props.$active ? props.theme.colors.accentHover : props.theme.colors.surfaceTint};
   }
 `;
 
 const TimelineContainer = styled(m.div)`
+  position: relative;
+  z-index: 2;
   width: 100%;
 `;
 
@@ -124,20 +164,22 @@ const EducationalJourney = () => {
     const timelineStyles = {
         container: {
             maxWidth: "800px",
-            fontFamily: "'Inter', sans-serif"
+            fontFamily: "'Plus Jakarta Sans', sans-serif"
         },
         title: {
-            titleColor: "white",
-            titleDotColor: "white"
+            titleColor: "#0F172A",
+            titleDotColor: "#0F172A"
         },
         line: {
-            lineColor: "rgba(255, 255, 255, 0.3)",
+            lineColor: "#E2E8F0",
             lineWidth: "2px"
         }
     };
 
     return (
         <Container id="certificados">
+            <Blob />
+            <Watermark>JORNADA</Watermark>
             <Header
               initial="hidden"
               whileInView="visible"

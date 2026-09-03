@@ -8,12 +8,14 @@ const PageContainer = styled(m.div)`
   display: flex;
   align-items: center;
   margin: auto;
-  background-color: #0F172A;
-  color: #fff;
+  background-color: ${(props) => props.theme.colors.bgAlt};
+  color: ${(props) => props.theme.colors.text};
   min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: ${(props) => props.theme.typography.fontFamily};
   padding: 20px;
-  position: relative; 
+  position: relative;
+  overflow: hidden;
+
   &::before {
     content: "";
     position: absolute;
@@ -21,14 +23,41 @@ const PageContainer = styled(m.div)`
     left: 0;
     height: 1px;
     width: 100%;
-    background: linear-gradient(to right, transparent, #12F7D6, transparent);
+    background: linear-gradient(to right, transparent, ${(props) => props.theme.colors.brand1}, transparent);
     opacity: 0.5;
     z-index: 0;
   }
 `;
 
+const Blob = styled.div`
+  position: absolute;
+  filter: blur(${(props) => props.$blur || '110px'});
+  opacity: ${(props) => props.$opacity || 0.2};
+  z-index: 0;
+  pointer-events: none;
+`;
+
+const Watermark = styled.div`
+  position: absolute;
+  top: 60px;
+  right: -30px;
+  font-family: ${(props) => props.theme.typography.fontFamily};
+  font-weight: 700;
+  font-size: 260px;
+  line-height: 1;
+  letter-spacing: -6px;
+  color: rgba(15, 23, 42, 0.04);
+  z-index: 0;
+  user-select: none;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;
 
 const ContentContainer = styled.div`
+  position: relative;
+  z-index: 2;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -48,7 +77,7 @@ const Title = styled.h1`
 const Subtitle = styled.h2`
   font-size: ${(props) => props.theme.typography.fontSize.sm};
   font-weight: normal;
-  color: #8892b0;
+  color: ${(props) => props.theme.colors.textMuted};
   margin-bottom: 60px;
 `;
 
@@ -72,7 +101,7 @@ const ProfileImageContainer = styled(m.div)`
 const ProfileImage = styled(m.img)`
   width: 100%;
   border-radius: ${(props) => props.theme.radius.md};
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05), 0 20px 40px rgba(15, 23, 42, 0.12);
 `;
 
 const InfoSection = styled(m.div)`
@@ -82,32 +111,21 @@ const InfoSection = styled(m.div)`
 const Greeting = styled(m.h3)`
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #ccd6f6;
+  color: ${(props) => props.theme.colors.text};
 `;
 
 const Bio = styled(m.p)`
   font-size: 1rem;
   line-height: 1.7;
   margin-bottom: 20px;
-  color: #8892b0;
+  color: ${(props) => props.theme.colors.textMuted};
 `;
 
 const Emphasis = styled.span`
   font-size: 1rem;
   line-height: 1.7;
-  color: #12F7D6; // Cor personalizada
-  font-weight: bold; // Adiciona destaque visual
-`;
-
-const TechLink = styled(m.a)`
-  color: #12F7D6;
-  text-decoration: none;
-  transition: all 0.3s ease;
-
-  &:hover {
-    text-decoration: underline;
-    opacity: 0.8;
-  }
+  color: ${(props) => props.theme.colors.accentHover};
+  font-weight: bold;
 `;
 
 const StatsSection = styled(m.div)`
@@ -124,7 +142,7 @@ const StatBox = styled(m.div)`
 const StatNumber = styled(m.span)`
   font-size: 3rem;
   font-weight: bold;
-  color: #ccd6f6;
+  color: ${(props) => props.theme.colors.text};
 `;
 
 const StatLabel = styled(m.div)`
@@ -133,7 +151,7 @@ const StatLabel = styled(m.div)`
   margin-left: 10px;
 
   span {
-    color: #8892b0;
+    color: ${(props) => props.theme.colors.textMuted};
     font-size: 0.9rem;
   }
 `;
@@ -150,16 +168,17 @@ const ButtonContainer = styled(m.div)`
 const Button = styled(m.a)`
   display: inline-flex;
   align-items: center;
-  background-color: #12F7D6;
-  color: #020617;
+  background-color: ${(props) => props.theme.colors.brand1};
+  color: ${(props) => props.theme.colors.white};
   padding: 12px 24px;
   border-radius: ${(props) => props.theme.radius.md};
   text-decoration: none;
   font-weight: 500;
+  box-shadow: 0 8px 20px rgba(27, 163, 232, 0.28);
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #0DBFA6;
+    background-color: ${(props) => props.theme.colors.accentHover};
     transform: translateY(-2px);
   }
 
@@ -168,25 +187,10 @@ const Button = styled(m.a)`
   }
 `;
 
-const SocialLinks = styled(m.div)`
-  margin-top: 20px;
-
-  a {
-    color: #12F7D6;
-    margin-right: 15px;
-    font-weight: 500;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-`;
-
 const Divider = styled(m.hr)`
   width: 60px;
   height: 4px;
-  background-color: #12F7D6;
+  background-color: ${(props) => props.theme.colors.brand1};
   border: none;
   margin: 0 auto 30px;
 `;
@@ -218,8 +222,8 @@ const AboutMe = () => {
   // Configurações de animação
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.8,
@@ -230,8 +234,8 @@ const AboutMe = () => {
 
   const fadeInLeft = {
     hidden: { opacity: 0, x: -50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
       transition: {
         duration: 0.8,
@@ -242,8 +246,8 @@ const AboutMe = () => {
 
   const fadeInRight = {
     hidden: { opacity: 0, x: 50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
       transition: {
         duration: 0.8,
@@ -254,8 +258,12 @@ const AboutMe = () => {
 
   return (
     <PageContainer id='about'>
+      <Blob style={{ top: '-160px', left: '420px', width: 520, height: 520, borderRadius: '38% 62% 55% 45% / 48% 40% 60% 52%', background: 'radial-gradient(circle at 40% 40%, #085C87 0%, transparent 72%)' }} $opacity={0.26} />
+      <Blob style={{ bottom: '-200px', right: '-160px', width: 600, height: 600, borderRadius: '55% 45% 40% 60% / 45% 55% 45% 55%', background: 'radial-gradient(circle at 60% 50%, #1BA3E8 0%, transparent 70%)' }} $opacity={0.22} $blur="120px" />
+      <Watermark>SOBRE</Watermark>
+
       <ContentContainer>
-        <Header 
+        <Header
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
@@ -271,7 +279,7 @@ const AboutMe = () => {
         </Header>
 
         <MainSection>
-          <ProfileImageContainer 
+          <ProfileImageContainer
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -280,45 +288,25 @@ const AboutMe = () => {
             <ProfileImage src={foto} alt="Uma foto minha Daniel Augusto" />
           </ProfileImageContainer>
 
-          <InfoSection 
+          <InfoSection
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeInRight}
           >
-            <Greeting 
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={fadeInUp}
-            >
+            <Greeting>
               Saudações, um pouco sobre mim!
             </Greeting>
 
-            <Bio 
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={fadeInUp}
-            >
-              Me chamo Daniel Augustto, sou um desenvolvedor em formação, com foco em <Emphasis>Front-end</Emphasis> e <Emphasis>Back-end</Emphasis>, buscando oportunidades para aplicar e expandir meus conhecimentos em projetos desafiadores. Atualmente, tenho experiência com tecnologias como <Emphasis>JavaScript</Emphasis>, <Emphasis>Node.js</Emphasis>, <Emphasis>TypeScript</Emphasis>, <Emphasis>React</Emphasis> e <Emphasis>MySQL</Emphasis>, e estou sempre em busca de aprimoramento profissional para me manter atualizado com as melhores práticas do mercado.
+            <Bio>
+              Me chamo Daniel Augusto, sou um desenvolvedor em formação, com foco em <Emphasis>Front-end</Emphasis> e <Emphasis>Back-end</Emphasis>, buscando oportunidades para aplicar e expandir meus conhecimentos em projetos desafiadores. Atualmente, tenho experiência com tecnologias como <Emphasis>JavaScript</Emphasis>, <Emphasis>Node.js</Emphasis>, <Emphasis>TypeScript</Emphasis>, <Emphasis>React</Emphasis> e <Emphasis>MySQL</Emphasis>, e estou sempre em busca de aprimoramento profissional para me manter atualizado com as melhores práticas do mercado.
             </Bio>
 
-            <Bio 
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={fadeInUp}
-            >
+            <Bio>
               Estou em busca de uma vaga como <Emphasis>trainee</Emphasis> ou <Emphasis>júnior</Emphasis>, onde possa contribuir com minha dedicação, aprendizado contínuo e habilidades técnicas. Tenho experiência em <Emphasis>desenvolvimento back-end</Emphasis>, onde atuei na manutenção e implementação de funcionalidades para otimizar sistemas, além de habilidades em manutenção de hardware e suporte técnico, que me deram uma base sólida para entender o funcionamento de sistemas como um todo.
             </Bio>
 
-            <StatsSection
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={fadeInUp}
-            >
+            <StatsSection>
               <StatBox>
                 <StatNumber>
                   <AnimatedNumber targetValue={2} duration={2} />+
@@ -339,12 +327,7 @@ const AboutMe = () => {
                 </StatLabel>
               </StatBox>
             </StatsSection>
-            <ButtonContainer 
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={fadeInUp}
-            >
+            <ButtonContainer>
               <Button
                 href="https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w"
                 download
