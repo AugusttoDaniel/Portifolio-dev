@@ -6,14 +6,16 @@ const FILE_ICON_SVG = `
 </svg>
 `;
 
-export function triggerDownloadFly(originElement) {
-  if (!originElement) return;
+export function triggerDownloadFly(originElement, onComplete) {
+  const finish = () => { if (onComplete) onComplete(); };
+
+  if (!originElement) return finish();
 
   const target = document.getElementById('header-download-target');
-  if (!target || !target.offsetParent) return;
+  if (!target || !target.offsetParent) return finish();
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReducedMotion) return;
+  if (prefersReducedMotion) return finish();
 
   const originRect = originElement.getBoundingClientRect();
   const targetRect = target.getBoundingClientRect();
@@ -54,6 +56,6 @@ export function triggerDownloadFly(originElement) {
     }
   );
 
-  animation.onfinish = () => flyer.remove();
-  animation.oncancel = () => flyer.remove();
+  animation.onfinish = () => { flyer.remove(); finish(); };
+  animation.oncancel = () => { flyer.remove(); finish(); };
 }
