@@ -4,9 +4,9 @@ import { fetchProjectsData } from '../../mocks/apiMock';
 import LoadingSpinner from '../../components/loadingspinner';
 import { motion } from "framer-motion";
 // Importar imagens
-import portfolioImage from '../../assets/portifolio.webp';
-import assistecImage from '../../assets/assistec.webp';
-import roadmapImage from '../../assets/roadmap.webp';
+import portfolioImage from '../../assets/Portifolio.webp';
+import assistecImage from '../../assets/Assistec.webp';
+import roadmapImage from '../../assets/Roadmap.webp';
 
 const ProjectsSection = styled.div`
   background-color: #020617;
