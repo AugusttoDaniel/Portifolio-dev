@@ -115,6 +115,14 @@
             "bgColor": "#00000030",
             "description": "Desenvolvimento de APIs com Express.js",
             "experience": "2y 1m"
+        },
+        {
+            "name": "Nest.js",
+            "category": "Framework",
+            "icon": "SiNestjs",
+            "bgColor": "#E0234E30",
+            "description": "Desenvolvimento de APIs escaláveis com Nest.js",
+            "experience": "6m"
         }
     ]
 }

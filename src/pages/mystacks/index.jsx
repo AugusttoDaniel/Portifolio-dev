@@ -11,7 +11,8 @@ import {
   SiCss3,
   SiVercel,
   SiFastapi,
-  SiExpress
+  SiExpress,
+  SiNestjs
 } from 'react-icons/si';
 import { fetchSkillsData } from '../../mocks/apiMock';
 import { motion } from "framer-motion";
@@ -28,7 +29,8 @@ const iconMapping = {
   SiVercel: SiVercel,
   SiFastapi: SiFastapi,
   FaNode: FaNode,
-  SiExpress: SiExpress
+  SiExpress: SiExpress,
+  SiNestjs: SiNestjs
 };
 
 const SkillsSection = styled.section`
@@ -427,7 +429,7 @@ const SkillsAndExperience = () => {
     'database': ['MySQL', 'PostgreSQL'],
     'tools': ['Git', 'GitHub', 'Figma'],
     'language': ['JavaScript', 'TypeScript', 'Python'],
-    'framework': ['React', 'Next.js', 'Tailwind', 'FastAPI', 'Node.js', 'Prisma'],
+    'framework': ['React', 'Next.js', 'Tailwind', 'FastAPI', 'Node.js', 'Prisma', 'Nest.js'],
     'devops': ['GitHub'],
     'design': ['Figma'],
     'cloud': ['AWS', 'Vercel'],
