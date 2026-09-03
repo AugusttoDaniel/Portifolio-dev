@@ -63,13 +63,14 @@ const Header = styled(m.div)`
 `;
 
 const Title = styled.h2`
-  font-size: 2.5rem;
+  font-size: ${(props) => props.theme.typography.fontSize.xxl};
+  font-weight: 700;
   margin-bottom: 10px;
   color: #ccd6f6;
 `;
 
 const Subtitle = styled.p`
-  font-size: 1rem;
+  font-size: ${(props) => props.theme.typography.fontSize.sm};
   color: #8892b0;
 `;
 
@@ -87,7 +88,7 @@ const SearchInput = styled.div`
   input {
     width: 100%;
     padding: 12px 20px 12px 40px;
-    border-radius: 6px;
+    border-radius: ${(props) => props.theme.radius.sm};
     border: none;
     background-color: #172a45;
     color: #fff;
@@ -124,7 +125,7 @@ const FilterButton = styled.button`
   background-color: #172a45;
   color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: ${(props) => props.theme.radius.sm};
   cursor: pointer;
   
   &:hover {
@@ -138,7 +139,7 @@ const FilterDropdown = styled.div`
   right: 0;
   width: 220px;
   background-color: #172a45;
-  border-radius: 6px;
+  border-radius: ${(props) => props.theme.radius.sm};
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 10;
   overflow: hidden;
@@ -205,7 +206,7 @@ const SkillsGrid = styled(m.div)`
 
 const SkillCard = styled.div`
   background-color: #172A45;
-  border-radius: 8px;
+  border-radius: ${(props) => props.theme.radius.md};
   padding: 24px;
   height: 100%;
   transition: transform 0.3s ease;
@@ -224,7 +225,7 @@ const CardHeader = styled.div`
 const IconWrapper = styled.div`
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: ${(props) => props.theme.radius.md};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -297,7 +298,7 @@ const FilterTag = styled.div`
   gap: 8px;
   padding: 6px 12px;
   background-color: #172A45;
-  border-radius: 4px;
+  border-radius: ${(props) => props.theme.radius.sm};
   font-size: 0.8rem;
   
   button {

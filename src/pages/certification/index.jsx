@@ -36,13 +36,13 @@ const Header = styled(m.header)`
 `;
 
 const Title = styled.h1`
-  font-size: 2rem;
+  font-size: ${(props) => props.theme.typography.fontSize.xxl};
   font-weight: 700;
   margin-bottom: 0.5rem;
 `;
 
 const Subtitle = styled.p`
-  font-size: 1rem;
+  font-size: ${(props) => props.theme.typography.fontSize.sm};
   opacity: 0.8;
 `;
 
@@ -60,7 +60,7 @@ const NavButton = styled.button`
   background-color: ${props => props.$active ? '#12F7D6' : '#172A45'};
   color: ${props => props.$active ? '#020617' : 'white'};
   border: none;
-  border-radius: 2rem;
+  border-radius: ${(props) => props.theme.radius.pill};
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
   cursor: pointer;

@@ -40,12 +40,13 @@ const Header = styled(m.header)`
 `;
 
 const Title = styled.h1`
-  font-size: 4rem;
+  font-size: ${(props) => props.theme.typography.fontSize.xxl};
+  font-weight: 700;
   margin-bottom: 10px;
 `;
 
 const Subtitle = styled.h2`
-  font-size: 1.5rem;
+  font-size: ${(props) => props.theme.typography.fontSize.sm};
   font-weight: normal;
   color: #8892b0;
   margin-bottom: 60px;
@@ -70,7 +71,7 @@ const ProfileImageContainer = styled(m.div)`
 
 const ProfileImage = styled(m.img)`
   width: 100%;
-  border-radius: 5px;
+  border-radius: ${(props) => props.theme.radius.md};
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 `;
 
@@ -152,7 +153,7 @@ const Button = styled(m.a)`
   background-color: #12F7D6;
   color: #020617;
   padding: 12px 24px;
-  border-radius: 4px;
+  border-radius: ${(props) => props.theme.radius.md};
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;

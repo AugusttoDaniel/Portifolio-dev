@@ -19,9 +19,16 @@ export const theme = {
         js: '#E7A020',
         react: '#28A9E0',
     },
+    radius: {
+        sm: '6px',
+        md: '10px',
+        pill: '999px',
+        circle: '50%',
+    },
     typography: {
-        fontFamily: "'Ubuntu', sans-serif", 
+        fontFamily: "'Ubuntu', sans-serif",
 
+        // Escala modular (base 16px, razão 1.25 - "terça maior")
         fontSize: {
             'bg-text-u': '117px',
             h1: '64px',
@@ -31,6 +38,14 @@ export const theme = {
             paragraph: '16px',
             labelMedium: '14px',
             labelLight: '14px',
+            xs: '13px',
+            sm: '16px',
+            md: '20px',
+            lg: '25px',
+            xl: '31px',
+            xxl: '39px',
+            xxxl: '49px',
+            display: '61px',
         },
 
         fontWeight: {

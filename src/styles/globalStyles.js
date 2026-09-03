@@ -16,8 +16,17 @@ export const GlobalStyle = createGlobalStyle`
     font-family: ${theme.typography.fontFamily};
     font-size: ${theme.typography.fontSize.paragraph};
     line-height: ${theme.typography.lineHeight.paragraph};
-    color: #333; /* Cor do texto padrão */
-    background-color: #f9f9f9; 
+    color: ${theme.colors.white};
+    background-color: ${theme.colors.bgheader};
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
 

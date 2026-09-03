@@ -91,7 +91,7 @@ const DownloadButton = styled.button`
   color: ${(props) => props.theme.colors.bgheader};
   border: none;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: ${(props) => props.theme.radius.md};
   font-family: ${(props) => props.theme.typography.fontFamily};
   font-size: ${(props) => props.theme.typography.fontSize.paragraph};
   font-weight: ${(props) => props.theme.typography.fontWeight.bold};

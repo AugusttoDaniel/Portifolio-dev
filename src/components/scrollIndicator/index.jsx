@@ -2,7 +2,7 @@ import React from "react";
 // eslint-disable-next-line no-unused-vars
 import { m } from "framer-motion";
 import styled from "styled-components";
-import { ChevronDown } from "lucide-react";
+import { FaChevronDown } from "react-icons/fa";
 
 // Mova o componente estilizado para fora do componente funcional
 const Container = styled.div`
@@ -33,7 +33,7 @@ export default function ScrollIndicator() {
           repeatDelay: 0.5,
         }}
       >
-        <ChevronDown size={40} className="text-white" />
+        <FaChevronDown size={28} color="#fff" />
       </m.div>
     </Container>
   );

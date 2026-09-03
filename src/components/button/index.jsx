@@ -15,7 +15,7 @@ const StyledButton = styled.button`
   font-family: ${({ $fontFamily = 'inherit' }) => $fontFamily};
   padding: ${({ $padding = '0.5rem 1rem' }) => $padding};
   margin: ${({ $margin = '0' }) => $margin};
-  border-radius: ${({ $borderRadius = '8px' }) => $borderRadius};
+  border-radius: ${({ $borderRadius, theme }) => $borderRadius || theme.radius.md};
   border: ${({ $border = 'none' }) => $border};
 
   &:hover {

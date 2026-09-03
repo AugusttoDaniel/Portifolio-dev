@@ -20,7 +20,7 @@ const TimelineItemContainer = styled.div`
 const TimelineCard = styled.div`
   width: 100%;
   background-color: ${props => props.backgroundColor || '#172A45'};
-  border-radius: ${props => props.borderRadius || '0.5rem'};
+  border-radius: ${props => props.borderRadius || props.theme.radius.md};
   padding: ${props => props.padding || '1.5rem'};
   box-shadow: ${props => props.boxShadow || '0 4px 6px rgba(0, 0, 0, 0.1)'};
   color: ${props => props.textColor || 'white'};
@@ -55,7 +55,7 @@ const TimelineIcon = styled.div`
   width: ${props => props.size || '40px'};
   height: ${props => props.size || '40px'};
   background-color: ${props => props.backgroundColor || '#0F172A'};
-  border-radius: ${props => props.borderRadius || '8px'};
+  border-radius: ${props => props.borderRadius || props.theme.radius.md};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,7 +96,7 @@ const Tag = styled.span`
   font-size: ${props => props.fontSize || '0.75rem'};
   padding: ${props => props.padding || '0.25rem 0.5rem'};
   background-color: ${props => props.backgroundColor || 'rgba(255, 255, 255, 0.1)'};
-  border-radius: ${props => props.borderRadius || '1rem'};
+  border-radius: ${props => props.borderRadius || props.theme.radius.sm};
   color: ${props => props.color || 'inherit'};
 `;
 
@@ -105,7 +105,7 @@ const Button = styled.button`
   background-color: ${props => props.backgroundColor || 'rgba(78, 115, 223, 0.9)'};
   color: ${props => props.color || 'white'};
   border: none;
-  border-radius: ${props => props.borderRadius || '0.25rem'};
+  border-radius: ${props => props.borderRadius || props.theme.radius.sm};
   padding: ${props => props.padding || '0.5rem'};
   text-align: center;
   cursor: pointer;

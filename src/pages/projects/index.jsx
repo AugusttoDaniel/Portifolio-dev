@@ -38,13 +38,14 @@ const Header = styled(m.div)`
 `;
 
 const Title = styled.h2`
-  font-size: 2.5rem;
+  font-size: ${(props) => props.theme.typography.fontSize.xxl};
+  font-weight: 700;
   margin-bottom: 10px;
   color: #ccd6f6;
 `;
 
 const Subtitle = styled.p`
-  font-size: 1rem;
+  font-size: ${(props) => props.theme.typography.fontSize.sm};
   color: #8892b0;
 `;
 
@@ -74,7 +75,7 @@ const ProjectCard = styled.div`
 const ProjectImage = styled.div`
   flex: 1;
   position: relative;
-  border-radius: 8px;
+  border-radius: ${(props) => props.theme.radius.md};
   overflow: hidden;
   box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.7);
 
@@ -121,7 +122,7 @@ const TechItem = styled.span`
   color: #12F7D6;
   background-color: rgba(18, 247, 214, 0.1);
   padding: 4px 10px;
-  border-radius: 4px;
+  border-radius: ${(props) => props.theme.radius.sm};
 `;
 
 const ButtonsContainer = styled.div`
@@ -136,7 +137,7 @@ const Button = styled.a`
   background-color: #172a45;
   color: #12F7D6;
   border: 1px solid #12F7D6;
-  border-radius: 4px;
+  border-radius: ${(props) => props.theme.radius.sm};
   text-decoration: none;
   font-size: 0.9rem;
   transition: all 0.3s;

@@ -16,7 +16,7 @@ const AvailabilityButton = styled.button`
   background-color: ${(props) => props.$backgroundColor};  /* Alterado para $ */
   color: ${(props) => props.$textColor};  /* Alterado para $ */
   border: none;
-  border-radius: 999px;
+  border-radius: ${(props) => props.theme.radius.pill};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: all 0.3s ease;
