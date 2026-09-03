@@ -36,13 +36,13 @@ function App() {
     const start = window.pageYOffset || document.documentElement.scrollTop;
     const startTime = performance.now();
 
-    const easeOutQuad = (t) => 1 - Math.pow(1 - t, 4);
+    const easeOutExpo = (t) => (t >= 1 ? 1 : 1 - Math.pow(2, -10 * t));
 
     // Função de animação
     const animateScroll = (currentTime) => {
       const elapsedTime = currentTime - startTime;
       const progress = Math.min(elapsedTime / duration, 1);
-      const eased = easeOutQuad(progress);
+      const eased = easeOutExpo(progress);
 
       window.scrollTo(0, start * (1 - eased));
 
