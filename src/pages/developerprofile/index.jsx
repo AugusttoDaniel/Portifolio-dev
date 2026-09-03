@@ -353,11 +353,7 @@ const DeveloperProfile = () => {
                 <SecondaryButton
                   href="https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w"
                   download
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const href = e.currentTarget.href;
-                    triggerDownloadFly(e.currentTarget, () => { window.location.href = href; });
-                  }}
+                  onClick={(e) => triggerDownloadFly(e.currentTarget)}
                 >
                   <FaDownload size={14} />
                   Baixar CV
