@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { theme } from '../../styles/theme'; // Importando o tema
 import { FaGithub, FaWhatsapp, FaLinkedin } from 'react-icons/fa';
 import ScrollIndicator from '../../components/scrollIndicator';
 import AvailabilityButtonComponent from '../../components/availabilityButtonComponent';
@@ -57,7 +56,7 @@ const Codespace = styled.div`
 `;
 
 const CodeTag = styled.span`
-  color: ${theme.primary};
+  color: ${(props) => props.theme.colors.brand1};
   font-family: monospace;
   margin-bottom: 0.5rem;
 `;
@@ -175,10 +174,10 @@ const DeveloperProfile = () => {
         <AvailabilityButtonComponent
           icon={FaBriefcase}
           message="Disponível para vaga de dev!"
-          backgroundColor="#007bff"
-          textColor="#ffffff"
-          hoverColor="#0056b3"
-          hoverTextColor="#ffffff"
+          backgroundColor="#12F7D6"
+          textColor="#020617"
+          hoverColor="#0DBFA6"
+          hoverTextColor="#020617"
         />
       </m.div>
       

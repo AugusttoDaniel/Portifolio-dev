@@ -23,7 +23,7 @@ const Container = styled.section`
     left: 0;
     height: 1px;
     width: 100%;
-    background: linear-gradient(to right, transparent, #22d3ee, transparent);
+    background: linear-gradient(to right, transparent, #12F7D6, transparent);
     opacity: 0.5;
     z-index: 0;
   }
@@ -57,8 +57,8 @@ const NavButton = styled.button`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: ${props => props.$active ? 'rgba(78, 115, 223, 0.9)' : 'rgba(30, 41, 82, 0.7)'};
-  color: white;
+  background-color: ${props => props.$active ? '#12F7D6' : '#172A45'};
+  color: ${props => props.$active ? '#020617' : 'white'};
   border: none;
   border-radius: 2rem;
   padding: 0.5rem 1rem;
@@ -67,7 +67,7 @@ const NavButton = styled.button`
   transition: all 0.2s ease;
 
   &:hover {
-    background-color: rgba(78, 115, 223, 0.9);
+    background-color: ${props => props.$active ? '#0DBFA6' : '#1E3A5F'};
   }
 `;
 

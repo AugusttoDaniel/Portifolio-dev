@@ -21,7 +21,7 @@ const ProjectsSection = styled.div`
     left: 0;
     height: 1px;
     width: 100%;
-    background: linear-gradient(to right, transparent, #22d3ee, transparent);
+    background: linear-gradient(to right, transparent, #12F7D6, transparent);
     opacity: 0.5;
     z-index: 0;
   }
@@ -118,8 +118,8 @@ const TechStack = styled.div`
 
 const TechItem = styled.span`
   font-size: 0.8rem;
-  color: #64ffda;
-  background-color: rgba(100, 255, 218, 0.1);
+  color: #12F7D6;
+  background-color: rgba(18, 247, 214, 0.1);
   padding: 4px 10px;
   border-radius: 4px;
 `;
@@ -134,8 +134,8 @@ const Button = styled.a`
   display: inline-block;
   padding: 8px 16px;
   background-color: #172a45;
-  color: #64ffda;
-  border: 1px solid #64ffda;
+  color: #12F7D6;
+  border: 1px solid #12F7D6;
   border-radius: 4px;
   text-decoration: none;
   font-size: 0.9rem;
@@ -143,7 +143,7 @@ const Button = styled.a`
   cursor: pointer;
 
   &:hover {
-    background-color: rgba(100, 255, 218, 0.1);
+    background-color: rgba(18, 247, 214, 0.1);
   }
 `;
 
@@ -152,7 +152,7 @@ const ViewMoreButton = styled.button`
   margin: 60px auto 0;
   background: none;
   border: none;
-  color: #64ffda;
+  color: #12F7D6;
   text-decoration: none;
   font-size: 1.1rem;
   cursor: pointer;

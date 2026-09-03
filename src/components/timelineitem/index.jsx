@@ -19,7 +19,7 @@ const TimelineItemContainer = styled.div`
 
 const TimelineCard = styled.div`
   width: 100%;
-  background-color: ${props => props.backgroundColor || 'rgba(30, 41, 82, 0.7)'};
+  background-color: ${props => props.backgroundColor || '#172A45'};
   border-radius: ${props => props.borderRadius || '0.5rem'};
   padding: ${props => props.padding || '1.5rem'};
   box-shadow: ${props => props.boxShadow || '0 4px 6px rgba(0, 0, 0, 0.1)'};
@@ -54,13 +54,13 @@ const TimelineHeader = styled.div`
 const TimelineIcon = styled.div`
   width: ${props => props.size || '40px'};
   height: ${props => props.size || '40px'};
-  background-color: ${props => props.backgroundColor || '#4e73df'};
+  background-color: ${props => props.backgroundColor || '#0F172A'};
   border-radius: ${props => props.borderRadius || '8px'};
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: ${props => props.marginRight || '1rem'};
-  color: ${props => props.iconColor || 'white'};
+  color: ${props => props.iconColor || '#12F7D6'};
   font-size: ${props => props.iconSize || '1.2rem'};
 `;
 

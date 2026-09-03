@@ -42,8 +42,8 @@ const TimelineDot = styled.div`
   width: ${props => props.$size || '16px'};
   height: ${props => props.$size || '16px'};
   border-radius: 50%;
-  background-color: ${props => props.$backgroundColor || '#4e73df'};
-  border: ${props => props.$borderWidth || '3px'} solid ${props => props.$borderColor || '#1e2952'};
+  background-color: ${props => props.$backgroundColor || '#12F7D6'};
+  border: ${props => props.$borderWidth || '3px'} solid ${props => props.$borderColor || '#0F172A'};
   top: ${props => props.$top || '0'};
   z-index: 2;
   @media (max-width: 760px) {
@@ -79,7 +79,7 @@ const Timeline = ({
           <TimelineDot
             key={`dot-${index}`}
             $top={`${percentage}%`} 
-            $backgroundColor="#4e73df"
+            $backgroundColor="#12F7D6"
           />
         );
       })}

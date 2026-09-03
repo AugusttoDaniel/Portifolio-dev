@@ -17,20 +17,20 @@ const SpinnerContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #0a0a2a, #1a1a4a);
+  background: linear-gradient(135deg, #020617, #0F172A);
 `;
 
 const Spinner = styled.div`
   width: 80px;
   height: 80px;
   border: 10px solid transparent;
-  border-top: 10px solid #4e73df;
-  border-right: 10px solid #4e73df;
+  border-top: 10px solid #12F7D6;
+  border-right: 10px solid #12F7D6;
   border-radius: 50%;
   animation: ${spin} 1.5s linear infinite, ${pulse} 1.5s ease-in-out infinite;
   box-shadow:
-    0 0 20px rgba(78, 115, 223, 0.5),
-    inset 0 0 20px rgba(78, 115, 223, 0.3);
+    0 0 20px rgba(18, 247, 214, 0.5),
+    inset 0 0 20px rgba(18, 247, 214, 0.3);
 `;
 
 const LoadingText = styled.div`

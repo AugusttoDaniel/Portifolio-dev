@@ -19,7 +19,7 @@ const FooterContainer = styled.footer`
     left: 0;
     height: 1px;
     width: 100%;
-    background: linear-gradient(to right, transparent, #22d3ee, transparent);
+    background: linear-gradient(to right, transparent, #12F7D6, transparent);
     opacity: 0.5;
     z-index: 0;
   }
@@ -43,7 +43,7 @@ const FooterSection = styled.div`
 const FooterTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #7de2d1;
+  color: #12F7D6;
 `;
 
 const FooterList = styled.ul`
@@ -66,7 +66,7 @@ const FooterLink = styled.a`
   transition: color 0.3s ease;
 
   &:hover {
-    color: #7de2d1;
+    color: #12F7D6;
   }
 `;
 
@@ -81,7 +81,7 @@ const SocialIcon = styled.a`
   transition: color 0.3s ease;
 
   &:hover {
-    color: #7de2d1;
+    color: #12F7D6;
   }
 `;
 

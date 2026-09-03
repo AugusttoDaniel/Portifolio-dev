@@ -69,7 +69,7 @@ const MenuItem = styled.a`
       left: 0;
       width: 100%;
       height: 2px;
-      background-color: white;
+      background-color: ${(props) => props.theme.colors.brand1};
       transform: scaleX(${(props) => (props.$isActive ? '1' : '0')});
       transform-origin: ${(props) => (props.$isActive ? 'left' : 'right')};
       transition: transform 2s ease;
@@ -83,8 +83,8 @@ const MenuItem = styled.a`
 `;
 
 const DownloadButton = styled.button`
-  background-color: ${(props) => props.theme.colors.css};
-  color: white;
+  background-color: ${(props) => props.theme.colors.brand1};
+  color: ${(props) => props.theme.colors.bgheader};
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
@@ -95,7 +95,7 @@ const DownloadButton = styled.button`
   transition: background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: ${(props) => props.theme.colors.accentHover};
     transform: scale(1.05);
   }
 `;
@@ -119,7 +119,7 @@ const HamburgerButton = styled.button`
     width: 100%;
     height: 2px;
     background-color: ${(props) =>
-      props.$isOpen ? props.theme.colors.html : props.theme.colors.white};
+      props.$isOpen ? props.theme.colors.brand1 : props.theme.colors.white};
     transition: all 0.3s ease;
 
     &:nth-child(1) {

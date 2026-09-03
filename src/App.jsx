@@ -79,9 +79,9 @@ function App() {
         <BackToTopContainer $isVisible={isVisible}>
           <Button
             icon={FaArrowUp}
-            backgroundColor="#007bff"
-            textColor="#ffffff"
-            hoverBackgroundColor="#0056b3"
+            backgroundColor="#12F7D6"
+            textColor="#020617"
+            hoverBackgroundColor="#0DBFA6"
             padding="0.75rem"
             borderRadius="50%"
             onClick={scrollToTop}

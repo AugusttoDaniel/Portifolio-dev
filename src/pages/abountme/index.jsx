@@ -21,7 +21,7 @@ const PageContainer = styled(m.div)`
     left: 0;
     height: 1px;
     width: 100%;
-    background: linear-gradient(to right, transparent, #22d3ee, transparent);
+    background: linear-gradient(to right, transparent, #12F7D6, transparent);
     opacity: 0.5;
     z-index: 0;
   }
@@ -94,12 +94,12 @@ const Bio = styled(m.p)`
 const Emphasis = styled.span`
   font-size: 1rem;
   line-height: 1.7;
-  color: #64ffda; // Cor personalizada
+  color: #12F7D6; // Cor personalizada
   font-weight: bold; // Adiciona destaque visual
 `;
 
 const TechLink = styled(m.a)`
-  color: #64ffda;
+  color: #12F7D6;
   text-decoration: none;
   transition: all 0.3s ease;
 
@@ -149,8 +149,8 @@ const ButtonContainer = styled(m.div)`
 const Button = styled(m.a)`
   display: inline-flex;
   align-items: center;
-  background-color: #1e3a5f;
-  color: #fff;
+  background-color: #12F7D6;
+  color: #020617;
   padding: 12px 24px;
   border-radius: 4px;
   text-decoration: none;
@@ -158,7 +158,7 @@ const Button = styled(m.a)`
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #2d4a70;
+    background-color: #0DBFA6;
     transform: translateY(-2px);
   }
 
@@ -171,7 +171,7 @@ const SocialLinks = styled(m.div)`
   margin-top: 20px;
 
   a {
-    color: #64ffda;
+    color: #12F7D6;
     margin-right: 15px;
     font-weight: 500;
     text-decoration: none;
@@ -185,7 +185,7 @@ const SocialLinks = styled(m.div)`
 const Divider = styled(m.hr)`
   width: 60px;
   height: 4px;
-  background-color: #64ffda;
+  background-color: #12F7D6;
   border: none;
   margin: 0 auto 30px;
 `;

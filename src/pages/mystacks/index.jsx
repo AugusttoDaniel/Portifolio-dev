@@ -46,7 +46,7 @@ const SkillsSection = styled.section`
     left: 0;
     height: 1px;
     width: 100%;
-    background: linear-gradient(to right, transparent, #22d3ee, transparent);
+    background: linear-gradient(to right, transparent, #12F7D6, transparent);
     opacity: 0.5;
     z-index: 0;
   }
@@ -95,7 +95,7 @@ const SearchInput = styled.div`
     
     &:focus {
       outline: none;
-      box-shadow: 0 0 0 2px #64ffda;
+      box-shadow: 0 0 0 2px #12F7D6;
     }
     
     &::placeholder {
@@ -128,7 +128,7 @@ const FilterButton = styled.button`
   cursor: pointer;
   
   &:hover {
-    background-color: #1f3a60;
+    background-color: #1E3A5F;
   }
 `;
 
@@ -193,7 +193,7 @@ const FilterOption = styled.div`
   }
   
   svg {
-    color: #64ffda;
+    color: #12F7D6;
   }
 `;
 
@@ -204,7 +204,7 @@ const SkillsGrid = styled(m.div)`
 `;
 
 const SkillCard = styled.div`
-  background-color: #0F172A;
+  background-color: #172A45;
   border-radius: 8px;
   padding: 24px;
   height: 100%;
@@ -228,7 +228,7 @@ const IconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.$bgColor || '#0F172A'};
+  background-color: ${props => props.$bgColor || '#172A45'};
   margin-right: 16px;
   
   svg {
@@ -248,7 +248,7 @@ const SkillName = styled.div`
   
   span {
     font-size: 0.8rem;
-    color: #64ffda;
+    color: #12F7D6;
   }
 `;
 
@@ -264,7 +264,7 @@ const Experience = styled.div`
   color: #8892b0;
   
   span {
-    color: #64ffda;
+    color: #12F7D6;
   }
 `;
 
@@ -296,14 +296,14 @@ const FilterTag = styled.div`
   align-items: center;
   gap: 8px;
   padding: 6px 12px;
-  background-color: #1e3151;
+  background-color: #172A45;
   border-radius: 4px;
   font-size: 0.8rem;
   
   button {
     background: none;
     border: none;
-    color: #64ffda;
+    color: #12F7D6;
     cursor: pointer;
     padding: 0;
     display: flex;
@@ -338,14 +338,14 @@ const PageButton = styled.button`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: ${props => props.disabled ? '#172a45' : '#1e3151'};
+  background-color: ${props => props.disabled ? '#172a45' : '#172A45'};
   border: none;
-  color: ${props => props.disabled ? '#4d5b78' : '#64ffda'};
+  color: ${props => props.disabled ? '#4d5b78' : '#12F7D6'};
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   transition: all 0.2s ease;
-  
+
   &:hover:not(:disabled) {
-    background-color: #2a4a7a;
+    background-color: #1E3A5F;
     transform: translateY(-2px);
   }
   
