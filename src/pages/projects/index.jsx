@@ -303,7 +303,7 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
         >
           <Title><RevealText text="Projetos" /></Title>
-          <Subtitle>Do zero à produção — projetos que construí sozinho</Subtitle>
+          <Subtitle>Projetos que tirei do zero e levei até a produção</Subtitle>
         </Header>
 
         <ProjectsList>

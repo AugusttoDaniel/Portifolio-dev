@@ -578,7 +578,7 @@ const SkillsAndExperience = () => {
           variants={fadeInUp}
         >
           <Title><RevealText text="Habilidades & Experiência" /></Title>
-          <Subtitle>Do front ao back — as ferramentas que uso no dia a dia</Subtitle>
+          <Subtitle>As ferramentas que uso no dia a dia, do front ao back</Subtitle>
         </Header>
 
         <SearchBar

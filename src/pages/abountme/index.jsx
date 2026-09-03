@@ -310,11 +310,11 @@ const AboutMe = () => {
             </Greeting>
 
             <Bio>
-              Me chamo Daniel Augusto, sou <Emphasis>Desenvolvedor Full Stack Júnior</Emphasis>, atuando profissionalmente com <Emphasis>React</Emphasis>, <Emphasis>Node.js</Emphasis> e <Emphasis>Nest.js</Emphasis> no dia a dia. Gosto de tirar projetos do papel e levá-los até a produção — por isso mantenho este portfólio sempre atualizado com os trabalhos que desenvolvo, tanto no emprego quanto em <Emphasis>projetos freelance</Emphasis>.
+              Me chamo Daniel Augusto, sou <Emphasis>Desenvolvedor Full Stack Júnior</Emphasis>, atuando profissionalmente com <Emphasis>React</Emphasis>, <Emphasis>Node.js</Emphasis> e <Emphasis>Nest.js</Emphasis> no dia a dia. Gosto de tirar projetos do papel e levá-los até a produção, por isso mantenho este portfólio sempre atualizado com os trabalhos que desenvolvo, tanto no emprego quanto em <Emphasis>projetos freelance</Emphasis>.
             </Bio>
 
             <Bio>
-              Estou aberto a <Emphasis>projetos freelance</Emphasis> — de sites institucionais a aplicações web completas. Antes de virar dev, trabalhei com <Emphasis>manutenção de hardware</Emphasis> e <Emphasis>suporte técnico</Emphasis>, o que me deu uma base sólida para entender como um sistema funciona de ponta a ponta, do hardware ao código.
+              Estou aberto a <Emphasis>projetos freelance</Emphasis>, de sites institucionais a aplicações web completas. Antes de virar dev, trabalhei com <Emphasis>manutenção de hardware</Emphasis> e <Emphasis>suporte técnico</Emphasis>, o que me deu uma base sólida para entender como um sistema funciona de ponta a ponta, do hardware ao código.
             </Bio>
 
             <StatsSection>

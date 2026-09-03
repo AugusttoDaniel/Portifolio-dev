@@ -57,7 +57,7 @@
         {
             "date": "Mar. de 2022 - Jun. de 2022",
             "title": "Desenvolvimento Web Fullstack",
-            "subtitle": "Plataforma de Cursos Online",
+            "subtitle": "Udemy",
             "icon": "FaCertificate",
             "description": "Curso completo de desenvolvimento web com React, Node.js e MongoDB.",
             "tags": [
@@ -75,7 +75,7 @@
         {
             "date": "Jul. de 2022 - Set. de 2022",
             "title": "Certificação em React",
-            "subtitle": "Plataforma de Cursos Online",
+            "subtitle": "Udemy",
             "icon": "FaCertificate",
             "description": "Certificação avançada em React, abordando hooks, context API e roteamento.",
             "tags": [
