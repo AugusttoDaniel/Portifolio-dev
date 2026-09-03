@@ -92,6 +92,24 @@
     ],
     "job": [
         {
+            "date": "Dez. de 2025 - Atual",
+            "title": "Desenvolvedor Full Stack Júnior",
+            "subtitle": "Empresa Ultralike",
+            "icon": "MdWork",
+            "description": "Manutenção de APIs e telas em React, desenvolvimento de automações, suporte ao cliente e implementação de sistemas com Nest.js e Node.js.",
+            "tags": [
+                "React",
+                "Nest.js",
+                "Node.js",
+                "Automação"
+            ],
+            "button": {
+                "text": "Ver Detalhes",
+                "showArrow": true,
+                "onClick": "console.log('Ver detalhes do trabalho na Ultralike')"
+            }
+        },
+        {
             "date": "Jun. de 2025 - Dez. de 2025",
             "title": "Desenvolvedor Full Stack Júnior",
             "subtitle": "Empresa CoreIn",
