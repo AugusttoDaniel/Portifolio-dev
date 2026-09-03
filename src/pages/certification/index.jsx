@@ -192,7 +192,7 @@ const EducationalJourney = () => {
               variants={fadeInUp}
             >
                 <Title><RevealText text="Jornada Educacional" /></Title>
-                <Subtitle>Explore minha trajetória de aprendizado e crescimento profissional</Subtitle>
+                <Subtitle>Formação, certificações e experiência profissional</Subtitle>
             </Header>
 
             <NavContainer

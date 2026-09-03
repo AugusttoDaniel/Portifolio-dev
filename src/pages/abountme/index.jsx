@@ -283,7 +283,7 @@ const AboutMe = () => {
           </Title>
           <Divider />
           <Subtitle>
-            Aqui você encontrará mais informações sobre mim
+            Trajetória, stack e o que me move como desenvolvedor
           </Subtitle>
         </Header>
 
@@ -306,7 +306,7 @@ const AboutMe = () => {
             variants={fadeInRight}
           >
             <Greeting>
-              <RevealText text="Saudações, um pouco sobre mim!" />
+              <RevealText text="Prazer, eu sou o Daniel." />
             </Greeting>
 
             <Bio>
