@@ -6,6 +6,7 @@ import { m, useScroll, useTransform } from "framer-motion";
 import RevealText from '../../components/revealText';
 import TiltCard from '../../components/tiltCard';
 import MagneticButton from '../../components/magneticButton';
+import { triggerDownloadFly } from '../../utils/downloadFlyEffect';
 
 const PageContainer = styled(m.div)`
   display: flex;
@@ -343,6 +344,7 @@ const AboutMe = () => {
                   href="https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w"
                   download
                   aria-label="Baixar CV"
+                  onClick={(e) => triggerDownloadFly(e.currentTarget)}
                 >
                   <FaDownload /> Baixar CV
                 </Button>

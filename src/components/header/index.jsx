@@ -254,7 +254,7 @@ function Header() {
             {item.label}
           </MenuItem>
         ))}
-        <DownloadButton onClick={handleDownload}>Baixar CV</DownloadButton>
+        <DownloadButton id="header-download-target" onClick={handleDownload}>Baixar CV</DownloadButton>
       </MenuContainer>
 
       <HamburgerButton

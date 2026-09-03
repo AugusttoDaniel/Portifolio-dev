@@ -5,6 +5,7 @@ import { m, useScroll, useTransform } from "framer-motion";
 import RevealText from '../../components/revealText';
 import TiltCard from '../../components/tiltCard';
 import MagneticButton from '../../components/magneticButton';
+import { triggerDownloadFly } from '../../utils/downloadFlyEffect';
 
 const Container = styled.section`
   position: relative;
@@ -353,6 +354,7 @@ const DeveloperProfile = () => {
                   href="https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => triggerDownloadFly(e.currentTarget)}
                 >
                   <FaDownload size={14} />
                   Baixar CV
