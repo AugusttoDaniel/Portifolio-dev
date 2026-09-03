@@ -13,6 +13,7 @@ import Certification from './pages/certification';
 import Projects from './pages/projects';
 import DeveloperProfile from './pages/developerprofile';
 import { FaArrowUp } from 'react-icons/fa';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 
 const BackToTopContainer = styled.div`
@@ -88,6 +89,7 @@ function App() {
             aria-label="Voltar ao topo"
           />
         </BackToTopContainer>
+        <SpeedInsights />
       </LazyMotion>
     </ThemeProvider>
   );
