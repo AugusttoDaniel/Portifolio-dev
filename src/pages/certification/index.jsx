@@ -72,7 +72,7 @@ const Header = styled(m.header)`
   margin-bottom: 2rem;
 `;
 
-const Title = styled.h1`
+const Title = styled.h2`
   font-size: ${(props) => props.theme.typography.fontSize.xxl};
   font-weight: 700;
   margin-bottom: 0.5rem;
