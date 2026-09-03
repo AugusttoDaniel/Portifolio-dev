@@ -352,8 +352,7 @@ const DeveloperProfile = () => {
               <MagneticButton>
                 <SecondaryButton
                   href="https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  download
                   onClick={(e) => triggerDownloadFly(e.currentTarget)}
                 >
                   <FaDownload size={14} />

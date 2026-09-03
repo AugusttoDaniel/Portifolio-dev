@@ -225,7 +225,7 @@ function Header() {
   }, []);
 
   const handleDownload = () => {
-    window.open("https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w", "_blank");
+    window.location.href = "https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w";
   };
 
   return (
