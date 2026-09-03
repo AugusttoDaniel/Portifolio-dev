@@ -320,7 +320,7 @@ const AboutMe = () => {
             >
               <StatBox>
                 <StatNumber>
-                  <AnimatedNumber targetValue={1} duration={2} />+
+                  <AnimatedNumber targetValue={2} duration={2} />+
                 </StatNumber>
                 <StatLabel>
                   <span>Anos</span>

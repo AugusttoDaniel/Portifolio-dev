@@ -10,7 +10,7 @@
             "icon": "FaReact",
             "bgColor": "#61DAFB30",
             "description": "Desenvolvimento de interfaces modernas e responsivas com React, hooks, context e componentes reutilizáveis",
-            "experience": "1y"
+            "experience": "2y 5m"
         },
         {
             "name": "Tailwind",
@@ -18,7 +18,7 @@
             "icon": "SiTailwindcss",
             "bgColor": "#38B2AC30",
             "description": "Estilização moderna e responsiva com Tailwind CSS",
-            "experience": "1m"
+            "experience": "1y 6m"
         },
         {
             "name": "TypeScript",
@@ -26,7 +26,7 @@
             "icon": "SiTypescript",
             "bgColor": "#3178C630",
             "description": "Desenvolvimento com TypeScript",
-            "experience": "3m"
+            "experience": "1y 8m"
         },
         {
             "name": "JavaScript",
@@ -34,7 +34,7 @@
             "icon": "SiJavascript",
             "bgColor": "#F7DF1E30",
             "description": "Desenvolvimento web frontend (ES6+)",
-            "experience": "1y 2m"
+            "experience": "2y 7m"
         },
         {
             "name": "MySQL",
@@ -42,7 +42,7 @@
             "icon": "SiMysql",
             "bgColor": "#4479A130",
             "description": "Modelagem e gerenciamento de bancos de dados relacionais com MySQL",
-            "experience": "1y 11m"
+            "experience": "3y 4m"
         },
         {
             "name": "PostgreSQL",
@@ -50,7 +50,7 @@
             "icon": "SiPostgresql",
             "bgColor": "#33648430",
             "description": "Gerenciamento de bancos de dados relacionais com PostgreSQL",
-            "experience": "11m"
+            "experience": "2y 4m"
         },
         {
             "name": "Git",
@@ -58,7 +58,7 @@
             "icon": "FaGithub",
             "bgColor": "#F0500030",
             "description": "Controle de versão e colaboração usando Git",
-            "experience": "1y 3m"
+            "experience": "2y 8m"
         },
         {
             "name": "GitHub",
@@ -66,7 +66,7 @@
             "icon": "FaGithub",
             "bgColor": "#18191930",
             "description": "Gerenciamento de repositórios, CI/CD e colaboração usando GitHub",
-            "experience": "1y 3m"
+            "experience": "2y 8m"
         },
         {
             "name": "HTML",
@@ -74,7 +74,7 @@
             "icon": "SiHtml5",
             "bgColor": "#E34F2620",
             "description": "Estruturação de páginas web com HTML5",
-            "experience": "1y 2m"
+            "experience": "2y 7m"
         },
         {
             "name": "CSS",
@@ -82,7 +82,7 @@
             "icon": "SiCss3",
             "bgColor": "#1572B630",
             "description": "Estilização de páginas web com CSS3 e preprocessadores como SASS/SCSS",
-            "experience": "1y 2m"
+            "experience": "2y 7m"
         },
         {
             "name": "Vercel",
@@ -90,7 +90,7 @@
             "icon": "SiVercel",
             "bgColor": "#00000030",
             "description": "Deploy e hospedagem de aplicações Next.js e React",
-            "experience": "1y 5m"
+            "experience": "2y 10m"
         },
         {
             "name": "FastAPI",
@@ -98,7 +98,7 @@
             "icon": "SiFastapi",
             "bgColor": "#00956030",
             "description": "Desenvolvimento de APIs rápidas com Python",
-            "experience": "9m"
+            "experience": "2y 2m"
         },
         {
             "name": "Node.js",
@@ -106,7 +106,7 @@
             "icon": "FaNode",
             "bgColor": "#33993330",
             "description": "Desenvolvimento backend com Node.js",
-            "experience": "8m"
+            "experience": "2y 1m"
         },
         {
             "name": "Express",
@@ -114,7 +114,7 @@
             "icon": "SiExpress",
             "bgColor": "#00000030",
             "description": "Desenvolvimento de APIs com Express.js",
-            "experience": "8m"
+            "experience": "2y 1m"
         }
     ]
 }
