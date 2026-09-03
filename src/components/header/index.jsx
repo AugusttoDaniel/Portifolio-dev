@@ -32,6 +32,10 @@ const LogoText = styled.span`
   color: ${(props) => props.theme.colors.white};
 `;
 
+const LogoBracket = styled.span`
+  color: ${(props) => props.theme.colors.brand1};
+`;
+
 const MenuContainer = styled.nav`
   display: flex;
   gap: 1rem;
@@ -226,7 +230,7 @@ function Header() {
   return (
     <HeaderContainer>
       <Logo>
-        <LogoText>Daniel A.S.</LogoText>
+        <LogoText><LogoBracket>&lt;</LogoBracket>Daniel.dev<LogoBracket>/&gt;</LogoBracket></LogoText>
       </Logo>
 
       <MenuContainer as="nav">
