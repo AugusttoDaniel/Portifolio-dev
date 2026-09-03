@@ -92,6 +92,24 @@
     ],
     "job": [
         {
+            "date": "Jun. de 2025 - Dez. de 2025",
+            "title": "Desenvolvedor Full Stack Júnior",
+            "subtitle": "Empresa CoreIn",
+            "icon": "MdWork",
+            "description": "Manutenção de APIs e telas em React, desenvolvimento de automações, suporte ao cliente e implementação de sistemas.",
+            "tags": [
+                "React",
+                "APIs",
+                "Automação",
+                "Suporte ao Cliente"
+            ],
+            "button": {
+                "text": "Ver Detalhes",
+                "showArrow": true,
+                "onClick": "console.log('Ver detalhes do trabalho na CoreIn')"
+            }
+        },
+        {
             "date": "Out. de 2024 - Mar. de 2025",
             "title": " Estágio de Desenvolvedor Back-end",
             "subtitle": "Empresa MT EMPRENDIMENTOS",
