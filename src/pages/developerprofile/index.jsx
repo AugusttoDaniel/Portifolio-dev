@@ -295,7 +295,7 @@ const fadeInUp = {
 
 const DeveloperProfile = () => {
   const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'], layoutEffect: false });
 
   const yBlob1 = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const yBlob2 = useTransform(scrollYProgress, [0, 1], [0, -90]);

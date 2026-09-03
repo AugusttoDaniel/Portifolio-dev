@@ -228,7 +228,7 @@ const Projects = () => {
   const [visibleProjects, setVisibleProjects] = useState(3);
 
   const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'], layoutEffect: false });
   const yBlob = useTransform(scrollYProgress, [0, 1], [-100, 100]);
 
   useEffect(() => {

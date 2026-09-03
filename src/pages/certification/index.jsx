@@ -147,7 +147,7 @@ const EducationalJourney = () => {
     }, [data, active]);
 
     const sectionRef = useRef(null);
-    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
+    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'], layoutEffect: false });
     const yBlob = useTransform(scrollYProgress, [0, 1], [-90, 90]);
 
     // Configurações de animação

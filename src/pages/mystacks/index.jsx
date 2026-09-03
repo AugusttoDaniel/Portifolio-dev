@@ -405,7 +405,7 @@ const SkillsAndExperience = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const filterRef = useRef(null);
   const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'], layoutEffect: false });
   const yBlob1 = useTransform(scrollYProgress, [0, 1], [-90, 90]);
   const yBlob2 = useTransform(scrollYProgress, [0, 1], [70, -70]);
 
