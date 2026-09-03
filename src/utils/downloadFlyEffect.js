@@ -43,8 +43,8 @@ export function triggerDownloadFly(originElement) {
 
   const animation = flyer.animate(
     [
-      { transform: 'translate(0, 0) scale(1.6)', opacity: 1, offset: 0 },
-      { transform: `translate(${dx * 0.12}px, ${dy * 0.8}px) scale(0.85)`, opacity: 1, offset: 0.55 },
+      { transform: 'translate(0, 0) scale(2.6)', opacity: 1, offset: 0 },
+      { transform: `translate(${dx * 0.12}px, ${dy * 0.8}px) scale(1.1)`, opacity: 1, offset: 0.55 },
       { transform: `translate(${dx}px, ${dy}px) scale(0.25)`, opacity: 0, offset: 1 },
     ],
     {
