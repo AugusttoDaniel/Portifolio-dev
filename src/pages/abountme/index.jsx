@@ -310,11 +310,11 @@ const AboutMe = () => {
             </Greeting>
 
             <Bio>
-              Me chamo Daniel Augusto, sou um desenvolvedor em formação, com foco em <Emphasis>Front-end</Emphasis> e <Emphasis>Back-end</Emphasis>, buscando oportunidades para aplicar e expandir meus conhecimentos em projetos desafiadores. Atualmente, tenho experiência com tecnologias como <Emphasis>JavaScript</Emphasis>, <Emphasis>Node.js</Emphasis>, <Emphasis>TypeScript</Emphasis>, <Emphasis>React</Emphasis> e <Emphasis>MySQL</Emphasis>, e estou sempre em busca de aprimoramento profissional para me manter atualizado com as melhores práticas do mercado.
+              Me chamo Daniel Augusto, sou <Emphasis>Desenvolvedor Full Stack Júnior</Emphasis>, atuando profissionalmente com <Emphasis>React</Emphasis>, <Emphasis>Node.js</Emphasis> e <Emphasis>Nest.js</Emphasis> no dia a dia. Gosto de tirar projetos do papel e levá-los até a produção — por isso mantenho este portfólio sempre atualizado com os trabalhos que desenvolvo, tanto no emprego quanto em <Emphasis>projetos freelance</Emphasis>.
             </Bio>
 
             <Bio>
-              Estou em busca de uma vaga como <Emphasis>trainee</Emphasis> ou <Emphasis>júnior</Emphasis>, onde possa contribuir com minha dedicação, aprendizado contínuo e habilidades técnicas. Tenho experiência em <Emphasis>desenvolvimento back-end</Emphasis>, onde atuei na manutenção e implementação de funcionalidades para otimizar sistemas, além de habilidades em manutenção de hardware e suporte técnico, que me deram uma base sólida para entender o funcionamento de sistemas como um todo.
+              Estou aberto a <Emphasis>projetos freelance</Emphasis> — de sites institucionais a aplicações web completas. Antes de virar dev, trabalhei com <Emphasis>manutenção de hardware</Emphasis> e <Emphasis>suporte técnico</Emphasis>, o que me deu uma base sólida para entender como um sistema funciona de ponta a ponta, do hardware ao código.
             </Bio>
 
             <StatsSection>

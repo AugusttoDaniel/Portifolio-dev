@@ -387,7 +387,7 @@ const DeveloperProfile = () => {
             </TiltCard>
             <AvailabilityBadge>
               <PulseDot />
-              <AvailabilityText>Disponível para vaga de dev!</AvailabilityText>
+              <AvailabilityText>Disponível para projetos freelance!</AvailabilityText>
             </AvailabilityBadge>
           </RightColumn>
         </m.div>
