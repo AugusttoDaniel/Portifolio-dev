@@ -332,7 +332,7 @@ const DeveloperProfile = () => {
 
           <m.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}>
             <Paragraph>
-              Júnior com foco em <strong>React</strong>, <strong>Node.js</strong> e <strong>Nest.js</strong>. Já levei projetos do zero à produção.
+              Já levei projetos do zero à produção com <strong>React</strong>, <strong>Node.js</strong> e <strong>Nest.js</strong>. Full stack júnior, também disponível para projetos freelance.
             </Paragraph>
 
             <TechPills>
