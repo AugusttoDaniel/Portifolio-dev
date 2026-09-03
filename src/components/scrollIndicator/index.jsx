@@ -1,6 +1,6 @@
 import React from "react";
 // eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import styled from "styled-components";
 import { ChevronDown } from "lucide-react";
 
@@ -20,7 +20,7 @@ const Container = styled.div`
 export default function ScrollIndicator() {
   return (
     <Container>
-      <motion.div
+      <m.div
         animate={{
           opacity: [0.3, 1, 0.3], 
           y: [0, 10, 0], 
@@ -34,7 +34,7 @@ export default function ScrollIndicator() {
         }}
       >
         <ChevronDown size={40} className="text-white" />
-      </motion.div>
+      </m.div>
     </Container>
   );
 }

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FaDownload } from 'react-icons/fa';
 import foto from '../../assets/Foto.webp';
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
-const PageContainer = styled(motion.div)`
+const PageContainer = styled(m.div)`
   display: flex;
   align-items: center;
   margin: auto;
@@ -34,7 +34,7 @@ const ContentContainer = styled.div`
   padding: 20px;
 `;
 
-const Header = styled(motion.header)`
+const Header = styled(m.header)`
   text-align: center;
   margin-bottom: 50px;
 `;
@@ -51,7 +51,7 @@ const Subtitle = styled.h2`
   margin-bottom: 60px;
 `;
 
-const MainSection = styled(motion.div)`
+const MainSection = styled(m.div)`
   display: flex;
   flex-direction: row;
   gap: 40px;
@@ -62,29 +62,29 @@ const MainSection = styled(motion.div)`
   }
 `;
 
-const ProfileImageContainer = styled(motion.div)`
+const ProfileImageContainer = styled(m.div)`
   flex: 1;
   max-width: 350px;
   margin-bottom: 20px;
 `;
 
-const ProfileImage = styled(motion.img)`
+const ProfileImage = styled(m.img)`
   width: 100%;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 `;
 
-const InfoSection = styled(motion.div)`
+const InfoSection = styled(m.div)`
   flex: 2;
 `;
 
-const Greeting = styled(motion.h3)`
+const Greeting = styled(m.h3)`
   font-size: 2rem;
   margin-bottom: 20px;
   color: #ccd6f6;
 `;
 
-const Bio = styled(motion.p)`
+const Bio = styled(m.p)`
   font-size: 1rem;
   line-height: 1.7;
   margin-bottom: 20px;
@@ -98,7 +98,7 @@ const Emphasis = styled.span`
   font-weight: bold; // Adiciona destaque visual
 `;
 
-const TechLink = styled(motion.a)`
+const TechLink = styled(m.a)`
   color: #64ffda;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -109,24 +109,24 @@ const TechLink = styled(motion.a)`
   }
 `;
 
-const StatsSection = styled(motion.div)`
+const StatsSection = styled(m.div)`
   display: flex;
   gap: 30px;
   margin: 40px 0;
 `;
 
-const StatBox = styled(motion.div)`
+const StatBox = styled(m.div)`
   display: flex;
   align-items: baseline;
 `;
 
-const StatNumber = styled(motion.span)`
+const StatNumber = styled(m.span)`
   font-size: 3rem;
   font-weight: bold;
   color: #ccd6f6;
 `;
 
-const StatLabel = styled(motion.div)`
+const StatLabel = styled(m.div)`
   display: flex;
   flex-direction: column;
   margin-left: 10px;
@@ -137,7 +137,7 @@ const StatLabel = styled(motion.div)`
   }
 `;
 
-const ButtonContainer = styled(motion.div)`
+const ButtonContainer = styled(m.div)`
   margin-top: 20px;
 
   @media (max-width: 768px) {
@@ -146,7 +146,7 @@ const ButtonContainer = styled(motion.div)`
   }
 `;
 
-const Button = styled(motion.a)`
+const Button = styled(m.a)`
   display: inline-flex;
   align-items: center;
   background-color: #1e3a5f;
@@ -167,7 +167,7 @@ const Button = styled(motion.a)`
   }
 `;
 
-const SocialLinks = styled(motion.div)`
+const SocialLinks = styled(m.div)`
   margin-top: 20px;
 
   a {
@@ -182,7 +182,7 @@ const SocialLinks = styled(motion.div)`
   }
 `;
 
-const Divider = styled(motion.hr)`
+const Divider = styled(m.hr)`
   width: 60px;
   height: 4px;
   background-color: #64ffda;

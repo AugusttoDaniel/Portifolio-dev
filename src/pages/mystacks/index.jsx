@@ -15,7 +15,7 @@ import {
   SiNestjs
 } from 'react-icons/si';
 import { fetchSkillsData } from '../../mocks/apiMock';
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 const iconMapping = {
   FaReact: FaReact,
   SiTailwindcss: SiTailwindcss,
@@ -57,7 +57,7 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
-const Header = styled(motion.div)`
+const Header = styled(m.div)`
   text-align: center;
   margin-bottom: 40px;
 `;
@@ -73,7 +73,7 @@ const Subtitle = styled.p`
   color: #8892b0;
 `;
 
-const SearchBar = styled(motion.div)`
+const SearchBar = styled(m.div)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -197,7 +197,7 @@ const FilterOption = styled.div`
   }
 `;
 
-const SkillsGrid = styled(motion.div)`
+const SkillsGrid = styled(m.div)`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
@@ -571,7 +571,7 @@ const SkillsAndExperience = () => {
         </SearchBar>
 
         {selectedCategories.length > 0 && (
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -588,7 +588,7 @@ const SkillsAndExperience = () => {
                 );
               })}
             </ActiveFilters>
-          </motion.div>
+          </m.div>
         )}
 
         {filteredSkills.length > 0 ? (
@@ -600,7 +600,7 @@ const SkillsAndExperience = () => {
               variants={staggerContainer}
             >
               {currentItems.map((skill, index) => (
-                <motion.div key={index} variants={cardVariants}>
+                <m.div key={index} variants={cardVariants}>
                   <SkillCard>
                     <CardHeader>
                       <IconWrapper $bgColor={skill.bgColor}>
@@ -619,13 +619,13 @@ const SkillsAndExperience = () => {
                       Experiência: <span>{skill.experience}</span>
                     </Experience>
                   </SkillCard>
-                </motion.div>
+                </m.div>
               ))}
             </SkillsGrid>
 
             {/* Componente de paginação */}
             {totalPages > 1 && (
-              <motion.div
+              <m.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.1 }}
@@ -653,11 +653,11 @@ const SkillsAndExperience = () => {
                     <FaArrowRight />
                   </PageButton>
                 </PaginationContainer>
-              </motion.div>
+              </m.div>
             )}
           </>
         ) : (
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -667,7 +667,7 @@ const SkillsAndExperience = () => {
               <h3>Nenhuma habilidade encontrada</h3>
               <p>Tente ajustar seus filtros ou termos de busca</p>
             </EmptyState>
-          </motion.div>
+          </m.div>
         )}
       </Container>
     </SkillsSection>

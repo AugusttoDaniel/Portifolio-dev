@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { fetchProjectsData } from '../../mocks/apiMock';
 import LoadingSpinner from '../../components/loadingspinner';
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 // Importar imagens
 import portfolioImage from '../../assets/Portifolio.webp';
 import assistecImage from '../../assets/Assistec.webp';
@@ -32,7 +32,7 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
-const Header = styled(motion.div)`
+const Header = styled(m.div)`
   text-align: center;
   margin-bottom: 60px;
 `;
@@ -48,7 +48,7 @@ const Subtitle = styled.p`
   color: #8892b0;
 `;
 
-const ProjectsList = styled(motion.div)`
+const ProjectsList = styled(m.div)`
   display: flex;
   flex-direction: column;
   gap: 80px;
@@ -262,7 +262,7 @@ const Projects = () => {
 
         <ProjectsList>
           {projects.slice(0, visibleProjects).map((project, index) => (
-            <motion.div
+            <m.div
               key={project.id}
               custom={index}
               initial="hidden"
@@ -297,12 +297,12 @@ const Projects = () => {
                   </ButtonsContainer>
                 </ProjectContent>
               </ProjectCard>
-            </motion.div>
+            </m.div>
           ))}
         </ProjectsList>
 
         {projects.length > visibleProjects ? (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -311,7 +311,7 @@ const Projects = () => {
             <ViewMoreButton onClick={loadMoreProjects} aria-label="Carregar mais projetos">
               Ver mais projetos →
             </ViewMoreButton>
-          </motion.div>
+          </m.div>
         ) : (
           <ViewMoreButton disabled aria-label="Não há mais projetos para carregar">
           </ViewMoreButton>

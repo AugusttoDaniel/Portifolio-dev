@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { LazyMotion, domAnimation } from 'framer-motion';
 import { GlobalStyle } from './styles/globalStyles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './styles/theme';
@@ -66,26 +67,28 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-       <Header />
-       <DeveloperProfile /> 
-      <AboutMe />
-       <Stack />
-      <Certification />
-      <Projects />
-      <Footer />  
-      <BackToTopContainer $isVisible={isVisible}>
-        <Button
-          icon={FaArrowUp}
-          backgroundColor="#007bff"
-          textColor="#ffffff"
-          hoverBackgroundColor="#0056b3"
-          padding="0.75rem"
-          borderRadius="50%"
-          onClick={scrollToTop}
-          aria-label="Voltar ao topo"
-        />
-      </BackToTopContainer>
+      <LazyMotion features={domAnimation} strict>
+        <GlobalStyle />
+         <Header />
+         <DeveloperProfile />
+        <AboutMe />
+         <Stack />
+        <Certification />
+        <Projects />
+        <Footer />
+        <BackToTopContainer $isVisible={isVisible}>
+          <Button
+            icon={FaArrowUp}
+            backgroundColor="#007bff"
+            textColor="#ffffff"
+            hoverBackgroundColor="#0056b3"
+            padding="0.75rem"
+            borderRadius="50%"
+            onClick={scrollToTop}
+            aria-label="Voltar ao topo"
+          />
+        </BackToTopContainer>
+      </LazyMotion>
     </ThemeProvider>
   );
 }

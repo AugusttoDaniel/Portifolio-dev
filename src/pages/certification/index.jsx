@@ -6,7 +6,7 @@ import { FaGraduationCap } from "react-icons/fa";
 import { GrCertificate } from "react-icons/gr";
 import { MdWork } from "react-icons/md";
 import LoadingSpinner from '../../components/loadingspinner';
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 
 const Container = styled.section`
@@ -30,7 +30,7 @@ const Container = styled.section`
 `;
 
 
-const Header = styled(motion.header)`
+const Header = styled(m.header)`
   text-align: center;
   margin-bottom: 2rem;
 `;
@@ -46,7 +46,7 @@ const Subtitle = styled.p`
   opacity: 0.8;
 `;
 
-const NavContainer = styled(motion.div)`
+const NavContainer = styled(m.div)`
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -71,7 +71,7 @@ const NavButton = styled.button`
   }
 `;
 
-const TimelineContainer = styled(motion.div)`
+const TimelineContainer = styled(m.div)`
   width: 100%;
 `;
 

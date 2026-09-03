@@ -6,7 +6,7 @@ import ScrollIndicator from '../../components/scrollIndicator';
 import AvailabilityButtonComponent from '../../components/availabilityButtonComponent';
 import { FaBriefcase } from 'react-icons/fa';
 import StarConstellation from '../../components/backgroundStar';
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import TypingText from "../../components/typingText";
 
 const Container = styled.section`
@@ -24,7 +24,7 @@ const Container = styled.section`
   }
 `;
 
-const Title = styled(motion.h1)`
+const Title = styled(m.h1)`
   color: ${(props) => props.theme.colors.brand1};
   font-family: ${(props) => props.theme.typography.fontFamily};
   font-size: ${(props) => props.theme.typography.fontSize["bg-text-u"]};
@@ -39,7 +39,7 @@ const Title = styled(motion.h1)`
   }
 `;
 
-const RightSection = styled(motion.div)`
+const RightSection = styled(m.div)`
   padding: 2rem;
 
   @media (max-width: 768px) {
@@ -62,7 +62,7 @@ const CodeTag = styled.span`
   margin-bottom: 0.5rem;
 `;
 
-const Greeting = styled(motion.h2)`
+const Greeting = styled(m.h2)`
   font-size: 2.5rem;
   margin: 0;
 
@@ -90,7 +90,7 @@ const Bio = styled.p`
   }
 `;
 
-const IconContainer = styled(motion.div)`
+const IconContainer = styled(m.div)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -166,7 +166,7 @@ const DeveloperProfile = () => {
   return (
     <Container id="home">
       <StarConstellation />
-      <motion.div
+      <m.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -180,7 +180,7 @@ const DeveloperProfile = () => {
           hoverColor="#0056b3"
           hoverTextColor="#ffffff"
         />
-      </motion.div>
+      </m.div>
       
       <RightSection 
         initial="hidden"
@@ -200,13 +200,13 @@ const DeveloperProfile = () => {
           />
         </Title>
         
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={staggerContainer}
         >
-          <motion.div variants={fadeInUp}>
+          <m.div variants={fadeInUp}>
             <CodeTag>&lt;h1&gt;</CodeTag>
             <Greeting>
               E ai<br />
@@ -214,11 +214,11 @@ const DeveloperProfile = () => {
               sou <Name>Desenvolvedor full stack</Name>
             </Greeting>
             <CodeTag>&lt;/h1&gt;<br /></CodeTag>
-          </motion.div>
+          </m.div>
           
           <Codespace></Codespace>
           
-          <motion.div variants={fadeInUp}>
+          <m.div variants={fadeInUp}>
             <CodeTag>&lt;p&gt;</CodeTag>
             <Bio>
               Sou um desenvolvedor júnior apaixonado por tecnologia. Tenho <br />
@@ -226,7 +226,7 @@ const DeveloperProfile = () => {
               aprender mais e aprimorar minhas habilidades.
             </Bio>
             <CodeTag>&lt;/p&gt;</CodeTag>
-          </motion.div>
+          </m.div>
           
           <IconContainer
             initial="hidden"
@@ -234,44 +234,44 @@ const DeveloperProfile = () => {
             viewport={{ once: true, amount: 0.2 }}
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp}>
+            <m.div variants={fadeInUp}>
               <SocialButton
                 onClick={() => openSocialLink('https://github.com/AugusttoDaniel')}
                 aria-label="GitHub"
               >
                 <FaGithub />
               </SocialButton>
-            </motion.div>
+            </m.div>
             
-            <motion.div variants={fadeInUp}>
+            <m.div variants={fadeInUp}>
               <SocialButton
                 onClick={() => openSocialLink('https://wa.me/5533988595641')}
                 aria-label="WhatsApp"
               >
                 <FaWhatsapp />
               </SocialButton>
-            </motion.div>
+            </m.div>
             
-            <motion.div variants={fadeInUp}>
+            <m.div variants={fadeInUp}>
               <SocialButton
                 onClick={() => openSocialLink('https://www.linkedin.com/in/danielaugustto/')}
                 aria-label="LinkedIn"
               >
                 <FaLinkedin />
               </SocialButton>
-            </motion.div>
+            </m.div>
           </IconContainer>
-        </motion.div>
+        </m.div>
       </RightSection>
       
-      <motion.div
+      <m.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeIn}
       >
         <ScrollIndicator />
-      </motion.div>
+      </m.div>
     </Container>
   );
 }
