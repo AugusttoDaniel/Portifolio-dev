@@ -15,7 +15,9 @@ import {
   SiNestjs
 } from 'react-icons/si';
 import { fetchSkillsData } from '../../mocks/apiMock';
-import { m } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
+import RevealText from '../../components/revealText';
+import TiltCard from '../../components/tiltCard';
 const iconMapping = {
   FaReact: FaReact,
   SiTailwindcss: SiTailwindcss,
@@ -53,7 +55,7 @@ const SkillsSection = styled.section`
   }
 `;
 
-const Blob = styled.div`
+const Blob = styled(m.div)`
   position: absolute;
   filter: blur(${(props) => props.$blur || '110px'});
   opacity: ${(props) => props.$opacity || 0.2};
@@ -402,6 +404,10 @@ const SkillsAndExperience = () => {
   const [showFilterDropdown, setShowFilterDropdown] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const filterRef = useRef(null);
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
+  const yBlob1 = useTransform(scrollYProgress, [0, 1], [-90, 90]);
+  const yBlob2 = useTransform(scrollYProgress, [0, 1], [70, -70]);
 
   // Estados para a paginação
   const [currentPage, setCurrentPage] = useState(1);
@@ -559,9 +565,9 @@ const SkillsAndExperience = () => {
   }, [searchTerm]);
 
   return (
-    <SkillsSection id='stack'>
-      <Blob style={{ top: '-200px', left: '-120px', width: 560, height: 560, borderRadius: '50% 50% 40% 60% / 55% 45% 55% 45%', background: 'radial-gradient(circle at 40% 40%, #085C87 0%, transparent 72%)' }} $opacity={0.26} />
-      <Blob style={{ bottom: '-160px', right: '-140px', width: 480, height: 480, borderRadius: '45% 55% 60% 40% / 50% 50% 50% 50%', background: 'radial-gradient(circle at 60% 50%, #1BA3E8 0%, transparent 70%)' }} $opacity={0.2} $blur="100px" />
+    <SkillsSection id='stack' ref={sectionRef}>
+      <Blob style={{ y: yBlob1, top: '-200px', left: '-120px', width: 560, height: 560, borderRadius: '50% 50% 40% 60% / 55% 45% 55% 45%', background: 'radial-gradient(circle at 40% 40%, #085C87 0%, transparent 72%)' }} $opacity={0.26} />
+      <Blob style={{ y: yBlob2, bottom: '-160px', right: '-140px', width: 480, height: 480, borderRadius: '45% 55% 60% 40% / 50% 50% 50% 50%', background: 'radial-gradient(circle at 60% 50%, #1BA3E8 0%, transparent 70%)' }} $opacity={0.2} $blur="100px" />
       <Watermark>STACK</Watermark>
 
       <Container>
@@ -571,7 +577,7 @@ const SkillsAndExperience = () => {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeInUp}
         >
-          <Title>Habilidades & Experiência</Title>
+          <Title><RevealText text="Habilidades & Experiência" /></Title>
           <Subtitle>Meus conhecimentos que adquiri ao longo da minha jornada</Subtitle>
         </Header>
 
@@ -648,24 +654,26 @@ const SkillsAndExperience = () => {
             >
               {currentItems.map((skill, index) => (
                 <m.div key={index} variants={cardVariants}>
-                  <SkillCard>
-                    <CardHeader>
-                      <IconWrapper $bgColor={skill.bgColor} $iconColor={skill.bgColor ? skill.bgColor.slice(0, 7) : undefined}>
-                        {React.createElement(iconMapping[skill.icon], {
-                          size: 24,
-                        })}
-                      </IconWrapper>
+                  <TiltCard maxTilt={5} scale={1.02}>
+                    <SkillCard>
+                      <CardHeader>
+                        <IconWrapper $bgColor={skill.bgColor} $iconColor={skill.bgColor ? skill.bgColor.slice(0, 7) : undefined}>
+                          {React.createElement(iconMapping[skill.icon], {
+                            size: 24,
+                          })}
+                        </IconWrapper>
 
-                      <SkillName>
-                        <h3>{skill.name}</h3>
-                        <span>{skill.category}</span>
-                      </SkillName>
-                    </CardHeader>
-                    <Description>{skill.description}</Description>
-                    <Experience>
-                      Experiência: <span>{skill.experience}</span>
-                    </Experience>
-                  </SkillCard>
+                        <SkillName>
+                          <h3>{skill.name}</h3>
+                          <span>{skill.category}</span>
+                        </SkillName>
+                      </CardHeader>
+                      <Description>{skill.description}</Description>
+                      <Experience>
+                        Experiência: <span>{skill.experience}</span>
+                      </Experience>
+                    </SkillCard>
+                  </TiltCard>
                 </m.div>
               ))}
             </SkillsGrid>

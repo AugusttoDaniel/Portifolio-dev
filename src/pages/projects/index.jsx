@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { fetchProjectsData } from '../../mocks/apiMock';
 import LoadingSpinner from '../../components/loadingspinner';
-import { m } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
+import RevealText from '../../components/revealText';
+import TiltCard from '../../components/tiltCard';
+import MagneticButton from '../../components/magneticButton';
 // Importar imagens
 import portfolioImage from '../../assets/Portifolio.webp';
 import assistecImage from '../../assets/Assistec.webp';
@@ -28,7 +31,7 @@ const ProjectsSection = styled.div`
   }
 `;
 
-const Blob = styled.div`
+const Blob = styled(m.div)`
   position: absolute;
   top: -180px;
   right: -160px;
@@ -224,6 +227,10 @@ const Projects = () => {
   const [error, setError] = useState(null);
   const [visibleProjects, setVisibleProjects] = useState(3);
 
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
+  const yBlob = useTransform(scrollYProgress, [0, 1], [-100, 100]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -286,8 +293,8 @@ const Projects = () => {
   }
 
   return (
-    <ProjectsSection id="projetos">
-      <Blob />
+    <ProjectsSection id="projetos" ref={sectionRef}>
+      <Blob style={{ y: yBlob }} />
       <Watermark>PROJETOS</Watermark>
       <Container>
         <Header
@@ -295,7 +302,7 @@ const Projects = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <Title>Projetos</Title>
+          <Title><RevealText text="Projetos" /></Title>
           <Subtitle>Aqui você encontrará alguns dos meus projetos pessoais mais recentes</Subtitle>
         </Header>
 
@@ -310,12 +317,14 @@ const Projects = () => {
               variants={cardVariants}
             >
               <ProjectCard>
-                <ProjectImage>
-                  <img
-                    src={getImagePath(project.imagem)}
-                    alt={project.title}
-                  />
-                </ProjectImage>
+                <TiltCard maxTilt={6} scale={1.015} style={{ flex: 1 }}>
+                  <ProjectImage>
+                    <img
+                      src={getImagePath(project.imagem)}
+                      alt={project.title}
+                    />
+                  </ProjectImage>
+                </TiltCard>
                 <ProjectContent>
                   <ProjectTitle>{project.title}</ProjectTitle>
                   <ProjectDescription>{project.description}</ProjectDescription>
@@ -325,13 +334,17 @@ const Projects = () => {
                     ))}
                   </TechStack>
                   <ButtonsContainer>
-                    <Button href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                      Ver Demo
-                    </Button>
-                    {project.codeLink && (
-                      <Button href={project.codeLink} target="_blank" rel="noopener noreferrer">
-                        Ver Código
+                    <MagneticButton>
+                      <Button href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                        Ver Demo
                       </Button>
+                    </MagneticButton>
+                    {project.codeLink && (
+                      <MagneticButton>
+                        <Button href={project.codeLink} target="_blank" rel="noopener noreferrer">
+                          Ver Código
+                        </Button>
+                      </MagneticButton>
                     )}
                   </ButtonsContainer>
                 </ProjectContent>

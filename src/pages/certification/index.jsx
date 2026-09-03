@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import styled from 'styled-components';
 import Timeline from '../../components/timeline';
 import { fetchEducationalData } from '../../mocks/apiMock';
@@ -6,7 +6,8 @@ import { FaGraduationCap } from "react-icons/fa";
 import { GrCertificate } from "react-icons/gr";
 import { MdWork } from "react-icons/md";
 import LoadingSpinner from '../../components/loadingspinner';
-import { m } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
+import RevealText from '../../components/revealText';
 
 
 const Container = styled.section`
@@ -30,7 +31,7 @@ const Container = styled.section`
   }
 `;
 
-const Blob = styled.div`
+const Blob = styled(m.div)`
   position: absolute;
   filter: blur(110px);
   opacity: 0.26;
@@ -145,6 +146,10 @@ const EducationalJourney = () => {
         return data ? data[active] : [];
     }, [data, active]);
 
+    const sectionRef = useRef(null);
+    const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
+    const yBlob = useTransform(scrollYProgress, [0, 1], [-90, 90]);
+
     // Configurações de animação
     const fadeInUp = {
         hidden: { opacity: 0, y: 50 },
@@ -177,8 +182,8 @@ const EducationalJourney = () => {
     };
 
     return (
-        <Container id="certificados">
-            <Blob />
+        <Container id="certificados" ref={sectionRef}>
+            <Blob style={{ y: yBlob }} />
             <Watermark>JORNADA</Watermark>
             <Header
               initial="hidden"
@@ -186,7 +191,7 @@ const EducationalJourney = () => {
               viewport={{ once: true, amount: 0.2 }}
               variants={fadeInUp}
             >
-                <Title>Jornada Educacional</Title>
+                <Title><RevealText text="Jornada Educacional" /></Title>
                 <Subtitle>Explore minha trajetória de aprendizado e crescimento profissional</Subtitle>
             </Header>
 

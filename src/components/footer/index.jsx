@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import MagneticButton from '../magneticButton';
 
 const FooterContainer = styled.footer`
   position: relative;
@@ -119,30 +120,36 @@ const Footer = () => (
     <FooterSection>
       <FooterTitle>Redes Sociais</FooterTitle>
       <SocialIcons>
-        <SocialIcon
-          href="https://github.com/AugusttoDaniel"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub"
-        >
-          <FaGithub size={20} />
-        </SocialIcon>
-        <SocialIcon
-          href="https://www.linkedin.com/in/danielaugustto/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn"
-        >
-          <FaLinkedin size={20} />
-        </SocialIcon>
-        <SocialIcon
-          href="mailto:danielsje7133@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="E-mail"
-        >
-          <FaEnvelope size={20} />
-        </SocialIcon>
+        <MagneticButton strength={0.5}>
+          <SocialIcon
+            href="https://github.com/AugusttoDaniel"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <FaGithub size={20} />
+          </SocialIcon>
+        </MagneticButton>
+        <MagneticButton strength={0.5}>
+          <SocialIcon
+            href="https://www.linkedin.com/in/danielaugustto/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin size={20} />
+          </SocialIcon>
+        </MagneticButton>
+        <MagneticButton strength={0.5}>
+          <SocialIcon
+            href="mailto:danielsje7133@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="E-mail"
+          >
+            <FaEnvelope size={20} />
+          </SocialIcon>
+        </MagneticButton>
       </SocialIcons>
     </FooterSection>
 

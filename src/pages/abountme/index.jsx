@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { FaDownload } from 'react-icons/fa';
 import foto from '../../assets/Foto.webp';
-import { m } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
+import RevealText from '../../components/revealText';
+import TiltCard from '../../components/tiltCard';
+import MagneticButton from '../../components/magneticButton';
 
 const PageContainer = styled(m.div)`
   display: flex;
@@ -29,7 +32,7 @@ const PageContainer = styled(m.div)`
   }
 `;
 
-const Blob = styled.div`
+const Blob = styled(m.div)`
   position: absolute;
   filter: blur(${(props) => props.$blur || '110px'});
   opacity: ${(props) => props.$opacity || 0.2};
@@ -256,10 +259,15 @@ const AboutMe = () => {
     }
   };
 
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
+  const yBlob1 = useTransform(scrollYProgress, [0, 1], [-80, 80]);
+  const yBlob2 = useTransform(scrollYProgress, [0, 1], [60, -60]);
+
   return (
-    <PageContainer id='about'>
-      <Blob style={{ top: '-160px', left: '420px', width: 520, height: 520, borderRadius: '38% 62% 55% 45% / 48% 40% 60% 52%', background: 'radial-gradient(circle at 40% 40%, #085C87 0%, transparent 72%)' }} $opacity={0.26} />
-      <Blob style={{ bottom: '-200px', right: '-160px', width: 600, height: 600, borderRadius: '55% 45% 40% 60% / 45% 55% 45% 55%', background: 'radial-gradient(circle at 60% 50%, #1BA3E8 0%, transparent 70%)' }} $opacity={0.22} $blur="120px" />
+    <PageContainer id='about' ref={sectionRef}>
+      <Blob style={{ y: yBlob1, top: '-160px', left: '420px', width: 520, height: 520, borderRadius: '38% 62% 55% 45% / 48% 40% 60% 52%', background: 'radial-gradient(circle at 40% 40%, #085C87 0%, transparent 72%)' }} $opacity={0.26} />
+      <Blob style={{ y: yBlob2, bottom: '-200px', right: '-160px', width: 600, height: 600, borderRadius: '55% 45% 40% 60% / 45% 55% 45% 55%', background: 'radial-gradient(circle at 60% 50%, #1BA3E8 0%, transparent 70%)' }} $opacity={0.22} $blur="120px" />
       <Watermark>SOBRE</Watermark>
 
       <ContentContainer>
@@ -270,7 +278,7 @@ const AboutMe = () => {
           variants={fadeInUp}
         >
           <Title>
-            Sobre mim
+            <RevealText text="Sobre mim" />
           </Title>
           <Divider />
           <Subtitle>
@@ -285,7 +293,9 @@ const AboutMe = () => {
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeInLeft}
           >
-            <ProfileImage src={foto} alt="Uma foto minha Daniel Augusto" />
+            <TiltCard maxTilt={7}>
+              <ProfileImage src={foto} alt="Uma foto minha Daniel Augusto" />
+            </TiltCard>
           </ProfileImageContainer>
 
           <InfoSection
@@ -295,7 +305,7 @@ const AboutMe = () => {
             variants={fadeInRight}
           >
             <Greeting>
-              Saudações, um pouco sobre mim!
+              <RevealText text="Saudações, um pouco sobre mim!" />
             </Greeting>
 
             <Bio>
@@ -328,13 +338,15 @@ const AboutMe = () => {
               </StatBox>
             </StatsSection>
             <ButtonContainer>
-              <Button
-                href="https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w"
-                download
-                aria-label="Baixar CV"
-              >
-                <FaDownload /> Baixar CV
-              </Button>
+              <MagneticButton>
+                <Button
+                  href="https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w"
+                  download
+                  aria-label="Baixar CV"
+                >
+                  <FaDownload /> Baixar CV
+                </Button>
+              </MagneticButton>
             </ButtonContainer>
           </InfoSection>
         </MainSection>

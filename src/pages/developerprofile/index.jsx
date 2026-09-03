@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { FaArrowRight, FaDownload } from 'react-icons/fa';
-import { m } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
+import RevealText from '../../components/revealText';
+import TiltCard from '../../components/tiltCard';
+import MagneticButton from '../../components/magneticButton';
 
 const Container = styled.section`
   position: relative;
@@ -19,7 +22,7 @@ const Container = styled.section`
   }
 `;
 
-const Blob = styled.div`
+const Blob = styled(m.div)`
   position: absolute;
   filter: blur(${(props) => props.$blur || '110px'});
   opacity: ${(props) => props.$opacity || 0.2};
@@ -291,11 +294,18 @@ const fadeInUp = {
 };
 
 const DeveloperProfile = () => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });
+
+  const yBlob1 = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const yBlob2 = useTransform(scrollYProgress, [0, 1], [0, -90]);
+  const yBlob3 = useTransform(scrollYProgress, [0, 1], [0, 160]);
+
   return (
-    <Container id="home">
-      <Blob style={{ top: '-220px', right: '-200px', width: 600, height: 600, borderRadius: '44% 56% 62% 38% / 41% 44% 56% 59%', background: 'radial-gradient(circle at 35% 30%, #1BA3E8 0%, transparent 70%)' }} $opacity={0.24} />
-      <Blob style={{ bottom: '-260px', left: '-180px', width: 520, height: 520, borderRadius: '58% 42% 39% 61% / 55% 48% 52% 45%', background: 'radial-gradient(circle at 60% 60%, #5CCBF5 0%, transparent 70%)' }} $opacity={0.18} $blur="120px" />
-      <Blob style={{ top: '220px', right: '120px', width: 420, height: 420, borderRadius: '50%', background: 'radial-gradient(circle, #1BA3E8 0%, transparent 72%)' }} $opacity={0.16} $blur="90px" />
+    <Container id="home" ref={sectionRef}>
+      <Blob style={{ y: yBlob1, top: '-220px', right: '-200px', width: 600, height: 600, borderRadius: '44% 56% 62% 38% / 41% 44% 56% 59%', background: 'radial-gradient(circle at 35% 30%, #1BA3E8 0%, transparent 70%)' }} $opacity={0.24} />
+      <Blob style={{ y: yBlob2, bottom: '-260px', left: '-180px', width: 520, height: 520, borderRadius: '58% 42% 39% 61% / 55% 48% 52% 45%', background: 'radial-gradient(circle at 60% 60%, #5CCBF5 0%, transparent 70%)' }} $opacity={0.18} $blur="120px" />
+      <Blob style={{ y: yBlob3, top: '220px', right: '120px', width: 420, height: 420, borderRadius: '50%', background: 'radial-gradient(circle, #1BA3E8 0%, transparent 72%)' }} $opacity={0.16} $blur="90px" />
 
       <Watermark>DEV JR<br />FULL STACK</Watermark>
 
@@ -306,13 +316,18 @@ const DeveloperProfile = () => {
             <EyebrowLabel>Desenvolvedor Full Stack</EyebrowLabel>
           </Eyebrow>
 
-          <m.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}>
-            <Headline>
-              <div>Eu construo</div>
-              <div>produtos full stack</div>
+          <Headline>
+            <RevealText as="div" text="Eu construo" />
+            <RevealText as="div" text="produtos full stack" />
+            <m.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.6 }}
+              variants={fadeInUp}
+            >
               <HeadlineGradient>que funcionam.</HeadlineGradient>
-            </Headline>
-          </m.div>
+            </m.div>
+          </Headline>
 
           <m.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}>
             <Paragraph>
@@ -327,18 +342,22 @@ const DeveloperProfile = () => {
             </TechPills>
 
             <ButtonsRow>
-              <PrimaryButton href="#projetos">
-                Ver Projetos
-                <FaArrowRight size={14} />
-              </PrimaryButton>
-              <SecondaryButton
-                href="https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaDownload size={14} />
-                Baixar CV
-              </SecondaryButton>
+              <MagneticButton>
+                <PrimaryButton href="#projetos">
+                  Ver Projetos
+                  <FaArrowRight size={14} />
+                </PrimaryButton>
+              </MagneticButton>
+              <MagneticButton>
+                <SecondaryButton
+                  href="https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaDownload size={14} />
+                  Baixar CV
+                </SecondaryButton>
+              </MagneticButton>
             </ButtonsRow>
           </m.div>
         </LeftColumn>
@@ -346,23 +365,25 @@ const DeveloperProfile = () => {
         <m.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp} style={{ width: '100%', maxWidth: 460 }}>
           <RightColumn>
             <CodeGlow />
-            <CodeCard>
-              <CodeCardHeader>
-                <TrafficDot $color="#FF5F57" />
-                <TrafficDot $color="#FEBC2E" />
-                <TrafficDot $color="#28C840" />
-                <FileName>daniel.dev.js</FileName>
-              </CodeCardHeader>
-              <CodeCardBody>
-                <div><span style={{ color: '#5CCBF5' }}>const</span> <span style={{ color: '#F1F5F9' }}>dev</span> = {'{'}</div>
-                <div>&nbsp;&nbsp;nome: <span style={{ color: '#A5E8C4' }}>'Daniel'</span>,</div>
-                <div>&nbsp;&nbsp;cargo: <span style={{ color: '#A5E8C4' }}>'Full Stack Júnior'</span>,</div>
-                <div>&nbsp;&nbsp;stack: [<span style={{ color: '#A5E8C4' }}>'React'</span>, <span style={{ color: '#A5E8C4' }}>'Node'</span>, <span style={{ color: '#A5E8C4' }}>'Nest'</span>],</div>
-                <div>&nbsp;&nbsp;experiencia: <span style={{ color: '#FBBF6B' }}>2</span>, <span style={{ color: '#5B6B84' }}>// anos</span></div>
-                <div>&nbsp;&nbsp;disponivel: <span style={{ color: '#5CCBF5' }}>true</span></div>
-                <div>{'};'}</div>
-              </CodeCardBody>
-            </CodeCard>
+            <TiltCard maxTilt={6} scale={1.015}>
+              <CodeCard>
+                <CodeCardHeader>
+                  <TrafficDot $color="#FF5F57" />
+                  <TrafficDot $color="#FEBC2E" />
+                  <TrafficDot $color="#28C840" />
+                  <FileName>daniel.dev.js</FileName>
+                </CodeCardHeader>
+                <CodeCardBody>
+                  <div><span style={{ color: '#5CCBF5' }}>const</span> <span style={{ color: '#F1F5F9' }}>dev</span> = {'{'}</div>
+                  <div>&nbsp;&nbsp;nome: <span style={{ color: '#A5E8C4' }}>'Daniel'</span>,</div>
+                  <div>&nbsp;&nbsp;cargo: <span style={{ color: '#A5E8C4' }}>'Full Stack Júnior'</span>,</div>
+                  <div>&nbsp;&nbsp;stack: [<span style={{ color: '#A5E8C4' }}>'React'</span>, <span style={{ color: '#A5E8C4' }}>'Node'</span>, <span style={{ color: '#A5E8C4' }}>'Nest'</span>],</div>
+                  <div>&nbsp;&nbsp;experiencia: <span style={{ color: '#FBBF6B' }}>2</span>, <span style={{ color: '#5B6B84' }}>// anos</span></div>
+                  <div>&nbsp;&nbsp;disponivel: <span style={{ color: '#5CCBF5' }}>true</span></div>
+                  <div>{'};'}</div>
+                </CodeCardBody>
+              </CodeCard>
+            </TiltCard>
             <AvailabilityBadge>
               <PulseDot />
               <AvailabilityText>Disponível para vaga de dev!</AvailabilityText>

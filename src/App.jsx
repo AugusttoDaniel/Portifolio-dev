@@ -13,6 +13,7 @@ import Certification from './pages/certification';
 import Projects from './pages/projects';
 import DeveloperProfile from './pages/developerprofile';
 import { FaArrowUp } from 'react-icons/fa';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
 
 
 const BackToTopContainer = styled.div`
@@ -30,6 +31,8 @@ const BackToTopContainer = styled.div`
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
+
+  useSmoothScroll();
 
   const scrollToTop = () => {
     const duration = 1000; 
