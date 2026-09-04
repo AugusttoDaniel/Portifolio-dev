@@ -1,7 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import { m } from 'framer-motion';
 import TimelineItem from '../timelineitem';
 import { useIsPhone } from '../../hooks/useIsPhone';
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (index) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: index * 0.25,
+      duration: 0.6,
+      ease: 'easeOut',
+    },
+  }),
+};
 
 const TimelineContainer = styled.div`
   position: relative;
@@ -36,7 +50,7 @@ const TimelineLine = styled.div`
   }
 `;
 
-const TimelineDot = styled.div`
+const TimelineDot = styled(m.div)`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -75,21 +89,34 @@ const Timeline = ({
       />
 
       {$items.map((item, index) => {
-        const percentage = ((index + 1) / (totalItems + 1)) * 100; 
+        const percentage = ((index + 1) / (totalItems + 1)) * 100;
         return (
           <TimelineDot
             key={`dot-${item.title}-${item.date}`}
             $top={`${percentage}%`}
+            custom={index}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={itemVariants}
           />
         );
       })}
 
       {$items.map((item, index) => (
-        <TimelineItem
+        <m.div
           key={`item-${item.title}-${item.date}`}
-          $position={isPhone ? 'left' : index % 2 === 0 ? 'right' : 'left'}
-          {...item}
-        />
+          custom={index}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={itemVariants}
+        >
+          <TimelineItem
+            $position={isPhone ? 'left' : index % 2 === 0 ? 'right' : 'left'}
+            {...item}
+          />
+        </m.div>
       ))}
     </TimelineContainer>
   );

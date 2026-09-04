@@ -429,26 +429,17 @@ const SkillsAndExperience = () => {
     }
   };
 
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
+    visible: (index) => ({
       opacity: 1,
       y: 0,
       transition: {
+        delay: index * 0.1,
         duration: 0.5,
         ease: "easeOut"
       }
-    }
+    })
   };
 
   useEffect(() => {
@@ -646,14 +637,16 @@ const SkillsAndExperience = () => {
 
         {filteredSkills.length > 0 ? (
           <>
-            <SkillsGrid
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-              variants={staggerContainer}
-            >
-              {currentItems.map((skill) => (
-                <m.div key={skill.name} variants={cardVariants}>
+            <SkillsGrid>
+              {currentItems.map((skill, index) => (
+                <m.div
+                  key={skill.name}
+                  custom={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  variants={cardVariants}
+                >
                   <TiltCard maxTilt={5} scale={1.02}>
                     <SkillCard>
                       <CardHeader>
