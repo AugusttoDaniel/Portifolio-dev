@@ -359,6 +359,22 @@ const FilterTag = styled.div`
   }
 `;
 
+const ClearFiltersButton = styled.button`
+  background: none;
+  border: none;
+  padding: 6px 4px;
+  font-size: 0.8rem;
+  color: ${(props) => props.theme.colors.text};
+  opacity: 0.7;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+    color: ${(props) => props.theme.colors.brand1};
+  }
+`;
+
 // Novo componente para a paginação
 const PaginationContainer = styled.div`
   display: flex;
@@ -514,6 +530,12 @@ const SkillsAndExperience = () => {
     setCurrentPage(1); // Reinicia a paginação ao remover filtros
   };
 
+  const clearAllFilters = () => {
+    setSelectedCategories([]);
+    setSearchTerm('');
+    setCurrentPage(1);
+  };
+
   // Filter skills by search term and selected categories
   const filterSkills = () => {
     return skills.filter(skill => {
@@ -614,7 +636,7 @@ const SkillsAndExperience = () => {
           </FilterContainer>
         </SearchBar>
 
-        {selectedCategories.length > 0 && (
+        {(selectedCategories.length > 0 || searchTerm) && (
           <m.div
             initial="hidden"
             whileInView="visible"
@@ -631,6 +653,9 @@ const SkillsAndExperience = () => {
                   </FilterTag>
                 );
               })}
+              <ClearFiltersButton onClick={clearAllFilters}>
+                Limpar filtros
+              </ClearFiltersButton>
             </ActiveFilters>
           </m.div>
         )}
