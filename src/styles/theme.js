@@ -53,6 +53,7 @@ export const theme = {
             regular: '400',
             light: '300',
             medium: '500',
+            bold: '700',
         },
 
         lineHeight: {

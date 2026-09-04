@@ -8,6 +8,7 @@ import { MdWork } from "react-icons/md";
 import LoadingSpinner from '../../components/loadingspinner';
 import { m, useScroll, useTransform } from "framer-motion";
 import RevealText from '../../components/revealText';
+import { useIsPhone } from '../../hooks/useIsPhone';
 
 
 const Container = styled.section`
@@ -118,8 +119,7 @@ const TimelineContainer = styled(m.div)`
 
 // Main Component
 const EducationalJourney = () => {
-    // ver se é telefone 
-    const isPhone = window.innerWidth < 760;
+    const isPhone = useIsPhone(760);
     const [active, setActive] = useState('academic');
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);

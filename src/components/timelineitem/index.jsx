@@ -4,6 +4,7 @@ import { FaGraduationCap } from "react-icons/fa"; // Importe os ícones necessá
 import { GrCertificate } from "react-icons/gr";
 import { FaTrophy } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
+import { useIsPhone } from '../../hooks/useIsPhone';
 // Styled Components específicos do Item
 const TimelineItemContainer = styled.div`
   display: flex;
@@ -141,7 +142,7 @@ const TimelineItem = ({
   cardStyles = {},
   onCardClick,
 }) => {
-  const isPhone = window.innerWidth <= 768;
+  const isPhone = useIsPhone();
 
 
   const IconComponent = typeof icon === 'string' ? iconMap[icon] : icon;

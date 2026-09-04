@@ -225,6 +225,11 @@ const Projects = () => {
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'], layoutEffect: false });
   const yBlob = useTransform(scrollYProgress, [0, 1], [-100, 100]);
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -292,9 +297,10 @@ const Projects = () => {
       <Watermark>PROJETOS</Watermark>
       <Container>
         <Header
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
         >
           <Title><RevealText text="Projetos" /></Title>
           <Subtitle>Projetos que tirei do zero e levei até a produção</Subtitle>

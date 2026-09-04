@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import TimelineItem from '../timelineitem';
+import { useIsPhone } from '../../hooks/useIsPhone';
 
 const TimelineContainer = styled.div`
   position: relative;
@@ -57,7 +58,7 @@ const Timeline = ({
   $styleProps = {},
 }) => {
   const totalItems = $items.length;
-  const isPhone = window.innerWidth < 768;
+  const isPhone = useIsPhone();
 
   return (
     <TimelineContainer 
@@ -77,7 +78,7 @@ const Timeline = ({
         const percentage = ((index + 1) / (totalItems + 1)) * 100; 
         return (
           <TimelineDot
-            key={`dot-${index}`}
+            key={`dot-${item.title}-${item.date}`}
             $top={`${percentage}%`}
           />
         );
@@ -85,7 +86,7 @@ const Timeline = ({
 
       {$items.map((item, index) => (
         <TimelineItem
-          key={`item-${index}`}
+          key={`item-${item.title}-${item.date}`}
           $position={isPhone ? 'left' : index % 2 === 0 ? 'right' : 'left'}
           {...item}
         />

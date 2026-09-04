@@ -31,7 +31,16 @@ Este caminho não existe no portfólio de Daniel Augusto Silva.
 - GitHub: https://github.com/AugusttoDaniel
 - LinkedIn: https://www.linkedin.com/in/danielaugustto/
   </pre>
-  <p><a href="/">&larr; Voltar para a página inicial</a></p>
+  <p><a href="/" id="home-link">&larr; Voltar para a página inicial</a></p>
+  <script>
+    // On GitHub Pages this file is served under /Portifolio-dev/, so a root-absolute
+    // href would 404 again; on Vercel the root is "/". Fix it up at runtime.
+    (function () {
+      var match = window.location.pathname.match(/^\/[^/]+\//);
+      var base = match && window.location.hostname.endsWith('github.io') ? match[0] : '/';
+      document.getElementById('home-link').href = base;
+    })();
+  </script>
 </body>
 
 </html>

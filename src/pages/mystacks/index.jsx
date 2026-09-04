@@ -18,6 +18,7 @@ import { fetchSkillsData } from '../../mocks/apiMock';
 import { m, useScroll, useTransform } from "framer-motion";
 import RevealText from '../../components/revealText';
 import TiltCard from '../../components/tiltCard';
+import { useIsPhone } from '../../hooks/useIsPhone';
 const iconMapping = {
   FaReact: FaReact,
   SiTailwindcss: SiTailwindcss,
@@ -412,8 +413,7 @@ const SkillsAndExperience = () => {
   // Estados para a paginação
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9; // Exibir 9 itens por página
-  //isPhone
-  const isPhone = window.innerWidth <= 768;
+  const isPhone = useIsPhone();
   const [skills, setSkills] = useState([]);
 
   // Configurações de animação
@@ -652,8 +652,8 @@ const SkillsAndExperience = () => {
               viewport={{ once: true, amount: 0.1 }}
               variants={staggerContainer}
             >
-              {currentItems.map((skill, index) => (
-                <m.div key={index} variants={cardVariants}>
+              {currentItems.map((skill) => (
+                <m.div key={skill.name} variants={cardVariants}>
                   <TiltCard maxTilt={5} scale={1.02}>
                     <SkillCard>
                       <CardHeader>
