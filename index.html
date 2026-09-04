@@ -12,6 +12,29 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daniel Augusto | Desenvolvedor Full Stack Júnior</title>
+  <style>
+    /* Minimal styling for the static fallback content below, shown briefly
+       before the app mounts and replaces it (wiping this whole block out),
+       so it reads as a real page rather than a flash of unstyled HTML.
+       Scoped to .ssr-fallback specifically (never a class the app itself
+       renders) so it can't leak into the mounted app's own styling. */
+    .ssr-fallback {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      color: #0F172A;
+      background: #FFFFFF;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      line-height: 1.6;
+    }
+    .ssr-fallback h1 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+    .ssr-fallback h2 { font-size: 1.25rem; margin: 2rem 0 0.75rem; }
+    .ssr-fallback h3 { font-size: 1.05rem; margin: 1.25rem 0 0.25rem; }
+    .ssr-fallback p, .ssr-fallback li { color: #334155; }
+    .ssr-fallback ul { padding-left: 1.2rem; }
+    .ssr-fallback a { color: #1BA3E8; }
+    .ssr-fallback article { margin-bottom: 1.25rem; }
+  </style>
   <meta name="description" content="Portfólio de Daniel Augusto, desenvolvedor Full Stack Júnior especializado em React, Node.js e Nest.js. Disponível para projetos freelance.">
   <meta name="keywords" content="Daniel Augusto, desenvolvedor full stack, react, node.js, nest.js, typescript, freelancer, portfólio">
   <meta name="author" content="Daniel Augusto Silva">
@@ -80,7 +103,7 @@
 </head>
 
 <body>
-  <div id="root"><header>
+  <div id="root"><div class="ssr-fallback"><header>
       <h1>Daniel Augusto Silva | Desenvolvedor Full Stack Júnior</h1>
       <p>
         Desenvolvedor Full Stack Júnior atuando profissionalmente com React, Node.js e Nest.js.
@@ -188,7 +211,7 @@
         </p>
       </section>
     </main>
-  </div>
+  </div></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 
