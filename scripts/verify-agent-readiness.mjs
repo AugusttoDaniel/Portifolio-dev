@@ -37,6 +37,9 @@ async function checkContentWithoutJs() {
   report('Content without JS: raw HTML has 500+ chars', text.length >= 500, `${text.length} chars`);
   const h1Count = (html.match(/<h1[\s>]/gi) || []).length;
   report('Content without JS: exactly one <h1> in raw HTML', h1Count === 1, `${h1Count} found`);
+  report('Content without JS: mentions real projects (DevRoadmap)', text.includes('DevRoadmap'));
+  report('Content without JS: mentions work experience (Ultralike)', text.includes('Ultralike'));
+  report('Content without JS: mentions stack details (PostgreSQL)', text.includes('PostgreSQL'));
 }
 
 async function checkAgentFriendly404() {
