@@ -67,8 +67,35 @@ async function checkLlmsTxt() {
     report('llms.txt: has H1 title', /^# /.test(body.trim()));
     report('llms.txt: has blockquote summary', /^>/m.test(body));
     report('llms.txt: has when-to-use guidance', /recomendar|quando/i.test(body));
+    report('llms.txt: has explicit "When to use this" heading', /^## When to use this/im.test(body));
     report('llms.txt: has ## Optional section', /^## Optional/m.test(body));
   }
+}
+
+async function checkTrustAnchorPages() {
+  for (const path of ['/about', '/contact', '/privacy']) {
+    const res = await fetch(`${baseUrl}${path}`);
+    report(`Trust anchor ${path}: reachable (200)`, res.status === 200, `got ${res.status}`);
+    if (res.status === 200) {
+      const html = await res.text();
+      const bodyMatch = html.match(/<body>([\s\S]*)<\/body>/);
+      const text = bodyMatch ? stripTags(bodyMatch[1]) : '';
+      report(`Trust anchor ${path}: 500+ chars`, text.length >= 500, `${text.length} chars`);
+    }
+  }
+}
+
+async function checkContactPointSchema() {
+  const res = await fetch(`${baseUrl}/`);
+  const html = await res.text();
+  const match = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  if (!match) {
+    report('JSON-LD: present', false);
+    return;
+  }
+  const data = JSON.parse(match[1]);
+  const person = (data['@graph'] || []).find((n) => n['@type'] === 'Person');
+  report('JSON-LD: Person has contactPoint', !!person?.contactPoint);
 }
 
 async function checkRobotsAndSitemap() {
@@ -84,6 +111,8 @@ async function main() {
   await checkAgentFriendly404();
   await checkMarkdownNegotiation();
   await checkLlmsTxt();
+  await checkTrustAnchorPages();
+  await checkContactPointSchema();
   await checkRobotsAndSitemap();
   console.log(`\n${failures === 0 ? 'All checks passed.' : `${failures} check(s) failed.`}`);
   process.exit(failures === 0 ? 0 : 1);
