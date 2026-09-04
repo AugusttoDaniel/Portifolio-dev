@@ -3,7 +3,7 @@
     {
       "src": "/",
       "has": [
-        { "type": "header", "key": "accept", "value": "text/markdown" }
+        { "type": "header", "key": "accept", "value": { "pre": "text/markdown" } }
       ],
       "dest": "/api/markdown-home"
     },
