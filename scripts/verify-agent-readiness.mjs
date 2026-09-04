@@ -48,6 +48,11 @@ async function checkAgentFriendly404() {
   const body = await res.text();
   const hasLinks = /sitemap\.xml|llms\.txt/.test(body);
   report('404: body links to sitemap/llms.txt', hasLinks);
+
+  const apiRes = await fetch(`${baseUrl}/api/this-endpoint-does-not-exist-${Date.now()}`);
+  report('404: /api/* unmatched path also returns 404', apiRes.status === 404, `got ${apiRes.status}`);
+  const apiBody = await apiRes.text();
+  report('404: /api/* unmatched path also has markdown body', /sitemap\.xml|llms\.txt/.test(apiBody));
 }
 
 async function checkMarkdownNegotiation() {
