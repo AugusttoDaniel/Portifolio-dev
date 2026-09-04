@@ -13,7 +13,9 @@
     {
       "source": "/",
       "headers": [
-        { "key": "Link", "value": "</>; rel=\"alternate\"; type=\"text/markdown\"" }
+        { "key": "Link", "value": "</>; rel=\"alternate\"; type=\"text/markdown\"" },
+        { "key": "Vary", "value": "Accept" },
+        { "key": "Cache-Control", "value": "no-store" }
       ]
     }
   ]
