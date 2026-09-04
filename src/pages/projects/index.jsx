@@ -98,16 +98,10 @@ const ProjectCard = styled.div`
   display: flex;
   align-items: center;
   gap: 40px;
-
-  &:nth-child(even) {
-    flex-direction: row-reverse;
-  }
+  flex-direction: ${(props) => (props.$reverse ? 'row-reverse' : 'row')};
 
   @media (max-width: 768px) {
     flex-direction: column;
-    &:nth-child(even) {
-      flex-direction: column;
-    }
   }
 `;
 
@@ -316,7 +310,7 @@ const Projects = () => {
               viewport={{ once: true, amount: 0.2 }}
               variants={cardVariants}
             >
-              <ProjectCard>
+              <ProjectCard $reverse={index % 2 === 1}>
                 <TiltCard maxTilt={6} scale={1.015} style={{ flex: 1 }}>
                   <ProjectImage>
                     <img
