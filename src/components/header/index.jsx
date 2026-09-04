@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useLenis } from 'lenis/react';
+import { scrollToId } from '../../utils/scrollToId';
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -12,7 +14,7 @@ const HeaderContainer = styled.header`
   left: 0;
   right: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
 `;
 
 const Logo = styled.div`
@@ -26,10 +28,10 @@ const Logo = styled.div`
 `;
 
 const LogoText = styled.span`
-  font-family: ${(props) => props.theme.typography.fontFamily};
-  font-size: ${(props) => props.theme.typography.fontSize.h2};
-  font-weight: ${(props) => props.theme.typography.fontWeight.regular};
-  color: ${(props) => props.theme.colors.white};
+  font-family: ${(props) => props.theme.typography.fontFamilyMono};
+  font-size: 22px;
+  font-weight: 700;
+  color: ${(props) => props.theme.colors.text};
 `;
 
 const LogoBracket = styled.span`
@@ -48,7 +50,7 @@ const MenuContainer = styled.nav`
 
 const MenuItem = styled.a`
   font-size: 1rem;
-  color: white;
+  color: ${(props) => props.theme.colors.text};
   text-decoration: none;
   cursor: pointer;
   position: relative;
@@ -123,7 +125,7 @@ const HamburgerButton = styled.button`
     width: 100%;
     height: 2px;
     background-color: ${(props) =>
-      props.$isOpen ? props.theme.colors.brand1 : props.theme.colors.white};
+      props.$isOpen ? props.theme.colors.brand1 : props.theme.colors.text};
     transition: all 0.3s ease;
 
     &:nth-child(1) {
@@ -149,11 +151,12 @@ const MobileMenuContainer = styled.div`
   top: 100%;
   left: 0;
   right: 0;
-  background-color: ${(props) => props.theme.colors.bg1};
+  background-color: ${(props) => props.theme.colors.surface};
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
   padding: 1rem;
   gap: 1rem;
   z-index: 999;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
   animation: slideIn 0.3s ease;
 
   @keyframes slideIn {
@@ -181,21 +184,11 @@ function Header() {
   const [activeItem, setActiveItem] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
+  const lenis = useLenis();
 
-  // Função para navegar suavemente até o elemento
   const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const headerHeight = document.querySelector('header').offsetHeight;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setActiveItem(id);
-    }
+    scrollToId(lenis, id);
+    setActiveItem(id);
   };
 
   useEffect(() => {
@@ -224,7 +217,7 @@ function Header() {
   }, []);
 
   const handleDownload = () => {
-    window.open("https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w", "_blank");
+    window.location.href = "https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w";
   };
 
   return (
@@ -253,7 +246,7 @@ function Header() {
             {item.label}
           </MenuItem>
         ))}
-        <DownloadButton onClick={handleDownload}>Baixar CV</DownloadButton>
+        <DownloadButton id="header-download-target" onClick={handleDownload}>Baixar CV</DownloadButton>
       </MenuContainer>
 
       <HamburgerButton

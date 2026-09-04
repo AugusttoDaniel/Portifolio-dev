@@ -1,0 +1,23 @@
+{
+  "routes": [
+    {
+      "src": "/",
+      "has": [
+        { "type": "header", "key": "accept", "value": { "pre": "text/markdown" } }
+      ],
+      "dest": "/api/markdown-home"
+    },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "status": 404, "dest": "/404.html" }
+  ],
+  "headers": [
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Link", "value": "</>; rel=\"alternate\"; type=\"text/markdown\"" },
+        { "key": "Vary", "value": "Accept" },
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    }
+  ]
+}

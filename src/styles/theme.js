@@ -1,23 +1,23 @@
 
 export const theme = {
     colors: {
-        line: '#10B07D',
-        bg1: '#292F36',
-        bgheader: '#020617',
-        bgdev: '#020617',
-        bg2: '#1A1E23',
-        brand1: '#12F7D6',
-        brand2: '#98FAEC',
-        accentHover: '#0DBFA6',
-        surface: '#172A45',
-        surfaceHover: '#1E3A5F',
-        border: '#293D5A',
-        grey: '#43454D',
+        bg: '#FFFFFF',
+        bgAlt: '#F7FAFC',
+        bgheader: '#FFFFFF',
+        bgdev: '#FFFFFF',
+        surface: '#FFFFFF',
+        surfaceTint: '#EAF6FD',
+        surfaceHover: '#EAF6FD',
+        border: '#E2E8F0',
+        brand1: '#1BA3E8',
+        brand2: '#5CCBF5',
+        accentHover: '#0B84C4',
+        accentDeep: '#085C87',
+        navy: '#0B1220',
+        navySoft: '#0D1729',
+        text: '#0F172A',
+        textMuted: '#64748B',
         white: '#FFFFFF',
-        html: '#E54F26',
-        css: '#0C73B8',
-        js: '#E7A020',
-        react: '#28A9E0',
     },
     radius: {
         sm: '6px',
@@ -26,7 +26,8 @@ export const theme = {
         circle: '50%',
     },
     typography: {
-        fontFamily: "'Ubuntu', sans-serif",
+        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+        fontFamilyMono: "'JetBrains Mono', ui-monospace, monospace",
 
         // Escala modular (base 16px, razão 1.25 - "terça maior")
         fontSize: {
@@ -52,7 +53,8 @@ export const theme = {
             regular: '400',
             light: '300',
             medium: '500',
-        }, 
+            bold: '700',
+        },
 
         lineHeight: {
             'bg-text-u': '134px',

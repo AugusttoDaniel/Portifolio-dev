@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import TimelineItem from '../timelineitem';
+import { useIsPhone } from '../../hooks/useIsPhone';
 
 const TimelineContainer = styled.div`
   position: relative;
@@ -42,8 +43,8 @@ const TimelineDot = styled.div`
   width: ${props => props.$size || '16px'};
   height: ${props => props.$size || '16px'};
   border-radius: 50%;
-  background-color: ${props => props.$backgroundColor || '#12F7D6'};
-  border: ${props => props.$borderWidth || '3px'} solid ${props => props.$borderColor || '#0F172A'};
+  background-color: ${props => props.$backgroundColor || props.theme.colors.brand1};
+  border: ${props => props.$borderWidth || '3px'} solid ${props => props.$borderColor || props.theme.colors.bgAlt};
   top: ${props => props.$top || '0'};
   z-index: 2;
   @media (max-width: 760px) {
@@ -57,7 +58,7 @@ const Timeline = ({
   $styleProps = {},
 }) => {
   const totalItems = $items.length;
-  const isPhone = window.innerWidth < 768;
+  const isPhone = useIsPhone();
 
   return (
     <TimelineContainer 
@@ -77,16 +78,15 @@ const Timeline = ({
         const percentage = ((index + 1) / (totalItems + 1)) * 100; 
         return (
           <TimelineDot
-            key={`dot-${index}`}
-            $top={`${percentage}%`} 
-            $backgroundColor="#12F7D6"
+            key={`dot-${item.title}-${item.date}`}
+            $top={`${percentage}%`}
           />
         );
       })}
 
       {$items.map((item, index) => (
         <TimelineItem
-          key={`item-${index}`}
+          key={`item-${item.title}-${item.date}`}
           $position={isPhone ? 'left' : index % 2 === 0 ? 'right' : 'left'}
           {...item}
         />

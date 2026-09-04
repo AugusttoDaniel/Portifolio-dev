@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow">
+  <title>404 | Daniel Augusto Silva</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 4rem auto; padding: 0 1.5rem; color: #0F172A; line-height: 1.6; }
+    a { color: #1BA3E8; }
+    code { background: #F7FAFC; padding: 0.1em 0.4em; border-radius: 4px; }
+  </style>
+</head>
+
+<body>
+  <pre style="white-space: pre-wrap; font-family: inherit;">
+# 404 - Página não encontrada
+
+Este caminho não existe no portfólio de Daniel Augusto Silva.
+
+## Onde procurar
+
+- [Página inicial](/) - portfólio completo, projetos e contato
+- [sitemap.xml](/sitemap.xml) - lista de URLs indexáveis
+- [llms.txt](/llms.txt) - guia de contexto para agentes e LLMs
+- [robots.txt](/robots.txt) - regras de crawling
+
+## Contato
+
+- GitHub: https://github.com/AugusttoDaniel
+- LinkedIn: https://www.linkedin.com/in/danielaugustto/
+  </pre>
+  <p><a href="/" id="home-link">&larr; Voltar para a página inicial</a></p>
+  <script>
+    // On GitHub Pages this file is served under /Portifolio-dev/, so a root-absolute
+    // href would 404 again; on Vercel the root is "/". Fix it up at runtime.
+    (function () {
+      var match = window.location.pathname.match(/^\/[^/]+\//);
+      var base = match && window.location.hostname.endsWith('github.io') ? match[0] : '/';
+      document.getElementById('home-link').href = base;
+    })();
+  </script>
+</body>
+
+</html>

@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { LazyMotion, domAnimation } from 'framer-motion';
+import { LazyMotion, domAnimation, frame, cancelFrame } from 'framer-motion';
+import { ReactLenis, useLenis } from 'lenis/react';
+import 'lenis/dist/lenis.css';
 import { GlobalStyle } from './styles/globalStyles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './styles/theme';
@@ -13,6 +15,7 @@ import Certification from './pages/certification';
 import Projects from './pages/projects';
 import DeveloperProfile from './pages/developerprofile';
 import { FaArrowUp } from 'react-icons/fa';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 
 const BackToTopContainer = styled.div`
@@ -30,29 +33,21 @@ const BackToTopContainer = styled.div`
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
+  const lenisRef = useRef(null);
+  const lenis = useLenis();
 
   const scrollToTop = () => {
-    const duration = 1000; 
-    const start = window.pageYOffset || document.documentElement.scrollTop;
-    const startTime = performance.now();
-
-    const easeOutQuad = (t) => 1 - Math.pow(1 - t, 4);
-
-    // Função de animação
-    const animateScroll = (currentTime) => {
-      const elapsedTime = currentTime - startTime;
-      const progress = Math.min(elapsedTime / duration, 1);
-      const eased = easeOutQuad(progress);
-
-      window.scrollTo(0, start * (1 - eased));
-
-      if (progress < 1) {
-        requestAnimationFrame(animateScroll);
-      }
-    };
-
-    requestAnimationFrame(animateScroll);
+    lenis?.scrollTo(0);
   };
+
+  useEffect(() => {
+    function update(data) {
+      lenisRef.current?.lenis?.raf(data.timestamp);
+    }
+    frame.update(update, true);
+    return () => cancelFrame(update);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -67,28 +62,31 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <LazyMotion features={domAnimation} strict>
-        <GlobalStyle />
-         <Header />
-         <DeveloperProfile />
-        <AboutMe />
-         <Stack />
-        <Certification />
-        <Projects />
-        <Footer />
-        <BackToTopContainer $isVisible={isVisible}>
-          <Button
-            icon={FaArrowUp}
-            backgroundColor="#12F7D6"
-            textColor="#020617"
-            hoverBackgroundColor="#0DBFA6"
-            padding="0.75rem"
-            borderRadius="50%"
-            onClick={scrollToTop}
-            aria-label="Voltar ao topo"
-          />
-        </BackToTopContainer>
-      </LazyMotion>
+      <ReactLenis root options={{ autoRaf: false, anchors: true }} ref={lenisRef}>
+        <LazyMotion features={domAnimation} strict>
+          <GlobalStyle />
+           <Header />
+           <DeveloperProfile />
+          <AboutMe />
+           <Stack />
+          <Certification />
+          <Projects />
+          <Footer />
+          <BackToTopContainer $isVisible={isVisible}>
+            <Button
+              icon={FaArrowUp}
+              backgroundColor="#1BA3E8"
+              textColor="#FFFFFF"
+              hoverBackgroundColor="#0B84C4"
+              padding="0.75rem"
+              borderRadius="50%"
+              onClick={scrollToTop}
+              aria-label="Voltar ao topo"
+            />
+          </BackToTopContainer>
+          <SpeedInsights />
+        </LazyMotion>
+      </ReactLenis>
     </ThemeProvider>
   );
 }

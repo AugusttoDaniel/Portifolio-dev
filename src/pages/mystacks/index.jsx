@@ -15,7 +15,10 @@ import {
   SiNestjs
 } from 'react-icons/si';
 import { fetchSkillsData } from '../../mocks/apiMock';
-import { m } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
+import RevealText from '../../components/revealText';
+import TiltCard from '../../components/tiltCard';
+import { useIsPhone } from '../../hooks/useIsPhone';
 const iconMapping = {
   FaReact: FaReact,
   SiTailwindcss: SiTailwindcss,
@@ -34,10 +37,11 @@ const iconMapping = {
 };
 
 const SkillsSection = styled.section`
-  background-color: #020617;
-  color: #fff;
+  background-color: ${(props) => props.theme.colors.bg};
+  color: ${(props) => props.theme.colors.text};
   padding: 60px 20px;
-    position: relative;
+  position: relative;
+  overflow: hidden;
 
   &::before {
     content: "";
@@ -46,13 +50,43 @@ const SkillsSection = styled.section`
     left: 0;
     height: 1px;
     width: 100%;
-    background: linear-gradient(to right, transparent, #12F7D6, transparent);
+    background: linear-gradient(to right, transparent, ${(props) => props.theme.colors.brand1}, transparent);
     opacity: 0.5;
     z-index: 0;
   }
 `;
 
+const Blob = styled(m.div)`
+  position: absolute;
+  filter: blur(${(props) => props.$blur || '110px'});
+  opacity: ${(props) => props.$opacity || 0.2};
+  z-index: 0;
+  pointer-events: none;
+`;
+
+const Watermark = styled.div`
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: ${(props) => props.theme.typography.fontFamily};
+  font-weight: 700;
+  font-size: 280px;
+  line-height: 1;
+  letter-spacing: -8px;
+  color: rgba(15, 23, 42, 0.035);
+  z-index: 0;
+  user-select: none;
+  white-space: nowrap;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;
+
 const Container = styled.div`
+  position: relative;
+  z-index: 2;
   max-width: 1200px;
   margin: 0 auto;
 `;
@@ -66,12 +100,12 @@ const Title = styled.h2`
   font-size: ${(props) => props.theme.typography.fontSize.xxl};
   font-weight: 700;
   margin-bottom: 10px;
-  color: #ccd6f6;
+  color: ${(props) => props.theme.colors.text};
 `;
 
 const Subtitle = styled.p`
   font-size: ${(props) => props.theme.typography.fontSize.sm};
-  color: #8892b0;
+  color: ${(props) => props.theme.colors.textMuted};
 `;
 
 const SearchBar = styled(m.div)`
@@ -79,37 +113,40 @@ const SearchBar = styled(m.div)`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 12px;
 `;
 
 const SearchInput = styled.div`
   position: relative;
   width: 300px;
-  
+
   input {
     width: 100%;
     padding: 12px 20px 12px 40px;
     border-radius: ${(props) => props.theme.radius.sm};
-    border: none;
-    background-color: #172a45;
-    color: #fff;
+    border: 1px solid ${(props) => props.theme.colors.border};
+    background-color: ${(props) => props.theme.colors.surface};
+    color: ${(props) => props.theme.colors.text};
     font-size: 0.9rem;
-    
+
     &:focus {
       outline: none;
-      box-shadow: 0 0 0 2px #12F7D6;
+      border-color: ${(props) => props.theme.colors.brand1};
+      box-shadow: 0 0 0 2px ${(props) => props.theme.colors.brand1}33;
     }
-    
+
     &::placeholder {
-      color: #8892b0;
+      color: ${(props) => props.theme.colors.textMuted};
     }
   }
-  
+
   svg {
     position: absolute;
     left: 12px;
     top: 50%;
     transform: translateY(-50%);
-    color: #8892b0;
+    color: ${(props) => props.theme.colors.textMuted};
   }
 `;
 
@@ -122,14 +159,14 @@ const FilterButton = styled.button`
   align-items: center;
   gap: 8px;
   padding: 10px 16px;
-  background-color: #172a45;
-  color: #fff;
-  border: none;
+  background-color: ${(props) => props.theme.colors.surface};
+  color: ${(props) => props.theme.colors.text};
+  border: 1px solid ${(props) => props.theme.colors.border};
   border-radius: ${(props) => props.theme.radius.sm};
   cursor: pointer;
-  
+
   &:hover {
-    background-color: #1E3A5F;
+    background-color: ${(props) => props.theme.colors.surfaceTint};
   }
 `;
 
@@ -138,13 +175,14 @@ const FilterDropdown = styled.div`
   top: calc(100% + 8px);
   right: 0;
   width: 220px;
-  background-color: #172a45;
+  background-color: ${(props) => props.theme.colors.surface};
+  border: 1px solid ${(props) => props.theme.colors.border};
   border-radius: ${(props) => props.theme.radius.sm};
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
   z-index: 10;
   overflow: hidden;
   animation: dropdown 0.2s ease;
-  
+
   @keyframes dropdown {
     from {
       opacity: 0;
@@ -160,23 +198,23 @@ const FilterDropdown = styled.div`
 const FilterHeader = styled.div`
   padding: 12px 16px;
   font-weight: 500;
-  border-bottom: 1px solid #293d5a;
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
 `;
 
 const FilterOptions = styled.div`
   max-height: 300px;
   overflow-y: auto;
-  
+
   &::-webkit-scrollbar {
     width: 6px;
   }
-  
+
   &::-webkit-scrollbar-track {
-    background: #1e3151;
+    background: ${(props) => props.theme.colors.surfaceTint};
   }
-  
+
   &::-webkit-scrollbar-thumb {
-    background: #3a5079;
+    background: ${(props) => props.theme.colors.border};
     border-radius: 3px;
   }
 `;
@@ -188,13 +226,13 @@ const FilterOption = styled.div`
   align-items: center;
   justify-content: space-between;
   transition: background-color 0.2s;
-  
+
   &:hover {
-    background-color: #1e3151;
+    background-color: ${(props) => props.theme.colors.surfaceTint};
   }
-  
+
   svg {
-    color: #12F7D6;
+    color: ${(props) => props.theme.colors.brand1};
   }
 `;
 
@@ -205,12 +243,14 @@ const SkillsGrid = styled(m.div)`
 `;
 
 const SkillCard = styled.div`
-  background-color: #172A45;
+  background-color: ${(props) => props.theme.colors.surface};
+  border: 1px solid ${(props) => props.theme.colors.border};
   border-radius: ${(props) => props.theme.radius.md};
   padding: 24px;
   height: 100%;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 24px rgba(15, 23, 42, 0.06);
   transition: transform 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
   }
@@ -229,57 +269,58 @@ const IconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.$bgColor || '#172A45'};
+  background-color: ${props => props.$bgColor || props.theme.colors.surfaceTint};
   margin-right: 16px;
-  
+
   svg {
     font-size: 20px;
-    color: #fff;
+    color: ${(props) => props.$iconColor || props.theme.colors.accentHover};
   }
 `;
 
 const SkillName = styled.div`
   flex: 1;
-  
+
   h3 {
     font-size: 1.1rem;
     margin: 0 0 4px 0;
-    color: #ccd6f6;
+    color: ${(props) => props.theme.colors.text};
   }
-  
+
   span {
     font-size: 0.8rem;
-    color: #12F7D6;
+    color: ${(props) => props.theme.colors.accentHover};
   }
 `;
 
 const Description = styled.p`
   font-size: 0.9rem;
   line-height: 1.5;
-  color: #8892b0;
+  color: ${(props) => props.theme.colors.textMuted};
   margin-bottom: 16px;
 `;
 
 const Experience = styled.div`
   font-size: 0.8rem;
-  color: #8892b0;
-  
+  color: ${(props) => props.theme.colors.textMuted};
+
   span {
-    color: #12F7D6;
+    color: ${(props) => props.theme.colors.accentHover};
+    font-weight: 600;
   }
 `;
 
 const EmptyState = styled.div`
   text-align: center;
   padding: 40px;
-  color: #8892b0;
-  
+  color: ${(props) => props.theme.colors.textMuted};
+
   h3 {
     font-size: 1.2rem;
     margin-bottom: 10px;
-    color: #ccd6f6;
+    color: ${(props) => props.theme.colors.text};
   }
-  
+
   p {
     font-size: 0.9rem;
   }
@@ -297,21 +338,23 @@ const FilterTag = styled.div`
   align-items: center;
   gap: 8px;
   padding: 6px 12px;
-  background-color: #172A45;
+  background-color: ${(props) => props.theme.colors.surfaceTint};
   border-radius: ${(props) => props.theme.radius.sm};
   font-size: 0.8rem;
-  
+  color: ${(props) => props.theme.colors.accentHover};
+
   button {
     background: none;
     border: none;
-    color: #12F7D6;
+    color: ${(props) => props.theme.colors.accentHover};
     cursor: pointer;
     padding: 0;
     display: flex;
     align-items: center;
-    
+    font-size: 1rem;
+
     &:hover {
-      color: #fff;
+      color: ${(props) => props.theme.colors.brand1};
     }
   }
 `;
@@ -320,6 +363,7 @@ const FilterTag = styled.div`
 const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 40px;
 `;
 
@@ -327,7 +371,7 @@ const PageInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #8892b0;
+  color: ${(props) => props.theme.colors.textMuted};
   font-size: 0.9rem;
   margin: 0 20px;
 `;
@@ -339,17 +383,18 @@ const PageButton = styled.button`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: ${props => props.disabled ? '#172a45' : '#172A45'};
-  border: none;
-  color: ${props => props.disabled ? '#4d5b78' : '#12F7D6'};
+  background-color: ${(props) => props.theme.colors.surface};
+  border: 1px solid ${(props) => props.theme.colors.border};
+  color: ${props => props.disabled ? props.theme.colors.textMuted : props.theme.colors.accentHover};
   cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   transition: all 0.2s ease;
+  opacity: ${props => props.disabled ? 0.5 : 1};
 
   &:hover:not(:disabled) {
-    background-color: #1E3A5F;
+    background-color: ${(props) => props.theme.colors.surfaceTint};
     transform: translateY(-2px);
   }
-  
+
   &:active:not(:disabled) {
     transform: translateY(0);
   }
@@ -360,19 +405,22 @@ const SkillsAndExperience = () => {
   const [showFilterDropdown, setShowFilterDropdown] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const filterRef = useRef(null);
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'], layoutEffect: false });
+  const yBlob1 = useTransform(scrollYProgress, [0, 1], [-90, 90]);
+  const yBlob2 = useTransform(scrollYProgress, [0, 1], [70, -70]);
 
   // Estados para a paginação
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9; // Exibir 9 itens por página
-  //isPhone 
-  const isPhone = window.innerWidth <= 768;
+  const isPhone = useIsPhone();
   const [skills, setSkills] = useState([]);
 
   // Configurações de animação
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.8,
@@ -393,8 +441,8 @@ const SkillsAndExperience = () => {
 
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.5,
@@ -517,7 +565,11 @@ const SkillsAndExperience = () => {
   }, [searchTerm]);
 
   return (
-    <SkillsSection id='stack'>
+    <SkillsSection id='stack' ref={sectionRef}>
+      <Blob style={{ y: yBlob1, top: '-200px', left: '-120px', width: 560, height: 560, borderRadius: '50% 50% 40% 60% / 55% 45% 55% 45%', background: 'radial-gradient(circle at 40% 40%, #085C87 0%, transparent 72%)' }} $opacity={0.26} />
+      <Blob style={{ y: yBlob2, bottom: '-160px', right: '-140px', width: 480, height: 480, borderRadius: '45% 55% 60% 40% / 50% 50% 50% 50%', background: 'radial-gradient(circle at 60% 50%, #1BA3E8 0%, transparent 70%)' }} $opacity={0.2} $blur="100px" />
+      <Watermark>STACK</Watermark>
+
       <Container>
         <Header
           initial="hidden"
@@ -525,8 +577,8 @@ const SkillsAndExperience = () => {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeInUp}
         >
-          <Title>Habilidades & Experiência</Title>
-          <Subtitle>Meus conhecimentos que adquiri ao longo da minha jornada</Subtitle>
+          <Title><RevealText text="Habilidades & Experiência" /></Title>
+          <Subtitle>As ferramentas que uso no dia a dia, do front ao back</Subtitle>
         </Header>
 
         <SearchBar
@@ -552,7 +604,7 @@ const SkillsAndExperience = () => {
             {showFilterDropdown && (
               <FilterDropdown>
                 <FilterHeader>Filtrar por categoria</FilterHeader>
-                <FilterOptions>
+                <FilterOptions data-lenis-prevent>
                   {categories.map((category) => (
                     <FilterOption
                       key={category.id}
@@ -600,26 +652,28 @@ const SkillsAndExperience = () => {
               viewport={{ once: true, amount: 0.1 }}
               variants={staggerContainer}
             >
-              {currentItems.map((skill, index) => (
-                <m.div key={index} variants={cardVariants}>
-                  <SkillCard>
-                    <CardHeader>
-                      <IconWrapper $bgColor={skill.bgColor}>
-                        {React.createElement(iconMapping[skill.icon], {
-                          size: 24,
-                        })}
-                      </IconWrapper>
+              {currentItems.map((skill) => (
+                <m.div key={skill.name} variants={cardVariants}>
+                  <TiltCard maxTilt={5} scale={1.02}>
+                    <SkillCard>
+                      <CardHeader>
+                        <IconWrapper $bgColor={skill.bgColor} $iconColor={skill.bgColor ? skill.bgColor.slice(0, 7) : undefined}>
+                          {React.createElement(iconMapping[skill.icon], {
+                            size: 24,
+                          })}
+                        </IconWrapper>
 
-                      <SkillName>
-                        <h3>{skill.name}</h3>
-                        <span>{skill.category}</span>
-                      </SkillName>
-                    </CardHeader>
-                    <Description>{skill.description}</Description>
-                    <Experience>
-                      Experiência: <span>{skill.experience}</span>
-                    </Experience>
-                  </SkillCard>
+                        <SkillName>
+                          <h3>{skill.name}</h3>
+                          <span>{skill.category}</span>
+                        </SkillName>
+                      </CardHeader>
+                      <Description>{skill.description}</Description>
+                      <Experience>
+                        Experiência: <span>{skill.experience}</span>
+                      </Experience>
+                    </SkillCard>
+                  </TiltCard>
                 </m.div>
               ))}
             </SkillsGrid>
@@ -636,7 +690,7 @@ const SkillsAndExperience = () => {
                   <PageButton
                     onClick={handlePrevPage}
                     disabled={currentPage === 1}
-                    aria-label="Ir para página anterior" 
+                    aria-label="Ir para página anterior"
                   >
                     <FaArrowLeft />
                   </PageButton>

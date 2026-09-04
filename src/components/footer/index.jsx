@@ -1,16 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import MagneticButton from '../magneticButton';
+import { useLenis } from 'lenis/react';
+import { scrollToId } from '../../utils/scrollToId';
 
 const FooterContainer = styled.footer`
   position: relative;
-  background-color: #020617;
-  color: #ffffff;
+  background-color: ${(props) => props.theme.colors.navy};
+  color: ${(props) => props.theme.colors.white};
   padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  overflow: hidden;
 
   &::before {
     content: "";
@@ -19,7 +23,7 @@ const FooterContainer = styled.footer`
     left: 0;
     height: 1px;
     width: 100%;
-    background: linear-gradient(to right, transparent, #12F7D6, transparent);
+    background: linear-gradient(to right, transparent, ${(props) => props.theme.colors.brand1}, transparent);
     opacity: 0.5;
     z-index: 0;
   }
@@ -32,7 +36,23 @@ const FooterContainer = styled.footer`
   }
 `;
 
+const Blob = styled.div`
+  position: absolute;
+  bottom: -160px;
+  left: -120px;
+  width: 480px;
+  height: 480px;
+  border-radius: 42% 58% 65% 35% / 41% 44% 56% 59%;
+  background: radial-gradient(circle at 40% 40%, #1BA3E8 0%, transparent 70%);
+  filter: blur(110px);
+  opacity: 0.18;
+  z-index: 0;
+  pointer-events: none;
+`;
+
 const FooterSection = styled.div`
+  position: relative;
+  z-index: 2;
   text-align: center;
 
   @media (min-width: 768px) {
@@ -43,7 +63,7 @@ const FooterSection = styled.div`
 const FooterTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #12F7D6;
+  color: ${(props) => props.theme.colors.brand2};
 `;
 
 const FooterList = styled.ul`
@@ -61,12 +81,12 @@ const FooterList = styled.ul`
 `;
 
 const FooterLink = styled.a`
-  color: #ffffff;
+  color: ${(props) => props.theme.colors.white};
   text-decoration: none;
   transition: color 0.3s ease;
 
   &:hover {
-    color: #12F7D6;
+    color: ${(props) => props.theme.colors.brand2};
   }
 `;
 
@@ -77,54 +97,69 @@ const SocialIcons = styled.div`
 `;
 
 const SocialIcon = styled.a`
-  color: white;
+  color: ${(props) => props.theme.colors.white};
   transition: color 0.3s ease;
 
   &:hover {
-    color: #12F7D6;
+    color: ${(props) => props.theme.colors.brand2};
   }
 `;
 
-const Footer = () => (
+const Footer = () => {
+  const lenis = useLenis();
+
+  const handleNavClick = (e, id) => {
+    e.preventDefault();
+    scrollToId(lenis, id);
+  };
+
+  return (
   <FooterContainer>
+    <Blob />
     <FooterSection>
       <FooterTitle>Navegação</FooterTitle>
       <FooterList>
-        <li><FooterLink href="#home">Home</FooterLink></li>
-        <li><FooterLink href="#about">Sobre</FooterLink></li>
-        <li><FooterLink href="#stack">Stack</FooterLink></li>
-        <li><FooterLink href="#certificados">Certificados</FooterLink></li>
-        <li><FooterLink href="#projetos">Projetos</FooterLink></li>
+        <li><FooterLink href="#home" onClick={(e) => handleNavClick(e, 'home')}>Home</FooterLink></li>
+        <li><FooterLink href="#about" onClick={(e) => handleNavClick(e, 'about')}>Sobre</FooterLink></li>
+        <li><FooterLink href="#stack" onClick={(e) => handleNavClick(e, 'stack')}>Stack</FooterLink></li>
+        <li><FooterLink href="#certificados" onClick={(e) => handleNavClick(e, 'certificados')}>Certificados</FooterLink></li>
+        <li><FooterLink href="#projetos" onClick={(e) => handleNavClick(e, 'projetos')}>Projetos</FooterLink></li>
       </FooterList>
     </FooterSection>
 
     <FooterSection>
       <FooterTitle>Redes Sociais</FooterTitle>
       <SocialIcons>
-        <SocialIcon
-          href="https://github.com/AugusttoDaniel"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub"
-        >
-          <FaGithub size={20} />
-        </SocialIcon>
-        <SocialIcon
-          href="https://www.linkedin.com/in/danielaugustto/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn"
-        >
-          <FaLinkedin size={20} />
-        </SocialIcon>
-        <SocialIcon
-          href="mailto:danielsje7133@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="E-mail"
-        >
-          <FaEnvelope size={20} />
-        </SocialIcon>
+        <MagneticButton strength={0.5}>
+          <SocialIcon
+            href="https://github.com/AugusttoDaniel"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <FaGithub size={20} />
+          </SocialIcon>
+        </MagneticButton>
+        <MagneticButton strength={0.5}>
+          <SocialIcon
+            href="https://www.linkedin.com/in/danielaugustto/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin size={20} />
+          </SocialIcon>
+        </MagneticButton>
+        <MagneticButton strength={0.5}>
+          <SocialIcon
+            href="mailto:danielsje7133@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="E-mail"
+          >
+            <FaEnvelope size={20} />
+          </SocialIcon>
+        </MagneticButton>
       </SocialIcons>
     </FooterSection>
 
@@ -132,6 +167,7 @@ const Footer = () => (
       <p>&copy; {new Date().getFullYear()} Daniel Augusto Silva. Todos os direitos reservados.</p>
     </FooterSection>
   </FooterContainer>
-);
+  );
+};
 
 export default Footer;

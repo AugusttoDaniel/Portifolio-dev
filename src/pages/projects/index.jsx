@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { fetchProjectsData } from '../../mocks/apiMock';
 import LoadingSpinner from '../../components/loadingspinner';
-import { m } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
+import RevealText from '../../components/revealText';
+import TiltCard from '../../components/tiltCard';
+import MagneticButton from '../../components/magneticButton';
 // Importar imagens
 import portfolioImage from '../../assets/Portifolio.webp';
 import assistecImage from '../../assets/Assistec.webp';
 import roadmapImage from '../../assets/Roadmap.webp';
 
 const ProjectsSection = styled.div`
-  background-color: #020617;
-  color: #fff;
+  background-color: ${(props) => props.theme.colors.bg};
+  color: ${(props) => props.theme.colors.text};
   padding: 60px 20px 80px;
-      position: relative;
+  position: relative;
+  overflow: hidden;
 
   &::before {
     content: "";
@@ -21,13 +25,48 @@ const ProjectsSection = styled.div`
     left: 0;
     height: 1px;
     width: 100%;
-    background: linear-gradient(to right, transparent, #12F7D6, transparent);
+    background: linear-gradient(to right, transparent, ${(props) => props.theme.colors.brand1}, transparent);
     opacity: 0.5;
     z-index: 0;
   }
 `;
 
+const Blob = styled(m.div)`
+  position: absolute;
+  top: -180px;
+  right: -160px;
+  width: 600px;
+  height: 600px;
+  border-radius: 44% 56% 62% 38% / 41% 44% 56% 59%;
+  background: radial-gradient(circle at 35% 30%, #1BA3E8 0%, #085C87 55%, transparent 75%);
+  filter: blur(100px);
+  opacity: 0.16;
+  z-index: 0;
+  pointer-events: none;
+`;
+
+const Watermark = styled.div`
+  position: absolute;
+  top: 50px;
+  left: -10px;
+  font-family: ${(props) => props.theme.typography.fontFamily};
+  font-weight: 700;
+  font-size: 240px;
+  line-height: 1;
+  letter-spacing: -6px;
+  color: rgba(15, 23, 42, 0.035);
+  z-index: 0;
+  user-select: none;
+  white-space: nowrap;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;
+
 const Container = styled.div`
+  position: relative;
+  z-index: 2;
   max-width: 1200px;
   margin: 0 auto;
 `;
@@ -41,12 +80,12 @@ const Title = styled.h2`
   font-size: ${(props) => props.theme.typography.fontSize.xxl};
   font-weight: 700;
   margin-bottom: 10px;
-  color: #ccd6f6;
+  color: ${(props) => props.theme.colors.text};
 `;
 
 const Subtitle = styled.p`
   font-size: ${(props) => props.theme.typography.fontSize.sm};
-  color: #8892b0;
+  color: ${(props) => props.theme.colors.textMuted};
 `;
 
 const ProjectsList = styled(m.div)`
@@ -59,16 +98,10 @@ const ProjectCard = styled.div`
   display: flex;
   align-items: center;
   gap: 40px;
-
-  &:nth-child(even) {
-    flex-direction: row-reverse;
-  }
+  flex-direction: ${(props) => (props.$reverse ? 'row-reverse' : 'row')};
 
   @media (max-width: 768px) {
     flex-direction: column;
-    &:nth-child(even) {
-      flex-direction: column;
-    }
   }
 `;
 
@@ -77,7 +110,7 @@ const ProjectImage = styled.div`
   position: relative;
   border-radius: ${(props) => props.theme.radius.md};
   overflow: hidden;
-  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05), 0 24px 48px rgba(15, 23, 42, 0.14);
 
   img {
     width: 100%;
@@ -100,12 +133,12 @@ const ProjectContent = styled.div`
 
 const ProjectTitle = styled.h3`
   font-size: 1.5rem;
-  color: #ccd6f6;
+  color: ${(props) => props.theme.colors.text};
   margin: 0;
 `;
 
 const ProjectDescription = styled.p`
-  color: #8892b0;
+  color: ${(props) => props.theme.colors.textMuted};
   line-height: 1.6;
   margin: 0;
 `;
@@ -119,8 +152,8 @@ const TechStack = styled.div`
 
 const TechItem = styled.span`
   font-size: 0.8rem;
-  color: #12F7D6;
-  background-color: rgba(18, 247, 214, 0.1);
+  color: ${(props) => props.theme.colors.accentHover};
+  background-color: ${(props) => props.theme.colors.surfaceTint};
   padding: 4px 10px;
   border-radius: ${(props) => props.theme.radius.sm};
 `;
@@ -134,9 +167,9 @@ const ButtonsContainer = styled.div`
 const Button = styled.a`
   display: inline-block;
   padding: 8px 16px;
-  background-color: #172a45;
-  color: #12F7D6;
-  border: 1px solid #12F7D6;
+  background-color: ${(props) => props.theme.colors.surface};
+  color: ${(props) => props.theme.colors.accentHover};
+  border: 1px solid ${(props) => props.theme.colors.brand1};
   border-radius: ${(props) => props.theme.radius.sm};
   text-decoration: none;
   font-size: 0.9rem;
@@ -144,7 +177,7 @@ const Button = styled.a`
   cursor: pointer;
 
   &:hover {
-    background-color: rgba(18, 247, 214, 0.1);
+    background-color: ${(props) => props.theme.colors.surfaceTint};
   }
 `;
 
@@ -153,7 +186,7 @@ const ViewMoreButton = styled.button`
   margin: 60px auto 0;
   background: none;
   border: none;
-  color: #12F7D6;
+  color: ${(props) => props.theme.colors.accentHover};
   text-decoration: none;
   font-size: 1.1rem;
   cursor: pointer;
@@ -164,7 +197,7 @@ const ViewMoreButton = styled.button`
   }
 
   &:disabled {
-    color: #8892b0;
+    color: ${(props) => props.theme.colors.textMuted};
     cursor: not-allowed;
     text-decoration: none;
   }
@@ -172,7 +205,7 @@ const ViewMoreButton = styled.button`
 
 const LoadingMessage = styled.p`
   text-align: center;
-  color: #8892b0;
+  color: ${(props) => props.theme.colors.textMuted};
   font-size: 1.2rem;
 `;
 
@@ -187,6 +220,15 @@ const Projects = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [visibleProjects, setVisibleProjects] = useState(3);
+
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'], layoutEffect: false });
+  const yBlob = useTransform(scrollYProgress, [0, 1], [-100, 100]);
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -250,15 +292,18 @@ const Projects = () => {
   }
 
   return (
-    <ProjectsSection id="projetos">
+    <ProjectsSection id="projetos" ref={sectionRef}>
+      <Blob style={{ y: yBlob }} />
+      <Watermark>PROJETOS</Watermark>
       <Container>
         <Header
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
         >
-          <Title>Projetos</Title>
-          <Subtitle>Aqui você encontrará alguns dos meus projetos pessoais mais recentes</Subtitle>
+          <Title><RevealText text="Projetos" /></Title>
+          <Subtitle>Projetos que tirei do zero e levei até a produção</Subtitle>
         </Header>
 
         <ProjectsList>
@@ -271,13 +316,15 @@ const Projects = () => {
               viewport={{ once: true, amount: 0.2 }}
               variants={cardVariants}
             >
-              <ProjectCard>
-                <ProjectImage>
-                  <img
-                    src={getImagePath(project.imagem)}
-                    alt={project.title}
-                  />
-                </ProjectImage>
+              <ProjectCard $reverse={index % 2 === 1}>
+                <TiltCard maxTilt={6} scale={1.015} style={{ flex: 1 }}>
+                  <ProjectImage>
+                    <img
+                      src={getImagePath(project.imagem)}
+                      alt={project.title}
+                    />
+                  </ProjectImage>
+                </TiltCard>
                 <ProjectContent>
                   <ProjectTitle>{project.title}</ProjectTitle>
                   <ProjectDescription>{project.description}</ProjectDescription>
@@ -287,13 +334,17 @@ const Projects = () => {
                     ))}
                   </TechStack>
                   <ButtonsContainer>
-                    <Button href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                      Ver Demo
-                    </Button>
-                    {project.codeLink && (
-                      <Button href={project.codeLink} target="_blank" rel="noopener noreferrer">
-                        Ver Código
+                    <MagneticButton>
+                      <Button href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                        Ver Demo
                       </Button>
+                    </MagneticButton>
+                    {project.codeLink && (
+                      <MagneticButton>
+                        <Button href={project.codeLink} target="_blank" rel="noopener noreferrer">
+                          Ver Código
+                        </Button>
+                      </MagneticButton>
                     )}
                   </ButtonsContainer>
                 </ProjectContent>

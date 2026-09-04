@@ -11,36 +11,30 @@ const handleEmptyData = (data, dataType) => {
 
 export const fetchEducationalData = () => {
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            try {
-                resolve(handleEmptyData(certification, 'Certification'));
-            } catch (error) {
-                reject(error.message);
-            }
-        }, 500);
+        try {
+            resolve(handleEmptyData(certification, 'Certification'));
+        } catch (error) {
+            reject(error.message);
+        }
     });
 };
 
 export const fetchProjectsData = () => {
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            try {
-                resolve(handleEmptyData(projects, 'Projects'));
-            } catch (error) {
-                reject(error.message);
-            }
-        }, 500);
+        try {
+            resolve(handleEmptyData(projects, 'Projects'));
+        } catch (error) {
+            reject(error.message);
+        }
     });
 };
 
 export const fetchSkillsData = () => {
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            try {
-                resolve(handleEmptyData(skills, 'Skills'));
-            } catch (error) {
-                reject(error.message);
-            }
-        }, 500);
+        try {
+            resolve(handleEmptyData(skills, 'Skills'));
+        } catch (error) {
+            reject(error.message);
+        }
     });
 };
