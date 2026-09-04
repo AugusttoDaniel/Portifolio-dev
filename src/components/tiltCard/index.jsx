@@ -14,10 +14,10 @@ const TiltCard = ({ children, className, style, maxTilt = 8, scale = 1.02 }) => 
 
   const reducedMotion = typeof window !== 'undefined'
     && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isCoarsePointer = typeof window !== 'undefined'
-    && window.matchMedia('(pointer: coarse)').matches;
+  const canHover = typeof window === 'undefined'
+    || window.matchMedia('(any-hover: hover)').matches;
 
-  if (reducedMotion || isCoarsePointer) {
+  if (reducedMotion || !canHover) {
     return <div className={className} style={style}>{children}</div>;
   }
 

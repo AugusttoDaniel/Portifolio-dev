@@ -11,10 +11,10 @@ const MagneticButton = ({ children, style, strength = 0.35 }) => {
 
   const reducedMotion = typeof window !== 'undefined'
     && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isCoarsePointer = typeof window !== 'undefined'
-    && window.matchMedia('(pointer: coarse)').matches;
+  const canHover = typeof window === 'undefined'
+    || window.matchMedia('(any-hover: hover)').matches;
 
-  if (reducedMotion || isCoarsePointer) {
+  if (reducedMotion || !canHover) {
     return <div style={{ display: 'inline-block', ...style }}>{children}</div>;
   }
 
