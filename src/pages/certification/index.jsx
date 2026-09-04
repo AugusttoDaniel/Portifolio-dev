@@ -150,19 +150,6 @@ const EducationalJourney = () => {
     const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'], layoutEffect: false });
     const yBlob = useTransform(scrollYProgress, [0, 1], [-90, 90]);
 
-    // Configurações de animação
-    const fadeInUp = {
-        hidden: { opacity: 0, y: 50 },
-        visible: { 
-            opacity: 1, 
-            y: 0,
-            transition: {
-                duration: 0.8,
-                ease: "easeOut"
-            }
-        }
-    };
-
     if (isLoading) return <LoadingSpinner />;
     if (error) return <ErrorDisplay message="Failed to load educational data" />;
 
@@ -185,22 +172,12 @@ const EducationalJourney = () => {
         <Container id="certificados" ref={sectionRef}>
             <Blob style={{ y: yBlob }} />
             <Watermark>JORNADA</Watermark>
-            <Header
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={fadeInUp}
-            >
+            <Header>
                 <Title><RevealText text="Jornada Educacional" /></Title>
                 <Subtitle>Formação, certificações e experiência profissional</Subtitle>
             </Header>
 
-            <NavContainer
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={fadeInUp}
-            >
+            <NavContainer>
                 <NavButton
                     $active={active === 'academic'}
                     onClick={() => handleNavClick('academic')}
@@ -243,13 +220,8 @@ const EducationalJourney = () => {
                 </NavButton>
             </NavContainer>
 
-            <TimelineContainer
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={fadeInUp}
-            >
-              <Timeline 
+            <TimelineContainer>
+              <Timeline
                   $items={getActiveData}
                   $styleProps={timelineStyles}
               />
