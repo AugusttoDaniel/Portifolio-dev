@@ -1,4 +1,4 @@
-# Portfólio — Daniel Augusto Silva
+# Portfólio de Daniel Augusto Silva
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)
@@ -11,7 +11,7 @@
 
 ## 📋 Sobre o Projeto
 
-Portfólio profissional desenvolvido com React, apresentando minhas habilidades, projetos e experiência como Desenvolvedor Full Stack Júnior — também disponível para projetos freelance. Interface clara e responsiva, com animações e microinterações construídas com Framer Motion e Lenis.
+Portfólio profissional desenvolvido com React, apresentando minhas habilidades, projetos e experiência como Desenvolvedor Full Stack Júnior, também disponível para projetos freelance. Interface clara e responsiva, com animações e microinterações construídas com Framer Motion e Lenis.
 
 O site também foi otimizado para ser lido tanto por pessoas quanto por agentes/LLMs: conteúdo real renderizado no HTML (sem depender de JS para ser indexado), dados estruturados (JSON-LD), negociação de conteúdo em Markdown, `llms.txt` e páginas de apoio (`/about`, `/contact`, `/privacy`).
 
@@ -46,13 +46,13 @@ O site também foi otimizado para ser lido tanto por pessoas quanto por agentes/
 
 ## 🚀 Tecnologias Utilizadas
 
-- **[React 19](https://react.dev/)** — biblioteca para construção de interfaces
-- **[Vite 6](https://vite.dev/)** — build tool e servidor de desenvolvimento
-- **[Styled Components 6](https://styled-components.com/)** — CSS-in-JS
-- **[Framer Motion 12](https://motion.dev/)** — animações e transições
-- **[Lenis](https://lenis.dev/)** — scroll suave
-- **React Icons** — ícones da interface
-- **[Vercel Speed Insights](https://vercel.com/docs/speed-insights)** — métricas de performance em produção
+- **[React 19](https://react.dev/)**: biblioteca para construção de interfaces
+- **[Vite 6](https://vite.dev/)**: build tool e servidor de desenvolvimento
+- **[Styled Components 6](https://styled-components.com/)**: CSS-in-JS
+- **[Framer Motion 12](https://motion.dev/)**: animações e transições
+- **[Lenis](https://lenis.dev/)**: scroll suave
+- **React Icons**: ícones da interface
+- **[Vercel Speed Insights](https://vercel.com/docs/speed-insights)**: métricas de performance em produção
 
 ## 🛠️ Instalação e Uso
 
