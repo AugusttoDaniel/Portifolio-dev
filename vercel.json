@@ -1,19 +1,20 @@
 {
+  "routes": [
+    {
+      "src": "/",
+      "has": [
+        { "type": "header", "key": "accept", "value": "text/markdown" }
+      ],
+      "dest": "/api/markdown-home"
+    },
+    { "handle": "filesystem" }
+  ],
   "headers": [
     {
       "source": "/",
       "headers": [
         { "key": "Link", "value": "</>; rel=\"alternate\"; type=\"text/markdown\"" }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/",
-      "has": [
-        { "type": "header", "key": "accept", "value": ".*text/markdown.*" }
-      ],
-      "destination": "/api/markdown-home"
     }
   ]
 }

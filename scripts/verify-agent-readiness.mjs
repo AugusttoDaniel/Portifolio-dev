@@ -24,8 +24,16 @@ function stripTags(html) {
 async function checkContentWithoutJs() {
   const res = await fetch(`${baseUrl}/`);
   const html = await res.text();
-  const rootMatch = html.match(/<div id="root">([\s\S]*?)<\/div>\s*<script/);
-  const text = rootMatch ? stripTags(rootMatch[1]) : '';
+  // The build's entry <script> is injected into <head>, not right after
+  // #root's closing </div>, so bound the extraction on </body> instead -
+  // that stays correct whether the script tag lives in <head> (production
+  // build) or at the end of <body> (Vite dev server).
+  const rootStart = html.indexOf('<div id="root">');
+  const bodyEnd = html.indexOf('</body>');
+  const inner = rootStart !== -1 && bodyEnd !== -1
+    ? html.slice(rootStart + '<div id="root">'.length, bodyEnd)
+    : '';
+  const text = stripTags(inner);
   report('Content without JS: raw HTML has 500+ chars', text.length >= 500, `${text.length} chars`);
   const h1Count = (html.match(/<h1[\s>]/gi) || []).length;
   report('Content without JS: exactly one <h1> in raw HTML', h1Count === 1, `${h1Count} found`);
