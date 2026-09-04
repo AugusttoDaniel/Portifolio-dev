@@ -66,7 +66,7 @@ async function checkLlmsTxt() {
     const body = await res.text();
     report('llms.txt: has H1 title', /^# /.test(body.trim()));
     report('llms.txt: has blockquote summary', /^>/m.test(body));
-    report('llms.txt: has when-to-use guidance', /recomendar|quando/i.test(body));
+    report('llms.txt: has when-to-use guidance', /recomendar|quando|recommend|when to use/i.test(body));
     report('llms.txt: has explicit "When to use this" heading', /^## When to use this/im.test(body));
     report('llms.txt: has ## Optional section', /^## Optional/m.test(body));
   }
