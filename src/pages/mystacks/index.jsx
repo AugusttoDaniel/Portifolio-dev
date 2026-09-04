@@ -243,6 +243,8 @@ const SkillsGrid = styled(m.div)`
 `;
 
 const SkillCard = styled.div`
+  display: flex;
+  flex-direction: column;
   background-color: ${(props) => props.theme.colors.surface};
   border: 1px solid ${(props) => props.theme.colors.border};
   border-radius: ${(props) => props.theme.radius.md};
@@ -301,6 +303,7 @@ const Description = styled.p`
 `;
 
 const Experience = styled.div`
+  margin-top: auto;
   font-size: 0.8rem;
   color: ${(props) => props.theme.colors.textMuted};
 
@@ -671,8 +674,9 @@ const SkillsAndExperience = () => {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}
                   variants={cardVariants}
+                  style={{ height: '100%' }}
                 >
-                  <TiltCard maxTilt={5} scale={1.02}>
+                  <TiltCard maxTilt={5} scale={1.02} style={{ height: '100%' }}>
                     <SkillCard>
                       <CardHeader>
                         <IconWrapper $bgColor={skill.bgColor} $iconColor={skill.bgColor ? skill.bgColor.slice(0, 7) : undefined}>
