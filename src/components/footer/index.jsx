@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import MagneticButton from '../magneticButton';
+import { useLenis } from 'lenis/react';
+import { scrollToId } from '../../utils/scrollToId';
 
 const FooterContainer = styled.footer`
   position: relative;
@@ -103,17 +105,25 @@ const SocialIcon = styled.a`
   }
 `;
 
-const Footer = () => (
+const Footer = () => {
+  const lenis = useLenis();
+
+  const handleNavClick = (e, id) => {
+    e.preventDefault();
+    scrollToId(lenis, id);
+  };
+
+  return (
   <FooterContainer>
     <Blob />
     <FooterSection>
       <FooterTitle>Navegação</FooterTitle>
       <FooterList>
-        <li><FooterLink href="#home">Home</FooterLink></li>
-        <li><FooterLink href="#about">Sobre</FooterLink></li>
-        <li><FooterLink href="#stack">Stack</FooterLink></li>
-        <li><FooterLink href="#certificados">Certificados</FooterLink></li>
-        <li><FooterLink href="#projetos">Projetos</FooterLink></li>
+        <li><FooterLink href="#home" onClick={(e) => handleNavClick(e, 'home')}>Home</FooterLink></li>
+        <li><FooterLink href="#about" onClick={(e) => handleNavClick(e, 'about')}>Sobre</FooterLink></li>
+        <li><FooterLink href="#stack" onClick={(e) => handleNavClick(e, 'stack')}>Stack</FooterLink></li>
+        <li><FooterLink href="#certificados" onClick={(e) => handleNavClick(e, 'certificados')}>Certificados</FooterLink></li>
+        <li><FooterLink href="#projetos" onClick={(e) => handleNavClick(e, 'projetos')}>Projetos</FooterLink></li>
       </FooterList>
     </FooterSection>
 
@@ -157,6 +167,7 @@ const Footer = () => (
       <p>&copy; {new Date().getFullYear()} Daniel Augusto Silva. Todos os direitos reservados.</p>
     </FooterSection>
   </FooterContainer>
-);
+  );
+};
 
 export default Footer;

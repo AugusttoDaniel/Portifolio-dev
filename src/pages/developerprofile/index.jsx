@@ -2,10 +2,12 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { FaArrowRight, FaDownload } from 'react-icons/fa';
 import { m, useScroll, useTransform } from "framer-motion";
+import { useLenis } from 'lenis/react';
 import RevealText from '../../components/revealText';
 import TiltCard from '../../components/tiltCard';
 import MagneticButton from '../../components/magneticButton';
 import { triggerDownloadFly } from '../../utils/downloadFlyEffect';
+import { scrollToId } from '../../utils/scrollToId';
 
 const Container = styled.section`
   position: relative;
@@ -296,6 +298,7 @@ const fadeInUp = {
 
 const DeveloperProfile = () => {
   const sectionRef = useRef(null);
+  const lenis = useLenis();
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'], layoutEffect: false });
 
   const yBlob1 = useTransform(scrollYProgress, [0, 1], [0, 120]);
@@ -344,7 +347,7 @@ const DeveloperProfile = () => {
 
             <ButtonsRow>
               <MagneticButton>
-                <PrimaryButton href="#projetos">
+                <PrimaryButton href="#projetos" onClick={(e) => { e.preventDefault(); scrollToId(lenis, 'projetos'); }}>
                   Ver Projetos
                   <FaArrowRight size={14} />
                 </PrimaryButton>

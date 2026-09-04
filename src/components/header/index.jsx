@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useLenis } from 'lenis/react';
+import { scrollToId } from '../../utils/scrollToId';
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -182,21 +184,11 @@ function Header() {
   const [activeItem, setActiveItem] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
+  const lenis = useLenis();
 
-  // Função para navegar suavemente até o elemento
   const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const headerHeight = document.querySelector('header').offsetHeight;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setActiveItem(id);
-    }
+    scrollToId(lenis, id);
+    setActiveItem(id);
   };
 
   useEffect(() => {

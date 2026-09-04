@@ -604,7 +604,7 @@ const SkillsAndExperience = () => {
             {showFilterDropdown && (
               <FilterDropdown>
                 <FilterHeader>Filtrar por categoria</FilterHeader>
-                <FilterOptions>
+                <FilterOptions data-lenis-prevent>
                   {categories.map((category) => (
                     <FilterOption
                       key={category.id}

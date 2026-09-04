@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { LazyMotion, domAnimation } from 'framer-motion';
+import { LazyMotion, domAnimation, frame, cancelFrame } from 'framer-motion';
+import { ReactLenis, useLenis } from 'lenis/react';
+import 'lenis/dist/lenis.css';
 import { GlobalStyle } from './styles/globalStyles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './styles/theme';
@@ -31,29 +33,21 @@ const BackToTopContainer = styled.div`
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
+  const lenisRef = useRef(null);
+  const lenis = useLenis();
 
   const scrollToTop = () => {
-    const duration = 1000; 
-    const start = window.pageYOffset || document.documentElement.scrollTop;
-    const startTime = performance.now();
-
-    const easeOutExpo = (t) => (t >= 1 ? 1 : 1 - Math.pow(2, -10 * t));
-
-    // Função de animação
-    const animateScroll = (currentTime) => {
-      const elapsedTime = currentTime - startTime;
-      const progress = Math.min(elapsedTime / duration, 1);
-      const eased = easeOutExpo(progress);
-
-      window.scrollTo(0, start * (1 - eased));
-
-      if (progress < 1) {
-        requestAnimationFrame(animateScroll);
-      }
-    };
-
-    requestAnimationFrame(animateScroll);
+    lenis?.scrollTo(0);
   };
+
+  useEffect(() => {
+    function update(data) {
+      lenisRef.current?.lenis?.raf(data.timestamp);
+    }
+    frame.update(update, true);
+    return () => cancelFrame(update);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -68,29 +62,31 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <LazyMotion features={domAnimation} strict>
-        <GlobalStyle />
-         <Header />
-         <DeveloperProfile />
-        <AboutMe />
-         <Stack />
-        <Certification />
-        <Projects />
-        <Footer />
-        <BackToTopContainer $isVisible={isVisible}>
-          <Button
-            icon={FaArrowUp}
-            backgroundColor="#1BA3E8"
-            textColor="#FFFFFF"
-            hoverBackgroundColor="#0B84C4"
-            padding="0.75rem"
-            borderRadius="50%"
-            onClick={scrollToTop}
-            aria-label="Voltar ao topo"
-          />
-        </BackToTopContainer>
-        <SpeedInsights />
-      </LazyMotion>
+      <ReactLenis root options={{ autoRaf: false, anchors: true }} ref={lenisRef}>
+        <LazyMotion features={domAnimation} strict>
+          <GlobalStyle />
+           <Header />
+           <DeveloperProfile />
+          <AboutMe />
+           <Stack />
+          <Certification />
+          <Projects />
+          <Footer />
+          <BackToTopContainer $isVisible={isVisible}>
+            <Button
+              icon={FaArrowUp}
+              backgroundColor="#1BA3E8"
+              textColor="#FFFFFF"
+              hoverBackgroundColor="#0B84C4"
+              padding="0.75rem"
+              borderRadius="50%"
+              onClick={scrollToTop}
+              aria-label="Voltar ao topo"
+            />
+          </BackToTopContainer>
+          <SpeedInsights />
+        </LazyMotion>
+      </ReactLenis>
     </ThemeProvider>
   );
 }
