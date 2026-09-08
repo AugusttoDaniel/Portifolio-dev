@@ -48,7 +48,7 @@ export function triggerDownloadFly(originElement) {
       { transform: `translate(${dx}px, ${dy}px) scale(0.25)`, opacity: 0, offset: 1 },
     ],
     {
-      duration: 750,
+      duration: 1500,
       easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
       fill: 'forwards',
     }
