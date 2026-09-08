@@ -27,7 +27,6 @@ O site também foi otimizado para ser lido tanto por pessoas quanto por agentes/
 - **Timeline Interativa**: formação acadêmica, cursos/certificações e experiência profissional em abas
 - **Animação de Download**: ícone do currículo "voa" até o botão de download do header ao clicar em "Baixar CV"
 - **SEO e Agent-Readiness**: JSON-LD, sitemap, `robots.txt`, `llms.txt`, negociação de conteúdo em Markdown e páginas estáticas de apoio
-- **Deploy Duplo**: publicado na Vercel (produção) e compatível com GitHub Pages
 
 ## 🖼️ Capturas de Tela
 
@@ -77,12 +76,7 @@ npm run dev
 npm run build
 ```
 
-5. Deploy manual no GitHub Pages:
-```bash
-npm run deploy
-```
-
-6. Verificar a saúde de SEO/agent-readiness (contra a URL de produção, ou passando outra como argumento):
+5. Verificar a saúde de SEO/agent-readiness (contra a URL de produção, ou passando outra como argumento):
 ```bash
 npm run verify:agent-readiness
 ```
@@ -130,8 +124,7 @@ Portifolio-dev/
 
 ## 🌐 Deploy
 
-- **Produção**: [Vercel](https://portifolio-dev-two-plum.vercel.app/), com deploy automático a cada push
-- **Alternativo**: [GitHub Pages](https://augusttodaniel.github.io/Portifolio-dev/), publicado manualmente via `npm run deploy`
+Hospedado na [Vercel](https://portifolio-dev-two-plum.vercel.app/), com deploy automático a cada push na `main`.
 
 ## 📫 Contato
 
