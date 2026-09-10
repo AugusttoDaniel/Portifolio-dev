@@ -6,11 +6,9 @@ import { m, useScroll, useTransform } from "framer-motion";
 import RevealText from '../../components/revealText';
 import TiltCard from '../../components/tiltCard';
 import MagneticButton from '../../components/magneticButton';
-// Importar imagens
-import portfolioImage from '../../assets/Portifolio.webp';
-import assistecImage from '../../assets/Assistec.webp';
-import roadmapImage from '../../assets/Roadmap.webp';
-import videonotesImage from '../../assets/Videonotes.webp';
+import ProjectModal from '../../components/projectModal';
+import { getProjectImage } from '../../utils/projectImages';
+import { FaArrowRight, FaExpand } from 'react-icons/fa';
 
 const ProjectsSection = styled.div`
   background-color: ${(props) => props.theme.colors.bg};
@@ -93,35 +91,85 @@ const ProjectsList = styled(m.div)`
   display: flex;
   flex-direction: column;
   gap: 80px;
+
+  @media (max-width: 768px) {
+    gap: 56px;
+  }
 `;
 
 const ProjectCard = styled.div`
   display: flex;
-  align-items: center;
+  /* stretch para a imagem acompanhar a altura do bloco de texto ao lado. */
+  align-items: stretch;
   gap: 40px;
   flex-direction: ${(props) => (props.$reverse ? 'row-reverse' : 'row')};
 
   @media (max-width: 768px) {
     flex-direction: column;
+    gap: 24px;
   }
 `;
 
-const ProjectImage = styled.div`
-  flex: 1;
+const ProjectImage = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  border: none;
+  font: inherit;
+  cursor: pointer;
   position: relative;
+  /* Os mocks têm fundo transparente ou quase branco, então o painel entra como
+     moldura no mesmo tom claro e a emenda não aparece. */
+  background-color: ${(props) => props.theme.colors.bgAlt};
   border-radius: ${(props) => props.theme.radius.md};
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05), 0 24px 48px rgba(15, 23, 42, 0.14);
 
   img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
     display: block;
     transition: transform 0.3s;
   }
 
-  &:hover img {
+  &:hover img,
+  &:focus-visible img {
     transform: scale(1.05);
+  }
+
+  &:hover span,
+  &:focus-visible span {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${(props) => props.theme.colors.brand1};
+    outline-offset: 3px;
+  }
+`;
+
+const ImageOverlay = styled.span`
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: ${(props) => props.theme.colors.white};
+  background: linear-gradient(to top, rgba(11, 18, 32, 0.75), rgba(11, 18, 32, 0.25));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  svg {
+    width: 14px;
+    height: 14px;
   }
 `;
 
@@ -136,6 +184,27 @@ const ProjectTitle = styled.h3`
   font-size: 1.5rem;
   color: ${(props) => props.theme.colors.text};
   margin: 0;
+
+  button {
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.25s ease;
+
+    &:hover {
+      color: ${(props) => props.theme.colors.accentHover};
+    }
+
+    &:focus-visible {
+      outline: 2px solid ${(props) => props.theme.colors.brand1};
+      outline-offset: 4px;
+      border-radius: ${(props) => props.theme.radius.sm};
+    }
+  }
 `;
 
 const ProjectDescription = styled.p`
@@ -161,12 +230,18 @@ const TechItem = styled.span`
 
 const ButtonsContainer = styled.div`
   display: flex;
-  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
   margin-top: 10px;
 `;
 
 const Button = styled.a`
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  line-height: 1.2;
+  white-space: nowrap;
   padding: 8px 16px;
   background-color: ${(props) => props.theme.colors.surface};
   color: ${(props) => props.theme.colors.accentHover};
@@ -179,6 +254,43 @@ const Button = styled.a`
 
   &:hover {
     background-color: ${(props) => props.theme.colors.surfaceTint};
+  }
+`;
+
+const DetailsButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  line-height: 1.2;
+  white-space: nowrap;
+  gap: 8px;
+  padding: 8px 16px;
+  color: ${(props) => props.theme.colors.white};
+  background: linear-gradient(135deg, ${(props) => props.theme.colors.brand1}, ${(props) => props.theme.colors.accentHover});
+  border: 1px solid transparent;
+  border-radius: ${(props) => props.theme.radius.sm};
+  font-size: 0.9rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  svg {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.25s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(3px);
+  }
+
+  &:hover {
+    box-shadow: 0 10px 20px ${(props) => props.theme.colors.brand1}3D;
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${(props) => props.theme.colors.brand1};
+    outline-offset: 2px;
   }
 `;
 
@@ -221,6 +333,7 @@ const Projects = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [visibleProjects, setVisibleProjects] = useState(3);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'], layoutEffect: false });
@@ -246,23 +359,6 @@ const Projects = () => {
 
     fetchData();
   }, []);
-
-  // Mapeamento de imagens
-  const imageMap = {
-    'portifolio': portfolioImage,
-    'roadmap': roadmapImage,
-    'assistec': assistecImage,
-    'videonotes': videonotesImage,
-  };
-
-  const getImagePath = (imagePath) => {
-    // Se for um caminho completo que inclui assets
-    if (imagePath.includes('assets/')) {
-      return assistecImage;
-    }
-    // Se for apenas o nome da imagem
-    return imageMap[imagePath] || '';
-  };
 
   const loadMoreProjects = () => {
     setVisibleProjects(prevVisible => prevVisible + 3);
@@ -305,7 +401,7 @@ const Projects = () => {
           variants={fadeInUp}
         >
           <Title><RevealText text="Projetos" /></Title>
-          <Subtitle>Projetos que tirei do zero e levei até a produção</Subtitle>
+          <Subtitle>Projetos que tirei do zero e levei até a produção. Clique em um para ver os detalhes.</Subtitle>
         </Header>
 
         <ProjectsList>
@@ -319,16 +415,27 @@ const Projects = () => {
               variants={cardVariants}
             >
               <ProjectCard $reverse={index % 2 === 1}>
-                <TiltCard maxTilt={6} scale={1.015} style={{ flex: 1 }}>
-                  <ProjectImage>
+                <TiltCard maxTilt={6} scale={1.015} style={{ flex: 1, display: 'flex' }}>
+                  <ProjectImage
+                    type="button"
+                    onClick={() => setSelectedProject(project)}
+                    aria-label={`Abrir detalhes do projeto ${project.title}`}
+                  >
                     <img
-                      src={getImagePath(project.imagem)}
+                      src={getProjectImage(project.imagem)}
                       alt={project.title}
                     />
+                    <ImageOverlay aria-hidden="true">
+                      <FaExpand /> Ver detalhes
+                    </ImageOverlay>
                   </ProjectImage>
                 </TiltCard>
                 <ProjectContent>
-                  <ProjectTitle>{project.title}</ProjectTitle>
+                  <ProjectTitle>
+                    <button type="button" onClick={() => setSelectedProject(project)}>
+                      {project.title}
+                    </button>
+                  </ProjectTitle>
                   <ProjectDescription>{project.description}</ProjectDescription>
                   <TechStack>
                     {project.tech.map((tech, index) => (
@@ -336,6 +443,11 @@ const Projects = () => {
                     ))}
                   </TechStack>
                   <ButtonsContainer>
+                    <MagneticButton>
+                      <DetailsButton type="button" onClick={() => setSelectedProject(project)}>
+                        Ver detalhes <FaArrowRight />
+                      </DetailsButton>
+                    </MagneticButton>
                     {project.demoLink && (
                       <MagneticButton>
                         <Button href={project.demoLink} target="_blank" rel="noopener noreferrer">
@@ -373,6 +485,11 @@ const Projects = () => {
           </ViewMoreButton>
         )}
       </Container>
+
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </ProjectsSection>
   );
 };

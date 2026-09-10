@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { m, useMotionValue, useSpring } from 'framer-motion';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 
 const MagneticButton = ({ children, style, strength = 0.35 }) => {
   const ref = useRef(null);
@@ -9,10 +10,8 @@ const MagneticButton = ({ children, style, strength = 0.35 }) => {
   const springX = useSpring(x, { stiffness: 200, damping: 15, mass: 0.3 });
   const springY = useSpring(y, { stiffness: 200, damping: 15, mass: 0.3 });
 
-  const reducedMotion = typeof window !== 'undefined'
-    && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const canHover = typeof window === 'undefined'
-    || window.matchMedia('(any-hover: hover)').matches;
+  const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
+  const canHover = useMediaQuery('(any-hover: hover)');
 
   if (reducedMotion || !canHover) {
     return <div style={{ display: 'inline-block', ...style }}>{children}</div>;

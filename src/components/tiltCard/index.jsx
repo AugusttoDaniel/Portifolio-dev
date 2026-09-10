@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { m, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 
 const TiltCard = ({ children, className, style, maxTilt = 8, scale = 1.02 }) => {
   const ref = useRef(null);
@@ -12,10 +13,8 @@ const TiltCard = ({ children, className, style, maxTilt = 8, scale = 1.02 }) => 
   const rotateX = useTransform(springY, [0, 1], [maxTilt, -maxTilt]);
   const rotateY = useTransform(springX, [0, 1], [-maxTilt, maxTilt]);
 
-  const reducedMotion = typeof window !== 'undefined'
-    && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const canHover = typeof window === 'undefined'
-    || window.matchMedia('(any-hover: hover)').matches;
+  const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
+  const canHover = useMediaQuery('(any-hover: hover)');
 
   if (reducedMotion || !canHover) {
     return <div className={className} style={style}>{children}</div>;
