@@ -12,9 +12,11 @@ const TimelineItemContainer = styled.div`
   margin-bottom: ${props => props.marginBottom || '2rem'};
   padding-left: ${props => props.$position === 'right' ? 'calc(50% + 15px)' : '0'};
   padding-right: ${props => props.$position === 'left' ? 'calc(50% + 15px)' : '0'};
+  /* No celular todos os itens ficam à esquerda e a linha vai para a borda
+     direita, então basta reservar a folga do ponto (16px) mais um respiro. */
   @media (max-width: 760px) {
-    padding-left: ${props => props.$position === 'right' ? 'calc(50% + 15px)' : '0'};
-    padding-right: ${props => props.$position === 'left' ? 'calc(25% + 15px)' : '0'};
+    padding-left: 0;
+    padding-right: 40px;
   }
 `;
 
@@ -142,8 +144,8 @@ const TimelineItem = ({
   cardStyles = {},
   onCardClick,
 }) => {
-  const isPhone = useIsPhone();
-
+  // 760 é o mesmo ponto de corte do CSS da timeline.
+  const isPhone = useIsPhone(760);
 
   const IconComponent = typeof icon === 'string' ? iconMap[icon] : icon;
   return (
@@ -170,10 +172,10 @@ const TimelineItem = ({
           </div>
         </TimelineHeader>
 
-        {!isPhone && description && 
+        {description &&
         <TimelineContent {...(cardStyles.contentStyles || {})}>{description}</TimelineContent>
         }
-        {!isPhone && tags.length > 0 && (
+        {tags.length > 0 && (
           <TagsContainer {...(cardStyles.tagsContainerStyles || {})}>
             {tags.map((tag, index) => (
               <Tag key={index} {...(cardStyles.tagStyles || {})}>{tag}</Tag>

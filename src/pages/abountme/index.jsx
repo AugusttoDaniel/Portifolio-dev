@@ -62,9 +62,17 @@ const Watermark = styled.div`
 const ContentContainer = styled.div`
   position: relative;
   z-index: 2;
+  width: 100%;
+  /* Sem o min-width: 0 este item de flex se recusa a encolher além do
+     conteúdo e a seção vaza para fora da tela em celulares estreitos. */
+  min-width: 0;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+
+  @media (max-width: 400px) {
+    padding: 20px 4px;
+  }
 `;
 
 const Header = styled(m.header)`
@@ -134,7 +142,8 @@ const Emphasis = styled.span`
 
 const StatsSection = styled(m.div)`
   display: flex;
-  gap: 30px;
+  flex-wrap: wrap;
+  gap: 20px 30px;
   margin: 40px 0;
 `;
 
@@ -147,6 +156,10 @@ const StatNumber = styled(m.span)`
   font-size: 3rem;
   font-weight: bold;
   color: ${(props) => props.theme.colors.text};
+
+  @media (max-width: 400px) {
+    font-size: 2.4rem;
+  }
 `;
 
 const StatLabel = styled(m.div)`

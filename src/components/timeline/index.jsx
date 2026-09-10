@@ -44,9 +44,11 @@ const TimelineLine = styled.div`
   width: ${props => props.$lineWidth || '2px'};
   background-color: ${props => props.$lineColor || 'rgba(255, 255, 255, 0.3)'};
   transform: translateX(-50%);
-  transition: all 0.3s ease; 
+  transition: all 0.3s ease;
+  /* No celular a linha encosta na borda direita com folga fixa em vez de
+     reservar 20% da largura, que roubava espaço de leitura dos cards. */
   @media (max-width: 760px) {
-    left: 80%;
+    left: calc(100% - 20px);
   }
 `;
 
@@ -62,7 +64,7 @@ const TimelineDot = styled(m.div)`
   top: ${props => props.$top || '0'};
   z-index: 2;
   @media (max-width: 760px) {
-    left: 80%;
+    left: calc(100% - 20px);
   }
 `;
 
@@ -72,7 +74,8 @@ const Timeline = ({
   $styleProps = {},
 }) => {
   const totalItems = $items.length;
-  const isPhone = useIsPhone();
+  // 760 é o mesmo ponto de corte usado no CSS da linha e dos cards.
+  const isPhone = useIsPhone(760);
 
   return (
     <TimelineContainer 

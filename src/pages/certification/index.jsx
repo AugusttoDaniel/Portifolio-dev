@@ -16,6 +16,10 @@ const Container = styled.section`
   min-height: 100vh;
   padding: 2rem;
   font-family: ${(props) => props.theme.typography.fontFamily};
+
+  @media (max-width: 480px) {
+    padding: 2rem 1rem;
+  }
   color: ${(props) => props.theme.colors.text};
   position: relative;
   overflow: hidden;
