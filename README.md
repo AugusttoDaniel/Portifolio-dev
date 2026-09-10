@@ -25,6 +25,7 @@ O site também foi otimizado para ser lido tanto por pessoas quanto por agentes/
 - **Efeitos de Hover**: cards com leve inclinação 3D (tilt) e botões com efeito magnético, desativados automaticamente em dispositivos sem mouse
 - **Stack com Busca, Filtro e Paginação**: habilidades filtráveis por categoria e por texto
 - **Timeline Interativa**: formação acadêmica, cursos/certificações e experiência profissional em abas
+- **Detalhes do Projeto**: clicar em um projeto abre um modal no estilo README, com galeria de imagens, descrição longa, destaques, stack agrupada e decisões técnicas
 - **Animação de Download**: ícone do currículo "voa" até o botão de download do header ao clicar em "Baixar CV"
 - **SEO e Agent-Readiness**: JSON-LD, sitemap, `robots.txt`, `llms.txt`, negociação de conteúdo em Markdown e páginas estáticas de apoio
 
@@ -95,6 +96,7 @@ Portifolio-dev/
 │   │   ├── header/ footer/ button/
 │   │   ├── timeline/ timelineitem/      # Timeline de formação/experiência
 │   │   ├── tiltCard/ magneticButton/    # Microinterações de hover
+│   │   ├── projectModal/                # Modal de detalhes do projeto (galeria + README)
 │   │   ├── revealText/                  # Animação de texto palavra a palavra
 │   │   └── loadingspinner/
 │   ├── hooks/              # Hooks reutilizáveis (ex: useIsPhone)
@@ -120,7 +122,7 @@ Portifolio-dev/
 - **Sobre Mim**: trajetória, stack e estatísticas
 - **Stack Tecnológica**: habilidades com busca, filtro por categoria e paginação
 - **Formação e Experiência**: timeline com abas para acadêmico, cursos/certificações e experiência profissional
-- **Projetos**: trabalhos reais, com descrição, tecnologias usadas e links para demo/código
+- **Projetos**: trabalhos reais, com descrição, tecnologias usadas e links para demo/código; cada card abre um modal com a versão longa do projeto
 
 ## 🌐 Deploy
 

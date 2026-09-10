@@ -6,7 +6,51 @@
         "imagem": "videonotes",
         "tech": ["Go", "Docker", "Whisper", "yt-dlp", "FFmpeg", "LLM"],
         "demoLink": "",
-        "codeLink": ""
+        "codeLink": "",
+        "details": {
+            "tagline": "Um link jogado no grupo do WhatsApp vira nota estruturada no Obsidian em cerca de 30 segundos.",
+            "meta": [
+                { "label": "Ano", "value": "2026" },
+                { "label": "Tipo", "value": "Projeto pessoal" },
+                { "label": "Papel", "value": "Do zero ao deploy" }
+            ],
+            "overview": [
+                "Salvar um vídeo para ver depois é fácil. Voltar nele é que não acontece. O videonotes fecha esse ciclo: um bot escuta um grupo do WhatsApp, pega o link assim que ele cai ali e devolve uma nota estruturada dentro do Obsidian, sem app novo para abrir nem formulário para preencher.",
+                "O caminho é simples de descrever e chato de acertar. O vídeo é baixado com yt-dlp, o áudio vai para o Whisper e a transcrição vira nota. Quando o vídeo não tem fala, transcrição nenhuma resolve: aí o FFmpeg extrai quadros e um modelo de visão lê o texto que está na tela, o que cobre tutoriais mudos, demos de tela e vídeo que é só código rolando.",
+                "Tudo isso vive num único binário Go de 7 MB, sem framework e sem banco de dados, empacotado em Docker para rodar em qualquer lugar."
+            ],
+            "highlights": [
+                {
+                    "title": "Entrada onde a conversa já acontece",
+                    "text": "O gatilho é mandar o link no grupo do WhatsApp. Nenhuma interface nova entra no caminho."
+                },
+                {
+                    "title": "Transcrição com Whisper",
+                    "text": "O áudio vira texto e o texto vira nota, com o link original preservado para conferência."
+                },
+                {
+                    "title": "Plano B para vídeo sem fala",
+                    "text": "Sem áudio útil, o FFmpeg extrai quadros e um modelo de visão lê o que está escrito na tela."
+                },
+                {
+                    "title": "Cerca de 30 segundos por vídeo",
+                    "text": "Do link enviado até a nota disponível no vault, pronta para ler depois."
+                }
+            ],
+            "stack": [
+                { "group": "Núcleo", "items": ["Go"] },
+                { "group": "Mídia e IA", "items": ["Whisper", "yt-dlp", "FFmpeg", "Modelo de visão"] },
+                { "group": "Infra", "items": ["Docker"] }
+            ],
+            "notes": [
+                "Sem banco de dados. O vault do Obsidian é o destino e a fonte da verdade das notas.",
+                "Sem framework. O binário final tem 7 MB e sobe com uma única imagem Docker.",
+                "Fallback em vez de erro. Se a transcrição não rende texto útil, o pipeline segue pela leitura de quadros."
+            ],
+            "gallery": [
+                { "src": "videonotes", "caption": "Do link no WhatsApp à nota estruturada no Obsidian." }
+            ]
+        }
     },
     {
         "id": 1,
@@ -15,7 +59,64 @@
         "imagem": "portifolio",
         "tech": ["React", "Styled Components", "React Icons"],
         "demoLink": "https://portifolio-dev-two-plum.vercel.app/",
-        "codeLink": "https://github.com/AugusttoDaniel/Portifolio-dev"
+        "codeLink": "https://github.com/AugusttoDaniel/Portifolio-dev",
+        "details": {
+            "tagline": "Este site. Um portfólio que precisa convencer duas plateias: gente e agentes de IA.",
+            "meta": [
+                { "label": "Ano", "value": "2025" },
+                { "label": "Tipo", "value": "Projeto pessoal" },
+                { "label": "Status", "value": "No ar, em evolução" }
+            ],
+            "overview": [
+                "É o site em que você está agora. React 19 com Vite, Styled Components para o CSS, Framer Motion para as animações e Lenis para o scroll com inércia. O deploy é automático na Vercel a cada push na main.",
+                "A parte que costuma passar despercebida é o conteúdo estático. O HTML já chega com o texto real das seções, sem depender de JavaScript para ser indexado, e o site também responde em Markdown para quem preferir ler assim. Junto vão JSON-LD, sitemap, robots.txt, llms.txt e páginas de apoio em /about, /contact e /privacy."
+            ],
+            "highlights": [
+                {
+                    "title": "Scroll com inércia",
+                    "text": "Lenis sincronizado ao loop de animação do Framer Motion, para o scroll suave não brigar com as animações de entrada."
+                },
+                {
+                    "title": "Microinterações com freio",
+                    "text": "Cards com leve inclinação 3D e botões magnéticos, desligados sozinhos em telas sem mouse e quando o sistema pede menos movimento."
+                },
+                {
+                    "title": "Stack navegável",
+                    "text": "Busca por texto, filtro por categoria e paginação nas habilidades, em vez de uma lista longa e parada."
+                },
+                {
+                    "title": "Timeline em abas",
+                    "text": "Formação acadêmica, cursos e experiência profissional na mesma linha do tempo, separados por aba."
+                },
+                {
+                    "title": "Pronto para agentes",
+                    "text": "JSON-LD, llms.txt, negociação de conteúdo em Markdown e conteúdo real no HTML servido."
+                },
+                {
+                    "title": "O currículo que voa",
+                    "text": "Clicar em Baixar CV faz o ícone do currículo voar até o botão de download no header."
+                }
+            ],
+            "stack": [
+                { "group": "Front-end", "items": ["React 19", "Vite 6", "Styled Components 6", "React Icons"] },
+                { "group": "Movimento", "items": ["Framer Motion 12", "Lenis"] },
+                { "group": "SEO e agentes", "items": ["JSON-LD", "sitemap.xml", "llms.txt", "Markdown"] },
+                { "group": "Infra", "items": ["Vercel", "Speed Insights"] }
+            ],
+            "notes": [
+                "Conteúdo real no HTML inicial, para que buscadores e LLMs leiam o portfólio sem executar JavaScript.",
+                "As animações respeitam prefers-reduced-motion e somem em dispositivos sem mouse.",
+                "Um script de verificação checa a saúde de SEO e agent-readiness contra a URL de produção."
+            ],
+            "gallery": [
+                { "src": "portifolio", "caption": "Capa do projeto." },
+                { "src": "portifolio-hero", "caption": "Página inicial, com headline e atalhos para projetos e currículo." },
+                { "src": "portifolio-stack", "caption": "Stack com busca, filtro por categoria e paginação." },
+                { "src": "portifolio-certificados", "caption": "Jornada educacional em abas: formação, cursos e experiência." },
+                { "src": "portifolio-projetos", "caption": "Seção de projetos, alternando imagem e texto." },
+                { "src": "portifolio-mobile", "caption": "A mesma página inicial no mobile." }
+            ]
+        }
     },
     {
         "id": 2,
@@ -24,7 +125,40 @@
         "imagem": "assistec",
         "tech": ["Html", "Css", "JavaScript"],
         "demoLink": "https://augusttodaniel.github.io/Portifolio-dev/",
-        "codeLink": ""
+        "codeLink": "",
+        "details": {
+            "tagline": "Site institucional para uma empresa de TI, feito sem framework e sem etapa de build.",
+            "meta": [
+                { "label": "Ano", "value": "2025" },
+                { "label": "Tipo", "value": "Trabalho para cliente" },
+                { "label": "Papel", "value": "Front-end" }
+            ],
+            "overview": [
+                "Landing page institucional da Assistec Informática, que oferece equipe de TI para manter a operação de outras empresas segura e sob controle. A página abre com a headline sobre segurança e produtividade e leva o visitante direto para o pedido de consultoria.",
+                "Foi construída com HTML, CSS e JavaScript puros. Sem framework, sem etapa de build e sem dependências para atualizar depois: o site é servido como está. O deploy foi feito pelo GitLab."
+            ],
+            "highlights": [
+                {
+                    "title": "Jornada institucional completa",
+                    "text": "Sobre, Serviços, Soluções, Benefícios, Parceiros e Contato numa única página, com navegação por âncoras."
+                },
+                {
+                    "title": "Chamada para ação em evidência",
+                    "text": "Solicitar consultoria aparece no topo fixo e dentro do bloco principal, sempre a um clique de distância."
+                },
+                {
+                    "title": "Sem framework",
+                    "text": "HTML, CSS e JavaScript direto no navegador, o que mantém o carregamento leve e a manutenção simples."
+                }
+            ],
+            "stack": [
+                { "group": "Front-end", "items": ["HTML", "CSS", "JavaScript"] },
+                { "group": "Infra", "items": ["GitLab"] }
+            ],
+            "gallery": [
+                { "src": "assistec", "caption": "Bloco principal, com a chamada para solicitar consultoria." }
+            ]
+        }
     },
     {
         "id": 3,
@@ -33,7 +167,44 @@
         "imagem": "roadmap",
         "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Shadcn/ui", "Supabase", "React Hook Form", "Zod"],
         "demoLink": "https://teste-road-map.vercel.app/",
-        "codeLink": ""
+        "codeLink": "",
+        "details": {
+            "tagline": "Roadmaps interativos para estudar tecnologia sem perder de vista o que já foi estudado.",
+            "meta": [
+                { "label": "Ano", "value": "2025" },
+                { "label": "Tipo", "value": "Aplicação web" },
+                { "label": "Papel", "value": "Full stack" }
+            ],
+            "overview": [
+                "O DevRoadmap organiza o estudo de quem está entrando ou crescendo em tecnologia. Em vez de uma lista solta de conteúdos, cada trilha é um roadmap por função, com as etapas na ordem em que fazem sentido.",
+                "A pessoa marca o que já estudou e vê o avanço em tempo real, salva os roadmaps que interessam e ainda cadastra os cursos próprios para acompanhar o progresso deles no mesmo lugar. A conta e os dados ficam no Supabase, e os formulários são validados com React Hook Form e Zod."
+            ],
+            "highlights": [
+                {
+                    "title": "Roadmaps por função",
+                    "text": "Trilhas detalhadas e organizadas por área, em vez de uma lista genérica de conteúdos."
+                },
+                {
+                    "title": "Progresso em tempo real",
+                    "text": "A pessoa marca o que já estudou e acompanha o avanço da trilha conforme avança."
+                },
+                {
+                    "title": "Cursos pessoais no mesmo lugar",
+                    "text": "Os cursos que já são feitos por fora entram na conta e ganham acompanhamento próprio."
+                },
+                {
+                    "title": "Roadmaps salvos e tema escuro",
+                    "text": "As trilhas favoritas ficam guardadas na conta, e a interface alterna entre tema claro e escuro."
+                }
+            ],
+            "stack": [
+                { "group": "Front-end", "items": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Shadcn/ui"] },
+                { "group": "Dados e conta", "items": ["Supabase"] },
+                { "group": "Formulários", "items": ["React Hook Form", "Zod"] }
+            ],
+            "gallery": [
+                { "src": "roadmap", "caption": "Página inicial, com os roadmaps interativos e o acompanhamento de progresso." }
+            ]
+        }
     }
-
 ]
