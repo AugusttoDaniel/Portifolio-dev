@@ -21,6 +21,7 @@ Antes de virar desenvolvedor, trabalhei com manutenção de hardware e suporte t
 
 ## Projetos
 
+- **videonotes**: bot em Go que transforma links de vídeo enviados num grupo do WhatsApp em notas estruturadas no Obsidian, transcrevendo com Whisper e lendo texto na tela com um modelo de visão quando o vídeo não tem fala
 - **Portfólio pessoal**: React, TypeScript, Styled Components
 - **Assistec Informática**: landing page institucional em HTML, CSS e JavaScript
 - **DevRoadmap**: roadmaps de estudo em Next.js, React, TypeScript e Supabase

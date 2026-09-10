@@ -1,5 +1,14 @@
 [
     {
+        "id": 4,
+        "title": "videonotes",
+        "description": "Bot que transforma links de vídeo enviados num grupo do WhatsApp em notas estruturadas no Obsidian, em cerca de 30 segundos. Transcreve com Whisper e, quando o vídeo não tem fala, extrai quadros com FFmpeg e lê o texto da tela com um modelo de visão. Binário Go de 7 MB, sem framework e sem banco de dados.",
+        "imagem": "videonotes",
+        "tech": ["Go", "Docker", "Whisper", "yt-dlp", "FFmpeg", "LLM"],
+        "demoLink": "",
+        "codeLink": ""
+    },
+    {
         "id": 1,
         "title": "Portifólio",
         "description": "Portifólio desenvolvido com React e Typescript, utilizando Styled Components e React Icons. O deploy foi feito com Vercel.",

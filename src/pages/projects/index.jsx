@@ -10,6 +10,7 @@ import MagneticButton from '../../components/magneticButton';
 import portfolioImage from '../../assets/Portifolio.webp';
 import assistecImage from '../../assets/Assistec.webp';
 import roadmapImage from '../../assets/Roadmap.webp';
+import videonotesImage from '../../assets/Videonotes.webp';
 
 const ProjectsSection = styled.div`
   background-color: ${(props) => props.theme.colors.bg};
@@ -251,6 +252,7 @@ const Projects = () => {
     'portifolio': portfolioImage,
     'roadmap': roadmapImage,
     'assistec': assistecImage,
+    'videonotes': videonotesImage,
   };
 
   const getImagePath = (imagePath) => {
@@ -334,11 +336,13 @@ const Projects = () => {
                     ))}
                   </TechStack>
                   <ButtonsContainer>
-                    <MagneticButton>
-                      <Button href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                        Ver Demo
-                      </Button>
-                    </MagneticButton>
+                    {project.demoLink && (
+                      <MagneticButton>
+                        <Button href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                          Ver Demo
+                        </Button>
+                      </MagneticButton>
+                    )}
                     {project.codeLink && (
                       <MagneticButton>
                         <Button href={project.codeLink} target="_blank" rel="noopener noreferrer">
