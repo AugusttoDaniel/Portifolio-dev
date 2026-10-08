@@ -323,11 +323,11 @@ const AboutMe = () => {
             </Greeting>
 
             <Bio>
-              Me chamo Daniel Augusto, sou <Emphasis>Desenvolvedor Full Stack Júnior</Emphasis>, atuando profissionalmente com <Emphasis>React</Emphasis>, <Emphasis>Node.js</Emphasis> e <Emphasis>Nest.js</Emphasis> no dia a dia. Gosto de tirar projetos do papel e levá-los até a produção, por isso mantenho este portfólio sempre atualizado com os trabalhos que desenvolvo, tanto no emprego quanto em <Emphasis>projetos freelance</Emphasis>.
+              Sou <Emphasis>Desenvolvedor Full Stack Júnior</Emphasis> e trabalho com <Emphasis>React</Emphasis>, <Emphasis>Node.js</Emphasis> e <Emphasis>Nest.js</Emphasis> no dia a dia. Gosto de tirar projetos do papel e levá-los até a produção, e este portfólio reúne o que desenvolvo no emprego e em <Emphasis>projetos freelance</Emphasis>.
             </Bio>
 
             <Bio>
-              Estou aberto a <Emphasis>projetos freelance</Emphasis>, de sites institucionais a aplicações web completas. Antes de virar dev, trabalhei com <Emphasis>manutenção de hardware</Emphasis> e <Emphasis>suporte técnico</Emphasis>, o que me deu uma base sólida para entender como um sistema funciona de ponta a ponta, do hardware ao código.
+              Antes de virar dev, trabalhei com <Emphasis>manutenção de hardware</Emphasis> e <Emphasis>suporte técnico</Emphasis>, o que me deu uma base sólida para entender um sistema de ponta a ponta, do hardware ao código. Hoje estou aberto a <Emphasis>projetos freelance</Emphasis>, de sites institucionais a aplicações web completas.
             </Bio>
 
             <StatsSection>
@@ -354,7 +354,7 @@ const AboutMe = () => {
             <ButtonContainer>
               <MagneticButton>
                 <Button
-                  href="https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w"
+                  href="/curriculo-daniel-augusto.pdf"
                   download
                   aria-label="Baixar CV"
                   onClick={(e) => triggerDownloadFly(e.currentTarget)}

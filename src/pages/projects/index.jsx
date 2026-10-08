@@ -401,7 +401,7 @@ const Projects = () => {
           variants={fadeInUp}
         >
           <Title><RevealText text="Projetos" /></Title>
-          <Subtitle>Projetos que tirei do zero e levei até a produção. Clique em um para ver os detalhes.</Subtitle>
+          <Subtitle>Projetos feitos do zero até a produção. Clique em um para ver os detalhes.</Subtitle>
         </Header>
 
         <ProjectsList>

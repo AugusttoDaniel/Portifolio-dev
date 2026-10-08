@@ -10,6 +10,14 @@ import portifolioStack from '../../docs/screenshots/stack.png';
 import portifolioCertificados from '../../docs/screenshots/certificados.png';
 import portifolioProjetos from '../../docs/screenshots/projetos.png';
 import portifolioMobile from '../../docs/screenshots/mobile-hero.png';
+import convertmilhasCapa from '../../docs/screenshots/convertmilhas-capa.webp';
+import convertmilhasHero from '../../docs/screenshots/convertmilhas-hero.png';
+import convertmilhasRota from '../../docs/screenshots/convertmilhas-rota.png';
+import convertmilhasPlanos from '../../docs/screenshots/convertmilhas-planos.png';
+import ultralikeCapa from '../../docs/screenshots/ultralike-capa.webp';
+import ultralikePlanos from '../../docs/screenshots/ultralike-planos.png';
+import ultralikeBlog from '../../docs/screenshots/ultralike-blog.png';
+import ultralikeBlogPost from '../../docs/screenshots/ultralike-blog-post.png';
 
 export const projectImages = {
   portifolio,
@@ -21,6 +29,14 @@ export const projectImages = {
   'portifolio-certificados': portifolioCertificados,
   'portifolio-projetos': portifolioProjetos,
   'portifolio-mobile': portifolioMobile,
+  'convertmilhas-capa': convertmilhasCapa,
+  'convertmilhas-hero': convertmilhasHero,
+  'convertmilhas-rota': convertmilhasRota,
+  'convertmilhas-planos': convertmilhasPlanos,
+  'ultralike-capa': ultralikeCapa,
+  'ultralike-planos': ultralikePlanos,
+  'ultralike-blog': ultralikeBlog,
+  'ultralike-blog-post': ultralikeBlogPost,
 };
 
 export const getProjectImage = (key) => {

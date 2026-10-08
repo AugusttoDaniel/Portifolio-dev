@@ -5,7 +5,7 @@
             "title": "Bacharelado em Sistemas de Informação",
             "subtitle": "Instituto Federal de Minas Gerais Campus São João Evangelista",
             "icon": "FaGraduationCap",
-            "description": "Formação em Sistemas de Informação, com foco em algoritmos, estruturas de dados, desenvolvimento de software, matemática.",
+            "description": "Formação em Sistemas de Informação, com algoritmos, estruturas de dados, desenvolvimento de software e matemática.",
             "tags": [
                 "Java",
                 "Python",
@@ -20,7 +20,7 @@
         },
         {
             "date": "Out de 2020",
-            "title": "Medalha de Prata na Intercampi do IFMG 1 Superior Nível 1 ",
+            "title": "Medalha de prata na Intercampi do IFMG",
             "subtitle": "II Maratona de Programação Intercampi do IFMG",
             "icon": "FaTrophy",
             "description": "Medalha de prata na II Maratona de Programação Intercampi do IFMG, realizada em 2020, com foco em resolução de problemas e algoritmos.",
@@ -77,7 +77,7 @@
             "title": "Certificação em React",
             "subtitle": "Udemy",
             "icon": "FaCertificate",
-            "description": "Certificação avançada em React, abordando hooks, context API e roteamento.",
+            "description": "Certificação em React, com hooks, context API e roteamento.",
             "tags": [
                 "React",
                 "JavaScript",

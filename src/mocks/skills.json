@@ -9,7 +9,7 @@
             "category": "Framework",
             "icon": "FaReact",
             "bgColor": "#61DAFB30",
-            "description": "Desenvolvimento de interfaces modernas e responsivas com React, hooks, context e componentes reutilizáveis",
+            "description": "Biblioteca para criar as telas de sites e sistemas. Trabalho com hooks, context e componentes reutilizáveis.",
             "experience": "2y 5m"
         },
         {
@@ -17,7 +17,7 @@
             "category": "Framework",
             "icon": "SiTailwindcss",
             "bgColor": "#38B2AC30",
-            "description": "Estilização moderna e responsiva com Tailwind CSS",
+            "description": "Define cores, espaçamentos e layout direto no código do componente, com classes utilitárias e design responsivo.",
             "experience": "1y 6m"
         },
         {
@@ -25,7 +25,7 @@
             "category": "Linguagem",
             "icon": "SiTypescript",
             "bgColor": "#3178C630",
-            "description": "Desenvolvimento com TypeScript",
+            "description": "JavaScript com tipos: o editor aponta erros antes de o código rodar. Uso em projetos React e Next.js.",
             "experience": "1y 8m"
         },
         {
@@ -33,7 +33,7 @@
             "category": "Linguagem",
             "icon": "SiJavascript",
             "bgColor": "#F7DF1E30",
-            "description": "Desenvolvimento web frontend (ES6+)",
+            "description": "A linguagem da web, que roda no navegador e no servidor. Uso ES6+ no front-end e, com Node.js, no back-end.",
             "experience": "2y 7m"
         },
         {
@@ -41,7 +41,7 @@
             "category": "Database",
             "icon": "SiMysql",
             "bgColor": "#4479A130",
-            "description": "Modelagem e gerenciamento de bancos de dados relacionais com MySQL",
+            "description": "Banco de dados que guarda informações em tabelas relacionadas. Faço a modelagem das tabelas e escrevo as consultas SQL.",
             "experience": "3y 4m"
         },
         {
@@ -49,7 +49,7 @@
             "category": "Database",
             "icon": "SiPostgresql",
             "bgColor": "#33648430",
-            "description": "Gerenciamento de bancos de dados relacionais com PostgreSQL",
+            "description": "Banco de dados relacional com recursos avançados. Trabalho com modelagem, consultas SQL e relacionamentos entre tabelas.",
             "experience": "2y 4m"
         },
         {
@@ -57,7 +57,7 @@
             "category": "Versionamento",
             "icon": "FaGithub",
             "bgColor": "#F0500030",
-            "description": "Controle de versão e colaboração usando Git",
+            "description": "Registra o histórico de cada mudança no código. Trabalho com branches, commits e pull requests para revisar antes de juntar.",
             "experience": "2y 8m"
         },
         {
@@ -65,7 +65,7 @@
             "category": "Versionamento",
             "icon": "FaGithub",
             "bgColor": "#18191930",
-            "description": "Gerenciamento de repositórios, CI/CD e colaboração usando GitHub",
+            "description": "Plataforma onde o código fica hospedado e a equipe colabora. Uso repositórios, pull requests e CI/CD para testar e publicar.",
             "experience": "2y 8m"
         },
         {
@@ -73,7 +73,7 @@
             "category": "Markup",
             "icon": "SiHtml5",
             "bgColor": "#E34F2620",
-            "description": "Estruturação de páginas web com HTML5",
+            "description": "A estrutura de toda página web. Escrevo HTML semântico, que ajuda buscadores e leitores de tela a entender o conteúdo.",
             "experience": "2y 7m"
         },
         {
@@ -81,7 +81,7 @@
             "category": "Markup",
             "icon": "SiCss3",
             "bgColor": "#1572B630",
-            "description": "Estilização de páginas web com CSS3 e preprocessadores como SASS/SCSS",
+            "description": "Define a aparência das páginas: cores, fontes e layout. Trabalho com layout responsivo e SASS/SCSS.",
             "experience": "2y 7m"
         },
         {
@@ -89,7 +89,7 @@
             "category": "Cloud",
             "icon": "SiVercel",
             "bgColor": "#00000030",
-            "description": "Deploy e hospedagem de aplicações Next.js e React",
+            "description": "Plataforma que coloca sites no ar. Faço deploy de aplicações Next.js e React, com publicação automática a cada push.",
             "experience": "2y 10m"
         },
         {
@@ -97,7 +97,7 @@
             "category": "Framework",
             "icon": "SiFastapi",
             "bgColor": "#00956030",
-            "description": "Desenvolvimento de APIs rápidas com Python",
+            "description": "Framework Python para criar APIs, a ponte que conecta sistemas. Desenvolvo endpoints com validação automática dos dados.",
             "experience": "2y 2m"
         },
         {
@@ -105,7 +105,7 @@
             "category": "Framework",
             "icon": "FaNode",
             "bgColor": "#33993330",
-            "description": "Desenvolvimento backend com Node.js",
+            "description": "Permite rodar JavaScript no servidor. Uso para construir back-ends, APIs e automações.",
             "experience": "2y 1m"
         },
         {
@@ -113,7 +113,7 @@
             "category": "Framework",
             "icon": "SiExpress",
             "bgColor": "#00000030",
-            "description": "Desenvolvimento de APIs com Express.js",
+            "description": "Framework leve do Node.js para criar APIs REST, organizadas em rotas e middlewares.",
             "experience": "2y 1m"
         },
         {
@@ -121,7 +121,7 @@
             "category": "Framework",
             "icon": "SiNestjs",
             "bgColor": "#E0234E30",
-            "description": "Desenvolvimento de APIs escaláveis com Nest.js",
+            "description": "Framework do Node.js para APIs maiores, organizado em módulos e escrito em TypeScript.",
             "experience": "6m"
         }
     ]

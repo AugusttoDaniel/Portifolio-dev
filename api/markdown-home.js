@@ -1,10 +1,10 @@
 const MARKDOWN = `# Daniel Augusto Silva | Desenvolvedor Full Stack Júnior
 
-Desenvolvedor Full Stack Júnior atuando profissionalmente com React, Node.js e Nest.js. Já levei projetos do zero à produção e estou disponível para projetos freelance, de sites institucionais a aplicações web completas.
+Sou desenvolvedor full stack júnior e trabalho com React, Node.js e Nest.js. Já levei projetos do zero à produção e estou disponível para projetos freelance, de sites institucionais a aplicações web completas.
 
 ## Sobre
 
-Antes de virar desenvolvedor, trabalhei com manutenção de hardware e suporte técnico, o que me deu uma base sólida para entender como um sistema funciona de ponta a ponta, do hardware ao código. Sou formado em Sistemas de Informação pelo Instituto Federal de Minas Gerais.
+Antes de virar desenvolvedor, trabalhei com manutenção de hardware e suporte técnico. Essa etapa mostrou como um sistema funciona de ponta a ponta, do hardware ao código. Sou formado em Sistemas de Informação pelo Instituto Federal de Minas Gerais.
 
 ## Stack
 
@@ -22,7 +22,7 @@ Antes de virar desenvolvedor, trabalhei com manutenção de hardware e suporte t
 ## Projetos
 
 - **videonotes**: bot em Go que transforma links de vídeo enviados num grupo do WhatsApp em notas estruturadas no Obsidian, transcrevendo com Whisper e lendo texto na tela com um modelo de visão quando o vídeo não tem fala
-- **Portfólio pessoal**: React, TypeScript, Styled Components
+- **Portfólio pessoal**: React, Styled Components, Framer Motion
 - **Assistec Informática**: landing page institucional em HTML, CSS e JavaScript
 - **DevRoadmap**: roadmaps de estudo em Next.js, React, TypeScript e Supabase
 
@@ -30,7 +30,7 @@ Antes de virar desenvolvedor, trabalhei com manutenção de hardware e suporte t
 
 - GitHub: https://github.com/AugusttoDaniel
 - LinkedIn: https://www.linkedin.com/in/danielaugustto/
-- Currículo: https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w
+- Currículo: https://portifolio-dev-two-plum.vercel.app/curriculo-daniel-augusto.pdf
 
 ## Mais informações
 

@@ -1,6 +1,6 @@
 # Daniel Augusto Silva
 
-> Portfólio de Daniel Augusto Silva, Desenvolvedor Full Stack Júnior especializado em React, Node.js e Nest.js, disponível para projetos freelance.
+> Portfólio de Daniel Augusto Silva, Desenvolvedor Full Stack Júnior com foco em React, Node.js e Nest.js, disponível para projetos freelance.
 
 Daniel é um desenvolvedor full stack júnior brasileiro. Atua profissionalmente com React, Node.js e Nest.js, e já levou projetos do zero até a produção. Antes de virar desenvolvedor, trabalhou com manutenção de hardware e suporte técnico.
 
@@ -21,7 +21,7 @@ Not a good fit for long-term full-time roles outside software development, or fo
 - [Sobre](https://portifolio-dev-two-plum.vercel.app/about): trajetória, formação e experiência profissional
 - [Contato](https://portifolio-dev-two-plum.vercel.app/contact): e-mail, LinkedIn, GitHub e currículo
 - [Privacidade](https://portifolio-dev-two-plum.vercel.app/privacy): política de privacidade do site
-- [Currículo em PDF](https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w): currículo completo para download
+- [Currículo em PDF](https://portifolio-dev-two-plum.vercel.app/curriculo-daniel-augusto.pdf): currículo completo para download
 
 ## Optional
 
