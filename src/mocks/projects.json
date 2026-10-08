@@ -8,16 +8,16 @@
         "demoLink": "",
         "codeLink": "",
         "details": {
-            "tagline": "Um link jogado no grupo do WhatsApp vira nota estruturada no Obsidian em cerca de 30 segundos.",
+            "tagline": "Um link enviado no grupo do WhatsApp vira nota no Obsidian em cerca de 30 segundos.",
             "meta": [
                 { "label": "Ano", "value": "2026" },
                 { "label": "Tipo", "value": "Projeto pessoal" },
                 { "label": "Papel", "value": "Do zero ao deploy" }
             ],
             "overview": [
-                "Salvar um vídeo para ver depois é fácil. Voltar nele é que não acontece. O videonotes fecha esse ciclo: um bot escuta um grupo do WhatsApp, pega o link assim que ele cai ali e devolve uma nota estruturada dentro do Obsidian, sem app novo para abrir nem formulário para preencher.",
-                "O caminho é simples de descrever e chato de acertar. O vídeo é baixado com yt-dlp, o áudio vai para o Whisper e a transcrição vira nota. Quando o vídeo não tem fala, transcrição nenhuma resolve: aí o FFmpeg extrai quadros e um modelo de visão lê o texto que está na tela, o que cobre tutoriais mudos, demos de tela e vídeo que é só código rolando.",
-                "Tudo isso vive num único binário Go de 7 MB, sem framework e sem banco de dados, empacotado em Docker para rodar em qualquer lugar."
+                "Salvar um vídeo para ver depois é fácil; voltar a ele é o que falta. O videonotes faz essa volta acontecer: um bot lê o grupo do WhatsApp, pega o link assim que ele chega e devolve uma nota estruturada no Obsidian, sem app novo e sem formulário.",
+                "O fluxo: yt-dlp baixa o vídeo, o Whisper transcreve o áudio e a transcrição vira nota. Quando o vídeo não tem fala, a transcrição não ajuda. Nesse caso, o FFmpeg extrai quadros e um modelo de visão lê o texto da tela. Isso cobre tutoriais sem narração, demos de tela e vídeos de código.",
+                "Tudo roda num único binário Go de 7 MB, sem framework e sem banco de dados, empacotado em Docker."
             ],
             "highlights": [
                 {
@@ -26,7 +26,7 @@
                 },
                 {
                     "title": "Transcrição com Whisper",
-                    "text": "O áudio vira texto e o texto vira nota, com o link original preservado para conferência."
+                    "text": "O áudio vira texto, e a nota guarda o link original para conferência."
                 },
                 {
                     "title": "Plano B para vídeo sem fala",
@@ -34,7 +34,7 @@
                 },
                 {
                     "title": "Cerca de 30 segundos por vídeo",
-                    "text": "Do link enviado até a nota disponível no vault, pronta para ler depois."
+                    "text": "Do envio do link até a nota disponível no vault."
                 }
             ],
             "stack": [
@@ -48,20 +48,20 @@
                 "Fallback em vez de erro. Se a transcrição não rende texto útil, o pipeline segue pela leitura de quadros."
             ],
             "gallery": [
-                { "src": "videonotes", "caption": "Do link no WhatsApp à nota estruturada no Obsidian." }
+                { "src": "videonotes", "caption": "Do link no WhatsApp à nota no Obsidian." }
             ]
         }
     },
     {
         "id": 1,
         "title": "Portifólio",
-        "description": "Portifólio desenvolvido com React e Typescript, utilizando Styled Components e React Icons. O deploy foi feito com Vercel.",
+        "description": "Este site, feito com React, Styled Components e React Icons. O deploy é feito na Vercel.",
         "imagem": "portifolio",
         "tech": ["React", "Styled Components", "React Icons"],
         "demoLink": "https://portifolio-dev-two-plum.vercel.app/",
         "codeLink": "https://github.com/AugusttoDaniel/Portifolio-dev",
         "details": {
-            "tagline": "Este site. Um portfólio que precisa convencer duas plateias: gente e agentes de IA.",
+            "tagline": "Este site. Feito para ser lido por pessoas e por agentes de IA.",
             "meta": [
                 { "label": "Ano", "value": "2025" },
                 { "label": "Tipo", "value": "Projeto pessoal" },
@@ -69,7 +69,7 @@
             ],
             "overview": [
                 "É o site em que você está agora. React 19 com Vite, Styled Components para o CSS, Framer Motion para as animações e Lenis para o scroll com inércia. O deploy é automático na Vercel a cada push na main.",
-                "A parte que costuma passar despercebida é o conteúdo estático. O HTML já chega com o texto real das seções, sem depender de JavaScript para ser indexado, e o site também responde em Markdown para quem preferir ler assim. Junto vão JSON-LD, sitemap, robots.txt, llms.txt e páginas de apoio em /about, /contact e /privacy."
+                "O conteúdo estático é a parte menos visível. O HTML já chega com o texto real das seções, sem depender de JavaScript para ser indexado. O site também responde em Markdown para quem prefere ler assim. Há ainda JSON-LD, sitemap, robots.txt, llms.txt e páginas de apoio em /about, /contact e /privacy."
             ],
             "highlights": [
                 {
@@ -77,24 +77,24 @@
                     "text": "Lenis sincronizado ao loop de animação do Framer Motion, para o scroll suave não brigar com as animações de entrada."
                 },
                 {
-                    "title": "Microinterações com freio",
-                    "text": "Cards com leve inclinação 3D e botões magnéticos, desligados sozinhos em telas sem mouse e quando o sistema pede menos movimento."
+                    "title": "Microinterações com limite",
+                    "text": "Cards com leve inclinação 3D e botões magnéticos. Os dois se desligam em telas sem mouse e quando o sistema pede menos movimento."
                 },
                 {
                     "title": "Stack navegável",
-                    "text": "Busca por texto, filtro por categoria e paginação nas habilidades, em vez de uma lista longa e parada."
+                    "text": "Busca, filtro por categoria e paginação nas habilidades, em vez de uma lista longa e fixa."
                 },
                 {
                     "title": "Timeline em abas",
-                    "text": "Formação acadêmica, cursos e experiência profissional na mesma linha do tempo, separados por aba."
+                    "text": "Formação, cursos e experiência profissional numa linha do tempo, separados em abas."
                 },
                 {
-                    "title": "Pronto para agentes",
-                    "text": "JSON-LD, llms.txt, negociação de conteúdo em Markdown e conteúdo real no HTML servido."
+                    "title": "Legível por agentes",
+                    "text": "JSON-LD, llms.txt, versão em Markdown e conteúdo real no HTML."
                 },
                 {
-                    "title": "O currículo que voa",
-                    "text": "Clicar em Baixar CV faz o ícone do currículo voar até o botão de download no header."
+                    "title": "Download com animação",
+                    "text": "Ao clicar em Baixar CV, o ícone do currículo voa até o botão no header."
                 }
             ],
             "stack": [
@@ -106,7 +106,7 @@
             "notes": [
                 "Conteúdo real no HTML inicial, para que buscadores e LLMs leiam o portfólio sem executar JavaScript.",
                 "As animações respeitam prefers-reduced-motion e somem em dispositivos sem mouse.",
-                "Um script de verificação checa a saúde de SEO e agent-readiness contra a URL de produção."
+                "Um script verifica SEO e legibilidade para agentes contra a URL de produção."
             ],
             "gallery": [
                 { "src": "portifolio", "caption": "Capa do projeto." },
@@ -121,7 +121,7 @@
     {
         "id": 2,
         "title": "Landing Page feita para a Assistec Informática",
-        "description": "Site Institucional feito para a Assistec Informática, utilizando Html, CSS e JavaScript. O deploy foi feito com GitLab.",
+        "description": "Site institucional para a Assistec Informática, feito com HTML, CSS e JavaScript. O deploy foi feito com GitLab.",
         "imagem": "assistec",
         "tech": ["Html", "Css", "JavaScript"],
         "demoLink": "https://augusttodaniel.github.io/Portifolio-dev/",
@@ -134,8 +134,8 @@
                 { "label": "Papel", "value": "Front-end" }
             ],
             "overview": [
-                "Landing page institucional da Assistec Informática, que oferece equipe de TI para manter a operação de outras empresas segura e sob controle. A página abre com a headline sobre segurança e produtividade e leva o visitante direto para o pedido de consultoria.",
-                "Foi construída com HTML, CSS e JavaScript puros. Sem framework, sem etapa de build e sem dependências para atualizar depois: o site é servido como está. O deploy foi feito pelo GitLab."
+                "Landing page da Assistec Informática, empresa que oferece equipe de TI para manter a operação de outras empresas segura e sob controle. A página abre com a headline sobre segurança e produtividade e leva o visitante ao pedido de consultoria.",
+                "Foi feita com HTML, CSS e JavaScript puros: sem framework, sem build e sem dependências para atualizar. O site é servido como está. O deploy foi feito pelo GitLab."
             ],
             "highlights": [
                 {
@@ -163,13 +163,13 @@
     {
         "id": 3,
         "title": "DevRoadmap",
-        "description": "Aplicação web moderna e interativa projetada para guiar e acompanhar o aprendizado de estudantes e profissionais na área de tecnologia. Oferece roadmaps de estudo detalhados e permite gerenciar o progresso de cursos pessoais.",
+        "description": "Aplicação web com roadmaps de estudo para quem aprende tecnologia. Permite marcar o progresso de cada etapa e acompanhar cursos feitos por fora.",
         "imagem": "roadmap",
         "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Shadcn/ui", "Supabase", "React Hook Form", "Zod"],
         "demoLink": "https://teste-road-map.vercel.app/",
         "codeLink": "",
         "details": {
-            "tagline": "Roadmaps interativos para estudar tecnologia sem perder de vista o que já foi estudado.",
+            "tagline": "Roadmaps de tecnologia que mostram o que você já estudou.",
             "meta": [
                 { "label": "Ano", "value": "2025" },
                 { "label": "Tipo", "value": "Aplicação web" },
@@ -177,7 +177,7 @@
             ],
             "overview": [
                 "O DevRoadmap organiza o estudo de quem está entrando ou crescendo em tecnologia. Em vez de uma lista solta de conteúdos, cada trilha é um roadmap por função, com as etapas na ordem em que fazem sentido.",
-                "A pessoa marca o que já estudou e vê o avanço em tempo real, salva os roadmaps que interessam e ainda cadastra os cursos próprios para acompanhar o progresso deles no mesmo lugar. A conta e os dados ficam no Supabase, e os formulários são validados com React Hook Form e Zod."
+                "A pessoa marca o que já estudou e vê o avanço da trilha. Também salva os roadmaps que quer acompanhar e cadastra os cursos que faz por fora, para ver o progresso no mesmo lugar. A conta e os dados ficam no Supabase, e os formulários são validados com React Hook Form e Zod."
             ],
             "highlights": [
                 {
@@ -185,8 +185,8 @@
                     "text": "Trilhas detalhadas e organizadas por área, em vez de uma lista genérica de conteúdos."
                 },
                 {
-                    "title": "Progresso em tempo real",
-                    "text": "A pessoa marca o que já estudou e acompanha o avanço da trilha conforme avança."
+                    "title": "Progresso por etapa",
+                    "text": "Cada etapa concluída fica marcada, e a trilha mostra quanto falta."
                 },
                 {
                     "title": "Cursos pessoais no mesmo lugar",
@@ -204,6 +204,150 @@
             ],
             "gallery": [
                 { "src": "roadmap", "caption": "Página inicial, com os roadmaps interativos e o acompanhamento de progresso." }
+            ]
+        }
+    },
+    {
+        "id": 5,
+        "title": "Convert Milhas",
+        "description": "SaaS multi-tenant para agências de milhas e turismo. Captura ofertas de passagens de forma automatizada, extrai os dados com IA, aplica a margem de cada agência e envia a oferta pronta para os clientes.",
+        "imagem": "convertmilhas-capa",
+        "tech": ["Next.js", "React", "TypeScript", "Prisma", "Igniter.js", "Tailwind CSS", "Kestra", "UAZAPI"],
+        "demoLink": "https://convertmilhas.com.br",
+        "codeLink": "",
+        "details": {
+            "tagline": "Ofertas de milhas capturadas de forma automatizada, precificadas com a margem da agência e prontas para enviar.",
+            "meta": [
+                { "label": "Ano", "value": "2026" },
+                { "label": "Tipo", "value": "Produto SaaS" },
+                { "label": "Status", "value": "No ar, em evolução" }
+            ],
+            "overview": [
+                "Agências de milhas vivem de repassar ofertas. O trabalho manual é sempre o mesmo: ficar olhando grupos de fornecedores, recalcular o preço, reescrever a mensagem com a marca da agência e repetir para cada grupo de clientes. O Convert Milhas automatiza esse ciclo inteiro: captura, entende, filtra, precifica e envia.",
+                "O sistema tem duas partes. Um orquestrador de workflows captura as ofertas de forma automatizada e usa IA para extrair rota, milhas, taxas e datas. O SaaS aplica as regras de cada agência, calcula o preço de venda, monta a mensagem e faz o envio. O operador configura as regras uma vez e acompanha o resultado."
+            ],
+            "highlights": [
+                {
+                    "title": "Multi-tenant por agência",
+                    "text": "Cada agência tem seus grupos-fonte, filtros, margem e grupos de clientes, com papéis de admin, owner e member."
+                },
+                {
+                    "title": "Preço calculado pela regra da agência",
+                    "text": "Milhas, custo do milheiro, margem e taxas viram o preço de venda de cada tenant, sem recálculo manual."
+                },
+                {
+                    "title": "Extração com IA",
+                    "text": "Um subfluxo por tipo de mensagem extrai rota, milhas, taxa e datas das ofertas recebidas."
+                },
+                {
+                    "title": "Limites de envio e janela de disparo",
+                    "text": "Controle de ritmo e de horário para não sobrecarregar os grupos de clientes."
+                }
+            ],
+            "stack": [
+                { "group": "Front-end", "items": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Shadcn/ui"] },
+                { "group": "Back-end e dados", "items": ["Igniter.js", "Prisma", "Better Auth"] },
+                { "group": "Automação", "items": ["Kestra", "UAZAPI"] }
+            ],
+            "notes": [
+                "Dois sistemas com responsabilidades separadas: a entrada (captura e IA) fica no Kestra, e as regras, o preço e o envio ficam no SaaS.",
+                "Multi-tenant desde o modelo de dados, para que cada agência veja apenas os próprios grupos, ofertas e configurações."
+            ],
+            "gallery": [
+                { "src": "convertmilhas-capa", "caption": "Capa do projeto, com a página inicial do Convert Milhas." },
+                { "src": "convertmilhas-hero", "caption": "Página inicial, com a proposta de ofertas personalizadas com a margem da agência." },
+                { "src": "convertmilhas-rota", "caption": "Como funciona: da rota da oferta até a configuração do método da agência." },
+                { "src": "convertmilhas-planos", "caption": "Planos e implantação, com os volumes de envio de cada plano." }
+            ]
+        }
+    },
+    {
+        "id": 6,
+        "title": "Site da UltraLike",
+        "description": "Site institucional da UltraLike, empresa que oferece equipe de desenvolvimento por mensalidade fixa. Tem páginas de planos, soluções, cases, sobre e contato, além de um blog com categorias, tags e sumário em cada artigo.",
+        "imagem": "ultralike-capa",
+        "tech": [
+            "Next.js",
+            "React",
+            "SEO"
+        ],
+        "demoLink": "",
+        "codeLink": "",
+        "details": {
+            "tagline": "O site da UltraLike, com planos, soluções, cases e blog.",
+            "meta": [
+                {
+                    "label": "Ano",
+                    "value": "2026"
+                },
+                {
+                    "label": "Tipo",
+                    "value": "Projeto na UltraLike"
+                },
+                {
+                    "label": "Status",
+                    "value": "No ar"
+                }
+            ],
+            "overview": [
+                "Site institucional da UltraLike, empresa que oferece equipe de desenvolvimento por mensalidade fixa, com correções, melhorias, novas funcionalidades e monitoramento dos sistemas do cliente. A home apresenta a proposta e leva para os planos e para o pedido de proposta.",
+                "Além das páginas de planos, soluções, cases, sobre e contato, o site tem um blog. A listagem mostra categoria, tempo de leitura, visualizações, autor e data de cada artigo, e a página do artigo tem sumário lateral e botões para compartilhar."
+            ],
+            "highlights": [
+                {
+                    "title": "Páginas de venda",
+                    "text": "Planos, soluções e cases explicam o serviço, o que está incluso e como funciona o dia a dia, sempre com chamada para pedir proposta."
+                },
+                {
+                    "title": "Blog com categorias e tags",
+                    "text": "Cada artigo tem categoria, tags, tempo de leitura e contador de visualizações, com páginas próprias para navegar por assunto."
+                },
+                {
+                    "title": "Sumário do artigo",
+                    "text": "Um índice lateral lista as seções do texto e acompanha a rolagem."
+                },
+                {
+                    "title": "Tema claro e escuro",
+                    "text": "Um seletor no header alterna o tema do site."
+                },
+                {
+                    "title": "SEO técnico",
+                    "text": "Breadcrumbs e dados estruturados (BlogPosting e BreadcrumbList) nos artigos."
+                }
+            ],
+            "stack": [
+                {
+                    "group": "Front-end",
+                    "items": [
+                        "Next.js",
+                        "React"
+                    ]
+                },
+                {
+                    "group": "SEO",
+                    "items": [
+                        "JSON-LD",
+                        "Breadcrumbs"
+                    ]
+                }
+            ],
+            "gallery": [
+                {
+                    "src": "ultralike-capa",
+                    "caption": "Home da UltraLike."
+                },
+                {
+                    "src": "ultralike-planos",
+                    "caption": "Página de planos, com os problemas que o serviço resolve."
+                },
+                {
+                    "src": "ultralike-blog",
+                    "caption": "Listagem do blog, com categorias na lateral."
+                },
+                {
+                    "src": "ultralike-blog-post",
+                    "caption": "Página do artigo, com sumário e botões de compartilhamento."
+                }
             ]
         }
     }

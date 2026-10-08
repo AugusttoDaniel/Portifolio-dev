@@ -217,7 +217,10 @@ function Header() {
   }, []);
 
   const handleDownload = () => {
-    window.location.href = "https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w";
+    const link = document.createElement('a');
+    link.href = '/curriculo-daniel-augusto.pdf';
+    link.download = 'curriculo-daniel-augusto.pdf';
+    link.click();
   };
 
   return (

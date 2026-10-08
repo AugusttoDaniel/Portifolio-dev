@@ -321,21 +321,21 @@ const DeveloperProfile = () => {
           </Eyebrow>
 
           <Headline>
-            <RevealText as="div" text="Eu construo" />
-            <RevealText as="div" text="produtos full stack" />
+            <RevealText as="div" text="Eu levo projetos" />
+            <RevealText as="div" text="do zero" />
             <m.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.6 }}
               variants={fadeInUp}
             >
-              <HeadlineGradient>que funcionam.</HeadlineGradient>
+              <HeadlineGradient>à produção.</HeadlineGradient>
             </m.div>
           </Headline>
 
           <m.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}>
             <Paragraph>
-              Já levei projetos do zero à produção com <strong>React</strong>, <strong>Node.js</strong> e <strong>Nest.js</strong>. Full stack júnior, também disponível para projetos freelance.
+              Sou desenvolvedor full stack júnior e trabalho com <strong>React</strong>, <strong>Node.js</strong> e <strong>Nest.js</strong>. Estou disponível para projetos freelance.
             </Paragraph>
 
             <TechPills>
@@ -354,7 +354,7 @@ const DeveloperProfile = () => {
               </MagneticButton>
               <MagneticButton>
                 <SecondaryButton
-                  href="https://drive.google.com/uc?export=download&id=1IA3T5Ks_PnpFMjxy-W0H58_g3QC28N9w"
+                  href="/curriculo-daniel-augusto.pdf"
                   download
                   onClick={(e) => triggerDownloadFly(e.currentTarget)}
                 >
@@ -390,7 +390,7 @@ const DeveloperProfile = () => {
             </TiltCard>
             <AvailabilityBadge>
               <PulseDot />
-              <AvailabilityText>Disponível para projetos freelance!</AvailabilityText>
+              <AvailabilityText>Disponível para projetos freelance.</AvailabilityText>
             </AvailabilityBadge>
           </RightColumn>
         </m.div>
