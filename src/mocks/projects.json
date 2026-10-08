@@ -124,7 +124,7 @@
         "description": "Site institucional para a Assistec Informática, feito com HTML, CSS e JavaScript. O deploy foi feito com GitLab.",
         "imagem": "assistec",
         "tech": ["Html", "Css", "JavaScript"],
-        "demoLink": "https://augusttodaniel.github.io/Portifolio-dev/",
+        "demoLink": "",
         "codeLink": "",
         "details": {
             "tagline": "Site institucional para uma empresa de TI, feito sem framework e sem etapa de build.",
@@ -156,7 +156,11 @@
                 { "group": "Infra", "items": ["GitLab"] }
             ],
             "gallery": [
-                { "src": "assistec", "caption": "Bloco principal, com a chamada para solicitar consultoria." }
+                { "src": "assistec", "caption": "Bloco principal, com a chamada para solicitar consultoria." },
+                { "src": "assistec-inicio", "caption": "Início da página, com a apresentação da empresa." },
+                { "src": "assistec-caracteristicas", "caption": "Serviços: assistência técnica, loja de informática e softwares de proteção." },
+                { "src": "assistec-beneficios", "caption": "Diferenciais da empresa em quatro blocos numerados." },
+                { "src": "assistec-contato", "caption": "Contato com telefone, e-mail, endereço e formulário de mensagem." }
             ]
         }
     },

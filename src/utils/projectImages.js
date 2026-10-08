@@ -3,6 +3,10 @@
 // para que os dados não precisem conhecer o caminho real do arquivo.
 import portifolio from '../assets/Portifolio.webp';
 import assistec from '../assets/Assistec.webp';
+import assistecInicio from '../../docs/screenshots/assistec-inicio.png';
+import assistecCaracteristicas from '../../docs/screenshots/assistec-caracteristicas.png';
+import assistecBeneficios from '../../docs/screenshots/assistec-beneficios.png';
+import assistecContato from '../../docs/screenshots/assistec-contato.png';
 import roadmap from '../assets/Roadmap.webp';
 import videonotes from '../assets/Videonotes.webp';
 import portifolioHero from '../../docs/screenshots/hero.png';
@@ -22,6 +26,10 @@ import ultralikeBlogPost from '../../docs/screenshots/ultralike-blog-post.png';
 export const projectImages = {
   portifolio,
   assistec,
+  'assistec-inicio': assistecInicio,
+  'assistec-caracteristicas': assistecCaracteristicas,
+  'assistec-beneficios': assistecBeneficios,
+  'assistec-contato': assistecContato,
   roadmap,
   videonotes,
   'portifolio-hero': portifolioHero,
