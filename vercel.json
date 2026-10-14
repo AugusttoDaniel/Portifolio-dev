@@ -1,6 +1,25 @@
 {
   "routes": [
     {
+      "src": "/(.*)",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "X-Frame-Options": "DENY",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
+      },
+      "continue": true
+    },
+    {
+      "src": "/",
+      "headers": {
+        "Link": "</>; rel=\"alternate\"; type=\"text/markdown\"",
+        "Vary": "Accept",
+        "Cache-Control": "no-store"
+      },
+      "continue": true
+    },
+    {
       "src": "/",
       "has": [
         { "type": "header", "key": "accept", "value": { "pre": "text/markdown" } }
@@ -9,15 +28,5 @@
     },
     { "handle": "filesystem" },
     { "src": "/(.*)", "status": 404, "dest": "/404.html" }
-  ],
-  "headers": [
-    {
-      "source": "/",
-      "headers": [
-        { "key": "Link", "value": "</>; rel=\"alternate\"; type=\"text/markdown\"" },
-        { "key": "Vary", "value": "Accept" },
-        { "key": "Cache-Control", "value": "no-store" }
-      ]
-    }
   ]
 }

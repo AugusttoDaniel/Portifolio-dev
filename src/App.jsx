@@ -16,6 +16,7 @@ import Projects from './pages/projects';
 import DeveloperProfile from './pages/developerprofile';
 import { FaArrowUp } from 'react-icons/fa';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from '@vercel/analytics/react';
 
 
 const BackToTopContainer = styled.div`
@@ -85,6 +86,7 @@ function App() {
             />
           </BackToTopContainer>
           <SpeedInsights />
+          <Analytics />
         </LazyMotion>
       </ReactLenis>
     </ThemeProvider>
