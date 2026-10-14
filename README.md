@@ -7,11 +7,11 @@
 ![Lenis](https://img.shields.io/badge/Lenis-smooth_scroll-0F172A)
 ![Deploy](https://img.shields.io/badge/deploy-Vercel-black?logo=vercel)
 
-**[🔗 Ver o portfólio no ar](https://portifolio-dev-two-plum.vercel.app/)**
+**[🔗 Ver o portfólio no ar](https://danielaugusto.vercel.app/)**
 
 ## 📋 Sobre o Projeto
 
-Portfólio profissional desenvolvido com React, apresentando minhas habilidades, projetos e experiência como Desenvolvedor Full Stack Júnior, também disponível para projetos freelance. Interface clara e responsiva, com animações e microinterações construídas com Framer Motion e Lenis.
+Portfólio profissional desenvolvido com React, apresentando minhas habilidades, projetos e experiência como Desenvolvedor Full Stack Júnior com foco em back-end. Interface clara e responsiva, com animações e microinterações construídas com Framer Motion e Lenis.
 
 O site também foi otimizado para ser lido tanto por pessoas quanto por agentes/LLMs: conteúdo real renderizado no HTML (sem depender de JS para ser indexado), dados estruturados (JSON-LD), negociação de conteúdo em Markdown, `llms.txt` e páginas de apoio (`/about`, `/contact`, `/privacy`).
 
@@ -126,10 +126,9 @@ Portifolio-dev/
 
 ## 🌐 Deploy
 
-Hospedado na [Vercel](https://portifolio-dev-two-plum.vercel.app/), com deploy automático a cada push na `main`.
+Hospedado na [Vercel](https://danielaugusto.vercel.app/), com deploy automático a cada push na `main`.
 
 ## 📫 Contato
 
-- E-mail: [danielsje7133@gmail.com](mailto:danielsje7133@gmail.com)
 - LinkedIn: [linkedin.com/in/danielaugustto](https://www.linkedin.com/in/danielaugustto/)
 - GitHub: [github.com/AugusttoDaniel](https://github.com/AugusttoDaniel)

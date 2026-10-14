@@ -5,124 +5,109 @@
     "total": 15,
     "data": [
         {
-            "name": "React",
-            "category": "Framework",
-            "icon": "FaReact",
-            "bgColor": "#61DAFB30",
-            "description": "Biblioteca para criar as telas de sites e sistemas. Trabalho com hooks, context e componentes reutilizáveis.",
-            "experience": "2y 5m"
-        },
-        {
-            "name": "Tailwind",
-            "category": "Framework",
-            "icon": "SiTailwindcss",
-            "bgColor": "#38B2AC30",
-            "description": "Define cores, espaçamentos e layout direto no código do componente, com classes utilitárias e design responsivo.",
-            "experience": "1y 6m"
-        },
-        {
-            "name": "TypeScript",
-            "category": "Linguagem",
-            "icon": "SiTypescript",
-            "bgColor": "#3178C630",
-            "description": "JavaScript com tipos: o editor aponta erros antes de o código rodar. Uso em projetos React e Next.js.",
-            "experience": "1y 8m"
-        },
-        {
-            "name": "JavaScript",
-            "category": "Linguagem",
-            "icon": "SiJavascript",
-            "bgColor": "#F7DF1E30",
-            "description": "A linguagem da web, que roda no navegador e no servidor. Uso ES6+ no front-end e, com Node.js, no back-end.",
-            "experience": "2y 7m"
-        },
-        {
-            "name": "MySQL",
-            "category": "Database",
-            "icon": "SiMysql",
-            "bgColor": "#4479A130",
-            "description": "Banco de dados que guarda informações em tabelas relacionadas. Faço a modelagem das tabelas e escrevo as consultas SQL.",
-            "experience": "3y 4m"
-        },
-        {
-            "name": "PostgreSQL",
-            "category": "Database",
-            "icon": "SiPostgresql",
-            "bgColor": "#33648430",
-            "description": "Banco de dados relacional com recursos avançados. Trabalho com modelagem, consultas SQL e relacionamentos entre tabelas.",
-            "experience": "2y 4m"
-        },
-        {
-            "name": "Git",
-            "category": "Versionamento",
-            "icon": "FaGithub",
-            "bgColor": "#F0500030",
-            "description": "Registra o histórico de cada mudança no código. Trabalho com branches, commits e pull requests para revisar antes de juntar.",
-            "experience": "2y 8m"
-        },
-        {
-            "name": "GitHub",
-            "category": "Versionamento",
-            "icon": "FaGithub",
-            "bgColor": "#18191930",
-            "description": "Plataforma onde o código fica hospedado e a equipe colabora. Uso repositórios, pull requests e CI/CD para testar e publicar.",
-            "experience": "2y 8m"
-        },
-        {
-            "name": "HTML",
-            "category": "Markup",
-            "icon": "SiHtml5",
-            "bgColor": "#E34F2620",
-            "description": "A estrutura de toda página web. Escrevo HTML semântico, que ajuda buscadores e leitores de tela a entender o conteúdo.",
-            "experience": "2y 7m"
-        },
-        {
-            "name": "CSS",
-            "category": "Markup",
-            "icon": "SiCss3",
-            "bgColor": "#1572B630",
-            "description": "Define a aparência das páginas: cores, fontes e layout. Trabalho com layout responsivo e SASS/SCSS.",
-            "experience": "2y 7m"
-        },
-        {
-            "name": "Vercel",
-            "category": "Cloud",
-            "icon": "SiVercel",
-            "bgColor": "#00000030",
-            "description": "Plataforma que coloca sites no ar. Faço deploy de aplicações Next.js e React, com publicação automática a cada push.",
-            "experience": "2y 10m"
-        },
-        {
-            "name": "FastAPI",
-            "category": "Framework",
-            "icon": "SiFastapi",
-            "bgColor": "#00956030",
-            "description": "Framework Python para criar APIs, a ponte que conecta sistemas. Desenvolvo endpoints com validação automática dos dados.",
-            "experience": "2y 2m"
-        },
-        {
             "name": "Node.js",
             "category": "Framework",
             "icon": "FaNode",
             "bgColor": "#33993330",
-            "description": "Permite rodar JavaScript no servidor. Uso para construir back-ends, APIs e automações.",
-            "experience": "2y 1m"
-        },
-        {
-            "name": "Express",
-            "category": "Framework",
-            "icon": "SiExpress",
-            "bgColor": "#00000030",
-            "description": "Framework leve do Node.js para criar APIs REST, organizadas em rotas e middlewares.",
-            "experience": "2y 1m"
+            "description": "Permite rodar JavaScript no servidor. Uso para construir back-ends, APIs e automações."
         },
         {
             "name": "Nest.js",
             "category": "Framework",
             "icon": "SiNestjs",
             "bgColor": "#E0234E30",
-            "description": "Framework do Node.js para APIs maiores, organizado em módulos e escrito em TypeScript.",
-            "experience": "6m"
+            "description": "Framework do Node.js para APIs maiores, organizado em módulos e escrito em TypeScript."
+        },
+        {
+            "name": "TypeScript",
+            "category": "Linguagem",
+            "icon": "SiTypescript",
+            "bgColor": "#3178C630",
+            "description": "JavaScript com tipos: o editor aponta erros antes de o código rodar. Uso em projetos React e Next.js."
+        },
+        {
+            "name": "PostgreSQL",
+            "category": "Database",
+            "icon": "SiPostgresql",
+            "bgColor": "#33648430",
+            "description": "Banco de dados relacional com recursos avançados. Trabalho com modelagem, consultas SQL e relacionamentos entre tabelas."
+        },
+        {
+            "name": "Express",
+            "category": "Framework",
+            "icon": "SiExpress",
+            "bgColor": "#00000030",
+            "description": "Framework leve do Node.js para criar APIs REST, organizadas em rotas e middlewares."
+        },
+        {
+            "name": "React",
+            "category": "Framework",
+            "icon": "FaReact",
+            "bgColor": "#61DAFB30",
+            "description": "Biblioteca para criar as telas de sites e sistemas. Trabalho com hooks, context e componentes reutilizáveis."
+        },
+        {
+            "name": "JavaScript",
+            "category": "Linguagem",
+            "icon": "SiJavascript",
+            "bgColor": "#F7DF1E30",
+            "description": "A linguagem da web, que roda no navegador e no servidor. Uso ES6+ no front-end e, com Node.js, no back-end."
+        },
+        {
+            "name": "MySQL",
+            "category": "Database",
+            "icon": "SiMysql",
+            "bgColor": "#4479A130",
+            "description": "Banco de dados que guarda informações em tabelas relacionadas. Faço a modelagem das tabelas e escrevo as consultas SQL."
+        },
+        {
+            "name": "Tailwind",
+            "category": "Framework",
+            "icon": "SiTailwindcss",
+            "bgColor": "#38B2AC30",
+            "description": "Define cores, espaçamentos e layout direto no código do componente, com classes utilitárias e design responsivo."
+        },
+        {
+            "name": "Git",
+            "category": "Versionamento",
+            "icon": "FaGithub",
+            "bgColor": "#F0500030",
+            "description": "Registra o histórico de cada mudança no código. Trabalho com branches, commits e pull requests para revisar antes de juntar."
+        },
+        {
+            "name": "GitHub",
+            "category": "Versionamento",
+            "icon": "FaGithub",
+            "bgColor": "#18191930",
+            "description": "Plataforma onde o código fica hospedado e a equipe colabora. Uso repositórios, pull requests e CI/CD para testar e publicar."
+        },
+        {
+            "name": "HTML",
+            "category": "Markup",
+            "icon": "SiHtml5",
+            "bgColor": "#E34F2620",
+            "description": "A estrutura de toda página web. Escrevo HTML semântico, que ajuda buscadores e leitores de tela a entender o conteúdo."
+        },
+        {
+            "name": "CSS",
+            "category": "Markup",
+            "icon": "SiCss3",
+            "bgColor": "#1572B630",
+            "description": "Define a aparência das páginas: cores, fontes e layout. Trabalho com layout responsivo e SASS/SCSS."
+        },
+        {
+            "name": "Vercel",
+            "category": "Cloud",
+            "icon": "SiVercel",
+            "bgColor": "#00000030",
+            "description": "Plataforma que coloca sites no ar. Faço deploy de aplicações Next.js e React, com publicação automática a cada push."
+        },
+        {
+            "name": "FastAPI",
+            "category": "Framework",
+            "icon": "SiFastapi",
+            "bgColor": "#00956030",
+            "description": "Framework Python para criar APIs, a ponte que conecta sistemas. Desenvolvo endpoints com validação automática dos dados."
         }
     ]
 }

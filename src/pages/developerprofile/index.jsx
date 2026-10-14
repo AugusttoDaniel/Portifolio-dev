@@ -335,14 +335,14 @@ const DeveloperProfile = () => {
 
           <m.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}>
             <Paragraph>
-              Sou desenvolvedor full stack júnior e trabalho com <strong>React</strong>, <strong>Node.js</strong> e <strong>Nest.js</strong>. Estou disponível para projetos freelance.
+              Sou desenvolvedor full stack júnior, com foco no back-end em <strong>Node.js</strong>, <strong>Nest.js</strong> e <strong>TypeScript</strong>, e no front-end com <strong>React</strong>. Estou aberto a vagas de desenvolvedor back-end ou full stack.
             </Paragraph>
 
             <TechPills>
-              <TechPill>React</TechPill>
               <TechPill>Node.js</TechPill>
               <TechPill>Nest.js</TechPill>
               <TechPill>TypeScript</TechPill>
+              <TechPill>React</TechPill>
             </TechPills>
 
             <ButtonsRow>
@@ -381,16 +381,16 @@ const DeveloperProfile = () => {
                   <div><span style={{ color: '#5CCBF5' }}>const</span> <span style={{ color: '#F1F5F9' }}>dev</span> = {'{'}</div>
                   <div>&nbsp;&nbsp;nome: <span style={{ color: '#A5E8C4' }}>'Daniel'</span>,</div>
                   <div>&nbsp;&nbsp;cargo: <span style={{ color: '#A5E8C4' }}>'Full Stack Júnior'</span>,</div>
-                  <div>&nbsp;&nbsp;stack: [<span style={{ color: '#A5E8C4' }}>'React'</span>, <span style={{ color: '#A5E8C4' }}>'Node'</span>, <span style={{ color: '#A5E8C4' }}>'Nest'</span>],</div>
-                  <div>&nbsp;&nbsp;experiencia: <span style={{ color: '#FBBF6B' }}>2</span>, <span style={{ color: '#5B6B84' }}>// anos</span></div>
-                  <div>&nbsp;&nbsp;disponivel: <span style={{ color: '#5CCBF5' }}>true</span></div>
+                  <div>&nbsp;&nbsp;stack: [<span style={{ color: '#A5E8C4' }}>'Node'</span>, <span style={{ color: '#A5E8C4' }}>'Nest'</span>, <span style={{ color: '#A5E8C4' }}>'TypeScript'</span>, <span style={{ color: '#A5E8C4' }}>'React'</span>],</div>
+                  <div>&nbsp;&nbsp;devDesde: <span style={{ color: '#FBBF6B' }}>2024</span>,</div>
+                  <div>&nbsp;&nbsp;abertoAVagas: <span style={{ color: '#5CCBF5' }}>true</span></div>
                   <div>{'};'}</div>
                 </CodeCardBody>
               </CodeCard>
             </TiltCard>
             <AvailabilityBadge>
               <PulseDot />
-              <AvailabilityText>Disponível para projetos freelance.</AvailabilityText>
+              <AvailabilityText>Aberto a vagas back-end ou full stack.</AvailabilityText>
             </AvailabilityBadge>
           </RightColumn>
         </m.div>

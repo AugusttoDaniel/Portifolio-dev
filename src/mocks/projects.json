@@ -54,11 +54,11 @@
     },
     {
         "id": 1,
-        "title": "Portifólio",
+        "title": "Portfólio",
         "description": "Este site, feito com React, Styled Components e React Icons. O deploy é feito na Vercel.",
         "imagem": "portifolio",
         "tech": ["React", "Styled Components", "React Icons"],
-        "demoLink": "https://portifolio-dev-two-plum.vercel.app/",
+        "demoLink": "https://danielaugusto.vercel.app/",
         "codeLink": "https://github.com/AugusttoDaniel/Portifolio-dev",
         "details": {
             "tagline": "Este site. Feito para ser lido por pessoas e por agentes de IA.",

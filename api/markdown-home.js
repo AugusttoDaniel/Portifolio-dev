@@ -1,20 +1,20 @@
 const MARKDOWN = `# Daniel Augusto Silva | Desenvolvedor Full Stack Júnior
 
-Sou desenvolvedor full stack júnior e trabalho com React, Node.js e Nest.js. Já levei projetos do zero à produção e estou disponível para projetos freelance, de sites institucionais a aplicações web completas.
+Sou desenvolvedor full stack júnior, com foco no back-end em Node.js, Nest.js e TypeScript, e no front-end com React. Já levei projetos do zero à produção e estou aberto a vagas de desenvolvedor back-end ou full stack.
 
 ## Sobre
 
-Antes de virar desenvolvedor, trabalhei com manutenção de hardware e suporte técnico. Essa etapa mostrou como um sistema funciona de ponta a ponta, do hardware ao código. Sou formado em Sistemas de Informação pelo Instituto Federal de Minas Gerais.
+Antes de virar desenvolvedor, trabalhei com manutenção de hardware e suporte técnico. Essa etapa mostrou como um sistema funciona de ponta a ponta, do hardware ao código. Sou formado em Sistemas de Informação pelo Instituto Federal de Minas Gerais. Em 2020 ganhei a medalha de prata na II Maratona de Programação Intercampi do IFMG.
 
 ## Stack
 
-- React
 - Node.js
 - Nest.js
 - TypeScript
+- React
 - JavaScript
-- MySQL
 - PostgreSQL
+- MySQL
 - Tailwind CSS
 - Git
 - GitHub
@@ -30,12 +30,12 @@ Antes de virar desenvolvedor, trabalhei com manutenção de hardware e suporte t
 
 - GitHub: https://github.com/AugusttoDaniel
 - LinkedIn: https://www.linkedin.com/in/danielaugustto/
-- Currículo: https://portifolio-dev-two-plum.vercel.app/curriculo-daniel-augusto.pdf
+- Currículo: https://danielaugusto.vercel.app/curriculo-daniel-augusto.pdf
 
 ## Mais informações
 
-- [llms.txt](https://portifolio-dev-two-plum.vercel.app/llms.txt)
-- [sitemap.xml](https://portifolio-dev-two-plum.vercel.app/sitemap.xml)
+- [llms.txt](https://danielaugusto.vercel.app/llms.txt)
+- [sitemap.xml](https://danielaugusto.vercel.app/sitemap.xml)
 `;
 
 export default function handler(req, res) {

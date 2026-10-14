@@ -302,17 +302,6 @@ const Description = styled.p`
   margin-bottom: 16px;
 `;
 
-const Experience = styled.div`
-  margin-top: auto;
-  font-size: 0.8rem;
-  color: ${(props) => props.theme.colors.textMuted};
-
-  span {
-    color: ${(props) => props.theme.colors.accentHover};
-    font-weight: 600;
-  }
-`;
-
 const EmptyState = styled.div`
   text-align: center;
   padding: 40px;
@@ -593,7 +582,7 @@ const SkillsAndExperience = () => {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeInUp}
         >
-          <Title><RevealText text="Habilidades & Experiência" /></Title>
+          <Title><RevealText text="Habilidades" /></Title>
           <Subtitle>As ferramentas que uso no dia a dia, do front ao back</Subtitle>
         </Header>
 
@@ -691,9 +680,6 @@ const SkillsAndExperience = () => {
                         </SkillName>
                       </CardHeader>
                       <Description>{skill.description}</Description>
-                      <Experience>
-                        Experiência: <span>{skill.experience}</span>
-                      </Experience>
                     </SkillCard>
                   </TiltCard>
                 </m.div>

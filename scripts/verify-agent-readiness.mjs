@@ -3,7 +3,7 @@
 // Usage: node scripts/verify-agent-readiness.mjs [baseUrl]
 // Defaults to the production Vercel URL.
 
-const baseUrl = (process.argv[2] || 'https://portifolio-dev-two-plum.vercel.app').replace(/\/$/, '');
+const baseUrl = (process.argv[2] || 'https://danielaugusto.vercel.app').replace(/\/$/, '');
 
 let failures = 0;
 
@@ -38,7 +38,7 @@ async function checkContentWithoutJs() {
   const h1Count = (html.match(/<h1[\s>]/gi) || []).length;
   report('Content without JS: exactly one <h1> in raw HTML', h1Count === 1, `${h1Count} found`);
   report('Content without JS: mentions real projects (DevRoadmap)', text.includes('DevRoadmap'));
-  report('Content without JS: mentions work experience (Ultralike)', text.includes('Ultralike'));
+  report('Content without JS: mentions work experience (UltraLike)', text.includes('UltraLike'));
   report('Content without JS: mentions stack details (PostgreSQL)', text.includes('PostgreSQL'));
 }
 

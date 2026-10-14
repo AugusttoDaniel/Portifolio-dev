@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { FaDownload } from 'react-icons/fa';
 import foto from '../../assets/Foto.webp';
-import { m, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform, useInView } from "framer-motion";
 import RevealText from '../../components/revealText';
 import TiltCard from '../../components/tiltCard';
 import MagneticButton from '../../components/magneticButton';
@@ -211,28 +211,24 @@ const Divider = styled(m.hr)`
   border: none;
   margin: 0 auto 30px;
 `;
+// Conta de 0 até o valor quando o número entra na tela
 const AnimatedNumber = ({ targetValue, duration = 2 }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.6 });
   const [value, setValue] = useState(0);
 
   useEffect(() => {
-    let start = 0;
-    const end = targetValue;
-    const totalFrames = Math.ceil(duration * 60);
-    const increment = (end - start) / totalFrames;
-
+    if (!isInView) return;
+    const startTime = Date.now();
     const interval = setInterval(() => {
-      start += increment;
-      setValue(Math.min(start, end));
-
-      if (start >= end) {
-        clearInterval(interval);
-      }
+      const progress = Math.min((Date.now() - startTime) / (duration * 1000), 1);
+      setValue(Math.round(progress * targetValue));
+      if (progress >= 1) clearInterval(interval);
     }, 16);
-
     return () => clearInterval(interval);
-  }, [targetValue, duration]);
+  }, [isInView, targetValue, duration]);
 
-  return <span>{Math.floor(value)}</span>;
+  return <span ref={ref}>{value}</span>;
 };
 
 const AboutMe = () => {
@@ -323,31 +319,21 @@ const AboutMe = () => {
             </Greeting>
 
             <Bio>
-              Sou <Emphasis>Desenvolvedor Full Stack Júnior</Emphasis> e trabalho com <Emphasis>React</Emphasis>, <Emphasis>Node.js</Emphasis> e <Emphasis>Nest.js</Emphasis> no dia a dia. Gosto de tirar projetos do papel e levá-los até a produção, e este portfólio reúne o que desenvolvo no emprego e em <Emphasis>projetos freelance</Emphasis>.
+              Sou <Emphasis>Desenvolvedor Full Stack Júnior</Emphasis> e atuo principalmente no back-end com <Emphasis>Node.js</Emphasis>, <Emphasis>Nest.js</Emphasis> e <Emphasis>TypeScript</Emphasis>, e no front-end com <Emphasis>React</Emphasis>. Gosto de tirar projetos do papel e levá-los até a produção, e este portfólio reúne o que já desenvolvi.
             </Bio>
 
             <Bio>
-              Antes de virar dev, trabalhei com <Emphasis>manutenção de hardware</Emphasis> e <Emphasis>suporte técnico</Emphasis>, o que me deu uma base sólida para entender um sistema de ponta a ponta, do hardware ao código. Hoje estou aberto a <Emphasis>projetos freelance</Emphasis>, de sites institucionais a aplicações web completas.
+              Antes de virar dev, trabalhei com <Emphasis>manutenção de hardware</Emphasis> e <Emphasis>suporte técnico</Emphasis>, o que me deu uma base sólida para entender um sistema de ponta a ponta, do hardware ao código. Hoje estou aberto a <Emphasis>vagas de desenvolvedor back-end ou full stack</Emphasis>.
             </Bio>
 
             <StatsSection>
               <StatBox>
                 <StatNumber>
-                  <AnimatedNumber targetValue={2} duration={2} />+
-                </StatNumber>
-                <StatLabel>
-                  <span>Anos</span>
-                  <span>de experiência</span>
-                </StatLabel>
-              </StatBox>
-
-              <StatBox>
-                <StatNumber>
-                  <AnimatedNumber targetValue={3} duration={2} />+
+                  <AnimatedNumber targetValue={10} duration={2} />
                 </StatNumber>
                 <StatLabel>
                   <span>Projetos</span>
-                  <span>no GitHub</span>
+                  <span>entregues</span>
                 </StatLabel>
               </StatBox>
             </StatsSection>

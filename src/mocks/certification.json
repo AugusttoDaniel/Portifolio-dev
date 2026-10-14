@@ -1,7 +1,7 @@
 {
     "academic": [
         {
-            "date": "Jan. de 2020 - abr. de 2025",
+            "date": "Fev. de 2020 - abr. de 2025",
             "title": "Bacharelado em Sistemas de Informação",
             "subtitle": "Instituto Federal de Minas Gerais Campus São João Evangelista",
             "icon": "FaGraduationCap",
@@ -36,7 +36,7 @@
             }
         },
         {
-            "date": "Jan. de 2017 - dez. de 2019",
+            "date": "Fev. de 2017 - dez. de 2019",
             "title": "Técnico em Informática em Manutenção e Suporte",
             "subtitle": "Instituto Federal de Minas Gerais Campus São João Evangelista",
             "icon": "FaGraduationCap",
@@ -94,14 +94,14 @@
         {
             "date": "Dez. de 2025 - Atual",
             "title": "Desenvolvedor Full Stack Júnior",
-            "subtitle": "Empresa Ultralike",
+            "subtitle": "UltraLike (remoto)",
             "icon": "MdWork",
-            "description": "Manutenção de APIs e telas em React, desenvolvimento de automações, suporte ao cliente e implementação de sistemas com Nest.js e Node.js.",
+            "description": "Desenvolvo, junto com o time, os sistemas de 6 empresas clientes, com back-end em Nest.js e Node.js, front-end em React e Next.js e banco PostgreSQL. Fiz de ponta a ponta um SaaS para agências de viagem, com filas BullMQ e Redis e pagamentos pelo Stripe.",
             "tags": [
-                "React",
                 "Nest.js",
                 "Node.js",
-                "Automação"
+                "TypeScript",
+                "PostgreSQL"
             ],
             "button": {
                 "text": "Ver Detalhes",
@@ -110,16 +110,32 @@
             }
         },
         {
-            "date": "Jun. de 2025 - Dez. de 2025",
-            "title": "Desenvolvedor Full Stack Júnior",
-            "subtitle": "Empresa CoreIn",
+            "date": "Dez. de 2025 - Fev. de 2026",
+            "title": "Desenvolvedor de IA e Automação",
+            "subtitle": "Freelancer (remoto)",
             "icon": "MdWork",
-            "description": "Manutenção de APIs e telas em React, desenvolvimento de automações, suporte ao cliente e implementação de sistemas.",
+            "description": "Assistentes de IA jurídico e de vendas com RAG, memória de longo prazo e tool calling, automação em n8n para ofertas de viagem e um agente de cotação para o setor de compras.",
             "tags": [
-                "React",
-                "APIs",
-                "Automação",
-                "Suporte ao Cliente"
+                "Agentes de IA",
+                "RAG",
+                "n8n"
+            ],
+            "button": {
+                "text": "Ver Detalhes",
+                "showArrow": true,
+                "onClick": "console.log('Ver detalhes do trabalho freelancer')"
+            }
+        },
+        {
+            "date": "Jul. de 2025 - Nov. de 2025",
+            "title": "Desenvolvedor de IA e Automação",
+            "subtitle": "Core-In AI Ltda (remoto)",
+            "icon": "MdWork",
+            "description": "Agentes de SDR e agendamento em n8n, que tiraram cerca de 8 horas diárias de triagem e envio manual de mensagens, e automação da classificação de leads.",
+            "tags": [
+                "n8n",
+                "Agentes de IA",
+                "Automação"
             ],
             "button": {
                 "text": "Ver Detalhes",
@@ -129,15 +145,15 @@
         },
         {
             "date": "Out. de 2024 - Mar. de 2025",
-            "title": " Estágio de Desenvolvedor Back-end",
-            "subtitle": "Empresa MT EMPRENDIMENTOS",
+            "title": "Estagiário de Desenvolvimento Back-end",
+            "subtitle": "MT Empreendimentos (remoto)",
             "icon": "MdWork",
-            "description": "Desenvolvimento de aplicações API com Node e JavaScript, integração com APIs RESTful e front-end em React com Styled Components.",
+            "description": "Back-end do AlugueAí, um site de aluguel de imóveis: login, cadastro, integração com o S3 para as fotos e rate limit, em Node.js, Express e PostgreSQL. No front-end em React, envio de fotos, anúncios, métricas e painel administrativo.",
             "tags": [
-                "React",
                 "Node.js",
-                "JavaScript",
-                "APIs"
+                "Express",
+                "PostgreSQL",
+                "React"
             ],
             "button": {
                 "text": "Ver Detalhes",

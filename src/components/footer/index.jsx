@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import MagneticButton from '../magneticButton';
 import { useLenis } from 'lenis/react';
 import { scrollToId } from '../../utils/scrollToId';
@@ -148,16 +148,6 @@ const Footer = () => {
             aria-label="LinkedIn"
           >
             <FaLinkedin size={20} />
-          </SocialIcon>
-        </MagneticButton>
-        <MagneticButton strength={0.5}>
-          <SocialIcon
-            href="mailto:danielsje7133@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="E-mail"
-          >
-            <FaEnvelope size={20} />
           </SocialIcon>
         </MagneticButton>
       </SocialIcons>
