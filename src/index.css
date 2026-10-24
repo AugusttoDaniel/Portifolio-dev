@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/* Tokens do design: papel, tinta e um único vermelho de sinal.
+   signal-deep é o mesmo vermelho escurecido para texto pequeno sobre o papel,
+   onde o #FF3B1D fica abaixo do contraste mínimo (4.5:1). */
+@theme {
+  --color-paper: #F2EFE9;
+  --color-paper-2: #E8E4DC;
+  --color-ink: #111111;
+  --color-ink-2: #1A1A1A;
+  --color-signal: #FF3B1D;
+  --color-signal-deep: #C0280C;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+    background-color: var(--color-paper);
+  }
+
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+  }
+
+  ::selection {
+    @apply bg-signal text-ink;
+  }
+
+  /* Títulos sem palavra órfã na última linha; parágrafos com quebra mais equilibrada */
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  p, li {
+    text-wrap: pretty;
+  }
+
+  /* Caixa alta pequena precisa de tracking positivo para não parecer apertada.
+     :where() zera a especificidade, então qualquer tracking-* explícito ainda vence. */
+  :where(.font-mono.uppercase) {
+    letter-spacing: 0.06em;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-signal);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Botão com sombra dura que "afunda" no hover */
+  .btn-hard {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-ink px-6 py-4 font-mono text-xs font-bold uppercase transition-all duration-200;
+    box-shadow: 5px 5px 0 var(--btn-shadow, var(--color-ink));
+  }
+  .btn-hard:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 var(--btn-shadow, var(--color-ink));
+  }
+  .btn-hard:active {
+    transform: translate(5px, 5px);
+    box-shadow: none;
+  }
+
+  .eyebrow {
+    @apply block font-mono text-xs font-bold uppercase tracking-[0.08em];
+  }
+
+  /* Syne 800 em caixa alta ocupa ~1.2em por letra, então os títulos de seção
+     escalam com a tela para "arquiteturas" e "tecnológica" não estourarem a coluna. */
+  .section-title {
+    @apply font-display font-extrabold uppercase tracking-tight;
+    font-size: clamp(1.1rem, calc((100vw - 56px) / 13.5), 3rem);
+  }
+  .section-title-half {
+    @apply font-display font-extrabold uppercase;
+    font-size: clamp(1.1rem, calc((100vw - 56px) / 13.5), 2.25rem);
+  }
+  /* A partir de sm o respiro lateral sobe para 40px por lado */
+  @media (min-width: 40rem) {
+    .section-title {
+      font-size: clamp(1.1rem, calc((100vw - 92px) / 13.5), 3rem);
+    }
+  }
+  @media (min-width: 64rem) {
+    .section-title-half {
+      font-size: clamp(1.4rem, 2.9vw, 2.25rem);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animate-marquee {
+    animation: none !important;
+  }
+}
